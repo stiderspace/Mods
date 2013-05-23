@@ -42,12 +42,14 @@ public class GuiRockGrinder extends GuiContainer
             case 1: if(Inventory.Speed < 5)
                     {
             			Inventory.Speed++;
+            			
                     }
             break;
             
             case 2: if(Inventory.Speed > 1)
                     {
             			Inventory.Speed--;	
+            			
                     }
             break;
         }

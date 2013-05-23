@@ -89,8 +89,8 @@ public class CommonProxy implements IGuiHandler
             
         for (int Scan = 0; Scan < Recipes.size(); Scan++)
         {
-            IRecipe tmpRecipe = (IRecipe) Recipes.get(Scan);
-            RecipeResult = tmpRecipe.getRecipeOutput();
+            IRecipe Temp = (IRecipe) Recipes.get(Scan);
+            RecipeResult = Temp.getRecipeOutput();
                
             if (RecipeResult != null) 
             {

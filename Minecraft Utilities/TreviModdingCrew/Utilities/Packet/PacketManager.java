@@ -33,6 +33,7 @@ public class PacketManager implements IPacketHandler
         {
 			ByteArrayDataInput Data = ByteStreams.newDataInput(Packet.data);
 			DataInputStream DataInput = new DataInputStream((InputStream) Data);
+			
 			int Var1 = Data.readInt();
 			int Var2 = Data.readInt();
 			int Var3 = Data.readInt();
@@ -53,9 +54,10 @@ public class PacketManager implements IPacketHandler
 				}
 			}
         }
+		
         catch(Exception Exception)
         {
-            Exception.printStackTrace();
+            LogHandler.Log("Could Not Sent Tag Compound Packet");
         }
 	}
 	
@@ -78,14 +80,14 @@ public class PacketManager implements IPacketHandler
 	
 		catch(IOException IOException)
 		{
-		    IOException.printStackTrace();
+		    LogHandler.Log("Could Not Sent Tile Entity Data");
 		}
 	}
 	
 	
 	// Trying To Send Packet To Client
 	
-	public static void sendPacketToClient(String Name, ByteArrayOutputStream ByteArrayOutputStream, DataOutputStream Data, Object... senderData)
+	public static void sendPacketToClient(String Channel, ByteArrayOutputStream ByteArrayOutputStream, DataOutputStream Data, Object... senderData)
 	{	
 	    try
 	    {
@@ -127,7 +129,7 @@ public class PacketManager implements IPacketHandler
 	        
 	        Packet250CustomPayload Packet = new Packet250CustomPayload();
 	      
-	        Packet.channel = Name;
+	        Packet.channel = Channel;
 	        Packet.data = ByteArrayOutputStream.toByteArray();
 	        Packet.length = Packet.data.length;
 	        Packet.isChunkDataPacket = true;
@@ -137,18 +139,17 @@ public class PacketManager implements IPacketHandler
 	        LogHandler.Log("Packet Successfully Sent To Client");
 		
 	    }
+	    
 	    catch(IOException IOException)
 	    {
 	        LogHandler.Log("Failed To Sent Packet To Client");
-		  
-	        IOException.printStackTrace();
 	    }
 	}
 	
 	
 	// Trying To Send Packet To Server
     
-	public static void sendPacketToServer(String Name, ByteArrayOutputStream ByteArrayOutputStream, DataOutputStream Data, Object... SenderData)
+	public static void sendPacketToServer(String Channel, ByteArrayOutputStream ByteArrayOutputStream, DataOutputStream Data, Object... SenderData)
 	{
 	    try
 	    {
@@ -188,25 +189,22 @@ public class PacketManager implements IPacketHandler
 	            }
 	        }
 	            
-	            Packet250CustomPayload packet = new Packet250CustomPayload();
+	            Packet250CustomPayload Packet = new Packet250CustomPayload();
 	            
-	            packet.channel = Name;
-	            packet.data = ByteArrayOutputStream.toByteArray();
-	            packet.length = packet.data.length;
-	            packet.isChunkDataPacket = true;
+	            Packet.channel = Channel;
+	            Packet.data = ByteArrayOutputStream.toByteArray();
+	            Packet.length = Packet.data.length;
+	            Packet.isChunkDataPacket = true;
 	           
-	            PacketDispatcher.sendPacketToServer(packet);
+	            PacketDispatcher.sendPacketToServer(Packet);
 	            
 	            LogHandler.Log("Packet Successfully Sent To Server");
 	            
         }
+	    
         catch(IOException IOException)
         {
             LogHandler.Log("Failed To Sent Packet To Server");
-          
-            IOException.printStackTrace();
         }
 	}
 }
-
-

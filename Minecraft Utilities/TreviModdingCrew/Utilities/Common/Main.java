@@ -10,11 +10,11 @@ import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
+
 import TreviModdingCrew.Utilities.Block.BlockEggHatcher;
 import TreviModdingCrew.Utilities.Block.BlockRockCutter;
 import TreviModdingCrew.Utilities.Block.BlockRockGrinder;
 import TreviModdingCrew.Utilities.Entity.EntityBomb;
-import TreviModdingCrew.Utilities.Handler.DamageHandler;
 import TreviModdingCrew.Utilities.Handler.FuelHandler;
 import TreviModdingCrew.Utilities.Handler.LogHandler;
 import TreviModdingCrew.Utilities.Handler.SoundHandler;
@@ -30,6 +30,7 @@ import TreviModdingCrew.Utilities.Tab.TabUtilitiesBlock;
 import TreviModdingCrew.Utilities.Tab.TabUtilitiesItem;
 import TreviModdingCrew.Utilities.Tile.TileEntityHatcher;
 import TreviModdingCrew.Utilities.Tile.TileEntityRockGrinder;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -386,11 +387,6 @@ public class Main
         }
     	
     	
-	    // Crafting Handler
-	     
-	    GameRegistry.registerCraftingHandler(new DamageHandler());
-	
-	
 	    // Proxy's
 	     
 	    CommonProxy.LoadRenderers();

@@ -4,9 +4,11 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 import TreviModdingCrew.Utilities.Common.Main;
 import TreviModdingCrew.Utilities.Handler.KeyBindHandler;
@@ -25,6 +27,14 @@ public class ItemTreetap extends Item
     }
     
     
+    // Let Something Happen On Right Click
+    
+    public boolean onItemUse(ItemStack ItemStack, EntityPlayer EntityPlayer, World World, int Par4, int Par5, int Par6, int Par7, float Par8, float Par9, float Par10)
+    {
+        return false;
+    }
+
+
     // Adding The Tooltip 
     
     @SideOnly(Side.CLIENT)

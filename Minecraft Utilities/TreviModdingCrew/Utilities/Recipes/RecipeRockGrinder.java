@@ -11,8 +11,8 @@ public class RecipeRockGrinder
     
     private static final RecipeRockGrinder RockGrinderBase = new RecipeRockGrinder();
  
-    public static Map RockGrinderList = new HashMap();
-    public static Map RockGrinderExperience = new HashMap();
+    public static Map <Integer, ItemStack> RockGrinderList = new HashMap <Integer, ItemStack>();
+    public static Map <Integer, Float> RockGrinderExperience = new HashMap <Integer, Float>();
  
 
     //Used To Call Smelting Recipes
