@@ -3,15 +3,12 @@ package TreviModdingCrew.Utilities.Common;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentDigging;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
-
 import TreviModdingCrew.Utilities.Block.BlockEggHatcher;
 import TreviModdingCrew.Utilities.Block.BlockRockCutter;
 import TreviModdingCrew.Utilities.Block.BlockRockGrinder;
@@ -22,6 +19,7 @@ import TreviModdingCrew.Utilities.Handler.LogHandler;
 import TreviModdingCrew.Utilities.Items.ItemBomb;
 import TreviModdingCrew.Utilities.Items.ItemFilter;
 import TreviModdingCrew.Utilities.Items.ItemMagnet;
+import TreviModdingCrew.Utilities.Items.ItemTreetap;
 import TreviModdingCrew.Utilities.Manager.RecipeManager;
 import TreviModdingCrew.Utilities.Packet.PacketManager;
 import TreviModdingCrew.Utilities.Proxy.ClientProxy;
@@ -30,7 +28,6 @@ import TreviModdingCrew.Utilities.Tab.TabUtilitiesBlock;
 import TreviModdingCrew.Utilities.Tab.TabUtilitiesItem;
 import TreviModdingCrew.Utilities.Tile.TileEntityHatcher;
 import TreviModdingCrew.Utilities.Tile.TileEntityRockGrinder;
-
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -45,7 +42,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid=Reference.ModID, name=Reference.ModName, version=Reference.Version)
-@NetworkMod(clientSideRequired=true, serverSideRequired=true, channels = {Reference.ChannelName}, packetHandler = PacketManager.class)
+@NetworkMod(clientSideRequired=true, serverSideRequired=false, channels = {Reference.ChannelName}, packetHandler = PacketManager.class)
 
 public class Main
 {
@@ -68,6 +65,7 @@ public class Main
 	public static Item Filter;
 	public static Item Bomb;
 	public static Item Magnet;
+	public static Item Treetap;
 	
 	public static Block RockGrinder;
 	public static Block RockCutter;
@@ -79,6 +77,7 @@ public class Main
 	public int FilterID;
 	public int BombID;
 	public int MagnetID;
+	public int TreetapID;
     
 	public int RockGrinderID;
 	public int RockCutterID;
@@ -121,6 +120,7 @@ public class Main
         FilterID = Config.getItem("Filter", 5500).getInt();
         BombID = Config.getItem("Bomb", 5501).getInt();
         MagnetID = Config.getItem("Magnet", 5502).getInt();
+        TreetapID = Config.getItem("Treetap", 5503).getInt();
         
         RockGrinderID = Config.getBlock("Rock Grinder", 2500).getInt();
         RockCutterID = Config.getBlock("Rock Cutter", 2501).getInt();
@@ -165,15 +165,16 @@ public class Main
     	Filter = new ItemFilter(FilterID).setUnlocalizedName("Filter");
     	Bomb = new ItemBomb(BombID).setUnlocalizedName("Bomb");
     	Magnet = new ItemMagnet(MagnetID).setUnlocalizedName("Magnet");
-    	
+    	Treetap = new ItemTreetap(TreetapID).setUnlocalizedName("Treetap");
         
-    	
+        
     	// Item Registry
     	
     	GameRegistry.registerItem(Filter, "Filter");
     	GameRegistry.registerItem(Bomb, "Bomb");
     	GameRegistry.registerItem(Magnet, "Magnet");
-    	
+    	GameRegistry.registerItem(Treetap, "Treetap");
+        
     	
     	// Blocks
     	
@@ -382,7 +383,7 @@ public class Main
 	 
 	    ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH).addItem(new WeightedRandomChestContent(new ItemStack(Filter), 1, 1, 50));
 	    ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR).addItem(new WeightedRandomChestContent(new ItemStack(Bomb), 1, 5, 25));
-	    ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(Magnet), 1, 1, 15));
+	    ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(Magnet), 1, 2, 25));
         
 	     
 	    // Fuel Registry
@@ -405,7 +406,8 @@ public class Main
 	    LanguageRegistry.addName(Filter, "Filter");
 	    LanguageRegistry.addName(Bomb, "Bomb");
 	    LanguageRegistry.addName(Magnet, "Magnet");
-	       
+	    LanguageRegistry.addName(Treetap, "Treetap");
+          
 	    LanguageRegistry.addName(RockGrinder, "Rock Grinder");
 	    LanguageRegistry.addName(RockCutter, "Rock Cutter");
 	    LanguageRegistry.addName(EggHatcher, "Egg Hatcher");
