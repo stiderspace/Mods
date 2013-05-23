@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
 import TreviModdingCrew.Utilities.Block.BlockEggHatcher;
 import TreviModdingCrew.Utilities.Block.BlockRockCutter;
@@ -16,6 +17,7 @@ import TreviModdingCrew.Utilities.Entity.EntityBomb;
 import TreviModdingCrew.Utilities.Handler.DamageHandler;
 import TreviModdingCrew.Utilities.Handler.FuelHandler;
 import TreviModdingCrew.Utilities.Handler.LogHandler;
+import TreviModdingCrew.Utilities.Handler.SoundHandler;
 import TreviModdingCrew.Utilities.Items.ItemBomb;
 import TreviModdingCrew.Utilities.Items.ItemFilter;
 import TreviModdingCrew.Utilities.Items.ItemMagnet;
@@ -104,6 +106,7 @@ public class Main
 	public Property RecipeRockCutter;
 	public Property RecipeRockGrinder;
 	public Property RecipeEggHatcher;
+	public Property RecipeTreetap;
 	
 	public static Property OverideRockCutter;
 	public static Property OverideRockGrinder;
@@ -133,10 +136,6 @@ public class Main
         RecipeObsidian = Config.get("Recipes", "Obsidian", true);
         RecipeMossyCobblestone = Config.get("Recipes", "Mossy Cobblestone", true);   
         RecipeFlint = Config.get("Recipes", "Flint", true);
-        RecipeNetherBricks = Config.get("Smelting", "Nether Bricks", true);
-        RecipeNetherBrick = Config.get("Smelting", "Nether Bricks", true);
-        RecipeNetherStairs = Config.get("Smelting", "Nether Stairs", true);
-        RecipeLeather = Config.get("Smelting", "Leather", false);
         RecipeBomb = Config.get("Recipes", "Bomb", true);
         RecipeSaddle = Config.get("Recipes", "Saddle", true);
         RecipeWeb = Config.get("Recipes", "Cob Web", true);
@@ -147,13 +146,24 @@ public class Main
         RecipeRockCutter = Config.get("Recipes", "Rock Cutter", true);
         RecipeRockGrinder = Config.get("Recipes", "Rock Grinder", true);
         RecipeEggHatcher = Config.get("Recipes", "Egg Hatcher", true);
+        RecipeTreetap = Config.get("Recipes", "Treetap", true);
+        
+        RecipeNetherBricks = Config.get("Smelting", "Nether Bricks", true);
+        RecipeNetherBrick = Config.get("Smelting", "Nether Bricks", true);
+        RecipeNetherStairs = Config.get("Smelting", "Nether Stairs", true);
+        RecipeLeather = Config.get("Smelting", "Leather", false);
 
         OverideRockCutter = Config.get("Overide", "Rock Cutter", true);
         OverideRockGrinder = Config.get("Overide", "Rock Grinder", true);
         
         Config.save();	
         
-        LogHandler.Log("Configuration File Loaded");     
+        LogHandler.Log("Configuration File Loaded");  
+        
+        
+        // Loading Sound Files
+        
+        MinecraftForge.EVENT_BUS.register(new SoundHandler());
     }
 
 
@@ -322,6 +332,14 @@ public class Main
                 "CCC", "CGC", "CWC", 'G', Block.glass, 'C', Block.cobblestone, 'W', Item.wheat
             });
         }
+    	
+    	if (RecipeTreetap.getBoolean(false) == true)
+        {
+            GameRegistry.addRecipe(new ItemStack(Treetap), new Object[]
+            {
+                " I ", "WWW", "W  ", 'I', Item.ingotIron, 'W', Block.planks
+            });
+        }
      
     	
     	// Damage Crafting
@@ -390,6 +408,7 @@ public class Main
 	     
 	    GameRegistry.registerFuelHandler(new FuelHandler());
 	     
+	    
 	    // Entity Registry
 	     
 	    EntityRegistry.registerModEntity(EntityBomb.class, "Bomb", BombID, this, 950, 2, true);

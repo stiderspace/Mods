@@ -1,8 +1,15 @@
 package TreviModdingCrew.Utilities.Items;
 
+import java.util.List;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 import TreviModdingCrew.Utilities.Common.Main;
+import TreviModdingCrew.Utilities.Handler.KeyBindHandler;
 
 public class ItemTreetap extends Item
 {
@@ -15,5 +22,24 @@ public class ItemTreetap extends Item
         setCreativeTab(Main.UtilitiesItem);
         setMaxStackSize(1);
         setMaxDamage(50);
+    }
+    
+    
+    // Adding The Tooltip 
+    
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack ItemStack, EntityPlayer EntityPlayer, List List, boolean Par1)
+    {
+        List.add(ItemStack.getItemDamage()+ "/50 Uses Remaining");
+        
+        if(KeyBindHandler.MoreKeyDown == true)
+        {
+            List.clear();
+            
+            List.add("Treetap");
+            List.add("Right click on a tree to obtain water."); 
+            List.add("How bigger the tree how bigger the chance");
+            List.add("to obtain water in your bottle or bucket.");
+        }
     }
 }
