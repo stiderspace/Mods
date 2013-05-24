@@ -14,8 +14,6 @@ import net.minecraftforge.common.ForgeDummyContainer;
 
 import net.minecraftforge.common.ISidedInventory;
 
-import TreviModdingCrew.Utilities.Common.Reference;
-import TreviModdingCrew.Utilities.Packet.PacketManager;
 import TreviModdingCrew.Utilities.Recipes.RecipeRockGrinder;
 
 public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
@@ -224,17 +222,22 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
     {
         boolean Var1 = BurnTime > 0;
         boolean Var2 = false;
-
+        
         if (BurnTime > 0)
         {
-            --BurnTime;
+            BurnTime = BurnTime - Speed;
+            
+            if(BurnTime < 0)
+            {
+                ItemStacks[1].stackSize--;
+                BurnTime = 1250;
+            } 
         }
 
         if (!worldObj.isRemote)
         {
             if(worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord) || CookTime > 0)
             {
-                
                 if (BurnTime == 0 && canGrind())
                 {
                     if (ItemStacks[1] != null)
@@ -374,8 +377,6 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
     
     public static int getItemBurnTime(ItemStack ItemStack)
     {
-        TileEntityRockGrinder Tile = new TileEntityRockGrinder();
-        
         if (ItemStack == null)
         {
             return 0;
@@ -385,7 +386,7 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
         
         if (Fuel == Item.coal.itemID)
         {
-            return 1250 - (125 * Tile.Speed);
+            return 1250;
         }
  
         else

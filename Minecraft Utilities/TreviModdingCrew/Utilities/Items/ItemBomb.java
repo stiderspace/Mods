@@ -57,8 +57,8 @@ public class ItemBomb extends Item
             List.clear();
             
             List.add("Bomb");
-            List.add("Right click to throw.");
-            List.add("Blow away some bad guys!");
+            List.add("Right click to throw and");
+            List.add("blow away some bad guys!");
         }
     }
 }

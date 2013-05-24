@@ -121,14 +121,6 @@ public class EntityBomb extends EntityThrowable
   	}
 
   	
-  	// If It Hits A Bomb
-  	
-  	public void onCollideWithEntity(EntityBomb EntityBomb)
-  	{
-  	    EntityBomb.Explode();
-  	}
-
-
   	// If It Hits Something
   	
     @Override

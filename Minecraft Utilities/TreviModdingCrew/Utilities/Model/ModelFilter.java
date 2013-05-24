@@ -158,9 +158,9 @@ public class ModelFilter extends ModelBase
     
     private void setRotation(ModelRenderer ModelRenderer, float F, float F1, float F2)
     {
-    	ModelRenderer.rotateAngleX = F;
-    	ModelRenderer.rotateAngleY = F1;
-    	ModelRenderer.rotateAngleZ = F2;
+        ModelRenderer.rotateAngleX = F;
+        ModelRenderer.rotateAngleY = F1;
+        ModelRenderer.rotateAngleZ = F2;
     }
   
     

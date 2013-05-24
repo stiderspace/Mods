@@ -2,6 +2,7 @@ package TreviModdingCrew.Utilities.Proxy;
 
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
+
 import TreviModdingCrew.Utilities.Common.Main;
 import TreviModdingCrew.Utilities.Entity.EntityBomb;
 import TreviModdingCrew.Utilities.Handler.KeyBindHandler;
@@ -9,6 +10,7 @@ import TreviModdingCrew.Utilities.Renders.RenderBomb;
 import TreviModdingCrew.Utilities.Renders.RenderFilter;
 import TreviModdingCrew.Utilities.Renders.RenderMagnet;
 import TreviModdingCrew.Utilities.Renders.ThrowableBomb;
+
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;

@@ -7,5 +7,5 @@ public class LogHandler
     public static void Log(String Message)
     {
         System.out.println(Reference.ModID + ": " + Message);
-    }  
+    }   
 }

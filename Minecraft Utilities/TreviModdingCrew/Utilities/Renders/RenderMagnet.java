@@ -11,7 +11,6 @@ import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
 
-import TreviModdingCrew.Utilities.Model.ModelFilter;
 import TreviModdingCrew.Utilities.Model.ModelMagnet;
 
 public class RenderMagnet implements IItemRenderer 
