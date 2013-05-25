@@ -112,6 +112,7 @@ public class Main
 	public Property RecipeRockGrinder;
 	public Property RecipeEggHatcher;
 	public Property RecipeTreetap;
+	public Property RecipeLumberJacker;
 	
 	public static Property OverideRockCutter;
 	public static Property OverideRockGrinder;
@@ -153,6 +154,7 @@ public class Main
         RecipeRockGrinder = Config.get("Recipes", "Rock Grinder", true);
         RecipeEggHatcher = Config.get("Recipes", "Egg Hatcher", true);
         RecipeTreetap = Config.get("Recipes", "Treetap", true);
+        RecipeLumberJacker = Config.get("Recipes", "Lumber Jacker", true);
         
         RecipeNetherBricks = Config.get("Smelting", "Nether Bricks", true);
         RecipeNetherBrick = Config.get("Smelting", "Nether Bricks", true);
@@ -346,6 +348,14 @@ public class Main
             GameRegistry.addRecipe(new ItemStack(Treetap), new Object[]
             {
                 " I ", "WWW", "W  ", 'I', Item.ingotIron, 'W', Block.planks
+            });
+        }
+    	
+    	if (RecipeLumberJacker.getBoolean(false) == true)
+        {
+            GameRegistry.addRecipe(new ItemStack(LumberJacker), new Object[]
+            {
+                "CIC", "CRC", "CCC", 'C', Block.cobblestone, 'R', Item.redstone, 'I', Item.ingotIron
             });
         }
      

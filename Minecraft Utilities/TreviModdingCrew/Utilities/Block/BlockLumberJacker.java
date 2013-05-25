@@ -50,7 +50,7 @@ public class BlockLumberJacker extends BlockContainer
             
             Random Number = new Random();
             
-            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 4 + Number.nextInt(2)));
+            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 4 + Number.nextInt(3)));
             World.spawnEntityInWorld(Replacement);
         }
         
@@ -59,7 +59,7 @@ public class BlockLumberJacker extends BlockContainer
             World.setBlock(Par1, Par2 + 1, Par3, 0);
             
             Random Number = new Random();
-            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Item.stick, 4 + Number.nextInt(2)));
+            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Item.stick, 4 + Number.nextInt(3)));
             World.spawnEntityInWorld(Replacement);
         }
         
@@ -69,7 +69,7 @@ public class BlockLumberJacker extends BlockContainer
             
             Random Number = new Random();
             
-            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 4 + Number.nextInt(2)));
+            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 4 + Number.nextInt(3)));
             World.spawnEntityInWorld(Replacement);
             
             EntityItem Second = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Item.book, 1 + Number.nextInt(2)));
@@ -82,7 +82,7 @@ public class BlockLumberJacker extends BlockContainer
             
             Random Number = new Random();
             
-            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 1 + Number.nextInt(3)));
+            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 1 + Number.nextInt(4)));
             World.spawnEntityInWorld(Replacement);
         }
         
@@ -92,7 +92,7 @@ public class BlockLumberJacker extends BlockContainer
             
             Random Number = new Random();
             
-            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 1 + Number.nextInt(8)));
+            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 1 + Number.nextInt(9)));
             World.spawnEntityInWorld(Replacement);
             
             EntityItem Second = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Item.diamond, 1));
@@ -105,7 +105,7 @@ public class BlockLumberJacker extends BlockContainer
             
             Random Number = new Random();
             
-            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 1 + Number.nextInt(8)));
+            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 1 + Number.nextInt(9)));
             World.spawnEntityInWorld(Replacement);
             
             EntityItem Second = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Item.redstone, 1));
@@ -118,8 +118,84 @@ public class BlockLumberJacker extends BlockContainer
             
             Random Number = new Random();
             
-            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 1 + Number.nextInt(8)));
+            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 1 + Number.nextInt(9)));
             World.spawnEntityInWorld(Replacement);
+        }
+        
+        if(World.getBlockId(Par1, Par2 + 1, Par3) == Block.pressurePlatePlanks.blockID)
+        {
+            World.setBlock(Par1, Par2 + 1, Par3, 0);
+            
+            Random Number = new Random();
+            
+            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 1 + Number.nextInt(2)));
+            World.spawnEntityInWorld(Replacement);
+        }
+        
+        if(World.getBlockId(Par1, Par2 + 1, Par3) == Block.doorWood.blockID)
+        {
+            World.setBlock(Par1, Par2 + 1, Par3, 0);
+            
+            Random Number = new Random();
+            
+            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 1 + Number.nextInt(6)));
+            World.spawnEntityInWorld(Replacement);
+        }
+        
+        if(World.getBlockId(Par1, Par2 + 1, Par3) == Block.fence.blockID)
+        {
+            World.setBlock(Par1, Par2 + 1, Par3, 0);
+            
+            Random Number = new Random();
+            
+            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Item.stick, 1 + Number.nextInt(6)));
+            World.spawnEntityInWorld(Replacement);
+        }
+        
+        if(World.getBlockId(Par1, Par2 + 1, Par3) == Block.fenceGate.blockID)
+        {
+            World.setBlock(Par1, Par2 + 1, Par3, 0);
+            
+            Random Number = new Random();
+            
+            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 1 + Number.nextInt(2)));
+            World.spawnEntityInWorld(Replacement);
+            
+            EntityItem Second = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Item.stick, 1 + Number.nextInt(4)));
+            World.spawnEntityInWorld(Second);
+        }
+        
+        if(World.getBlockId(Par1, Par2 + 1, Par3) == Block.ladder.blockID)
+        {
+            World.setBlock(Par1, Par2 + 1, Par3, 0);
+            
+            Random Number = new Random();
+            
+            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Item.stick, 1 + Number.nextInt(7)));
+            World.spawnEntityInWorld(Replacement);
+        }
+        
+        if(World.getBlockId(Par1, Par2 + 1, Par3) == Block.trapdoor.blockID)
+        {
+            World.setBlock(Par1, Par2 + 1, Par3, 0);
+            
+            Random Number = new Random();
+            
+            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 1 + Number.nextInt(3)));
+            World.spawnEntityInWorld(Replacement);
+        }
+        
+        if(World.getBlockId(Par1, Par2 + 1, Par3) == Block.signPost.blockID)
+        {
+            World.setBlock(Par1, Par2 + 1, Par3, 0);
+            
+            Random Number = new Random();
+            
+            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Block.planks, 1 + Number.nextInt(6)));
+            World.spawnEntityInWorld(Replacement);
+            
+            EntityItem Second = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Item.stick, 1));
+            World.spawnEntityInWorld(Second);
         }
     }
 }
