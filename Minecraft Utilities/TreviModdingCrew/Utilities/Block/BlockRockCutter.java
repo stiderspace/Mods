@@ -17,7 +17,7 @@ public class BlockRockCutter extends Block
 {
     // Declaration
     
-    public BlockRockCutter(int Par1, Material Rock, boolean Thing)
+    public BlockRockCutter(int Par1, Material Rock)
     {
         super(Par1, Rock);
         setUnlocalizedName("Rock Cutter");

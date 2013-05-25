@@ -12,6 +12,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
 
 import TreviModdingCrew.Utilities.Block.BlockEggHatcher;
+import TreviModdingCrew.Utilities.Block.BlockLumberJacker;
 import TreviModdingCrew.Utilities.Block.BlockRockCutter;
 import TreviModdingCrew.Utilities.Block.BlockRockGrinder;
 import TreviModdingCrew.Utilities.Entity.EntityBomb;
@@ -29,6 +30,7 @@ import TreviModdingCrew.Utilities.Proxy.CommonProxy;
 import TreviModdingCrew.Utilities.Tab.TabUtilitiesBlock;
 import TreviModdingCrew.Utilities.Tab.TabUtilitiesItem;
 import TreviModdingCrew.Utilities.Tile.TileEntityHatcher;
+import TreviModdingCrew.Utilities.Tile.TileEntityLumberJacker;
 import TreviModdingCrew.Utilities.Tile.TileEntityRockGrinder;
 
 import cpw.mods.fml.common.Mod;
@@ -86,7 +88,8 @@ public class Main
 	public int RockGrinderID;
 	public int RockCutterID;
 	public int EggHatcherID;
-	
+	public int LumberJackerID;
+    
 	public Property RecipeBone;
 	public Property RecipeCyanDye;
 	public Property RecipeIce;
@@ -130,6 +133,7 @@ public class Main
         RockGrinderID = Config.getBlock("Rock Grinder", 2500).getInt();
         RockCutterID = Config.getBlock("Rock Cutter", 2501).getInt();
         EggHatcherID = Config.getBlock("Egg Hatcher", 2502).getInt();
+        LumberJackerID = Config.getBlock("Lumber Jacker", 2503).getInt();
         
         RecipeBone = Config.get("Recipes", "Bone", true);
         RecipeCyanDye = Config.get("Recipes", "Cyan Dye", true);
@@ -190,9 +194,10 @@ public class Main
     	
     	// Blocks
     	
-    	RockGrinder = new BlockRockGrinder(RockGrinderID, Material.rock, false).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Rock Grinder");
-        RockCutter = new BlockRockCutter(RockCutterID, Material.rock, false).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Rock Cutter");
-        EggHatcher = new BlockEggHatcher(EggHatcherID, Material.rock, false).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Egg Hatcher");
+    	RockGrinder = new BlockRockGrinder(RockGrinderID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Rock Grinder");
+        RockCutter = new BlockRockCutter(RockCutterID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Rock Cutter");
+        EggHatcher = new BlockEggHatcher(EggHatcherID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Egg Hatcher");
+        LumberJacker = new BlockLumberJacker(LumberJackerID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Egg Hatcher");
         
     	
     	// Block Registry
@@ -200,6 +205,7 @@ public class Main
     	GameRegistry.registerBlock(RockGrinder, "Rock Grinder");
     	GameRegistry.registerBlock(RockCutter, "Rock Cutter");
     	GameRegistry.registerBlock(EggHatcher, "Egg Hatcher");
+    	GameRegistry.registerBlock(LumberJacker, "Lumber Jacker");
         
     	
     	// Network Registry
@@ -402,6 +408,7 @@ public class Main
 	    
 	    GameRegistry.registerTileEntity(TileEntityRockGrinder.class, "Rock Grinder");
 	    GameRegistry.registerTileEntity(TileEntityHatcher.class, "Egg Hatcher");
+	    GameRegistry.registerTileEntity(TileEntityLumberJacker.class, "Lumber Jacker");
 
 	    
 	    // Language Registry
@@ -414,5 +421,6 @@ public class Main
 	    LanguageRegistry.addName(RockGrinder, "Rock Grinder");
 	    LanguageRegistry.addName(RockCutter, "Rock Cutter");
 	    LanguageRegistry.addName(EggHatcher, "Egg Hatcher");
+	    LanguageRegistry.addName(LumberJacker, "Lumber Jacker");
     }
 }

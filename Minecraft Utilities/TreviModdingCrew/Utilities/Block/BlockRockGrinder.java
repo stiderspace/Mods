@@ -28,7 +28,7 @@ public class BlockRockGrinder extends BlockContainer
     private boolean KeepInventory = false;
     private Random ItemDrop;
 
-    public BlockRockGrinder(int Par1, Material Par2, boolean Active)
+    public BlockRockGrinder(int Par1, Material Par2)
 	{
 		super(Par1, Par2);
 		ItemDrop = new Random();

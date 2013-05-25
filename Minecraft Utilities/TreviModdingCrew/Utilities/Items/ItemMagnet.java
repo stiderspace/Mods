@@ -46,12 +46,12 @@ public class ItemMagnet extends Item
             return ItemStack;
         }
         
-        AxisAlignedBB Axis = AxisAlignedBB.getBoundingBox(EntityPlayer.posX - 9, EntityPlayer.posY - 5, EntityPlayer.posZ - 9, EntityPlayer.posX + 9, EntityPlayer.posY + 5, EntityPlayer.posZ + 9);
+        AxisAlignedBB Axis = AxisAlignedBB.getBoundingBox(EntityPlayer.posX - 10, EntityPlayer.posY - 5, EntityPlayer.posZ - 10, EntityPlayer.posX + 10, EntityPlayer.posY + 5, EntityPlayer.posZ + 10);
         List Items = World.getEntitiesWithinAABB(EntityItem.class, Axis);
         
-        for(int I = 0; I<Items.size(); I++)
+        for(int Size = 0; Size < Items.size(); Size++)
         {
-            EntityItem Item = (EntityItem) Items.get(I);
+            EntityItem Item = (EntityItem) Items.get(Size);
             
             if(Item != null)
             {

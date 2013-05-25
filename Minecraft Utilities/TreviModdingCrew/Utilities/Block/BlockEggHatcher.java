@@ -25,7 +25,7 @@ public class BlockEggHatcher extends BlockContainer
 {
     // Declaration
     
-    public BlockEggHatcher(int Par1, Material Rock, boolean Thing)
+    public BlockEggHatcher(int Par1, Material Rock)
     {
         super(Par1, Rock);
         setUnlocalizedName("Egg Hatcher");

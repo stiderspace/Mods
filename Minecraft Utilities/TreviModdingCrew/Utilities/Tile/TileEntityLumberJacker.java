@@ -1,34 +1,30 @@
 package TreviModdingCrew.Utilities.Tile;
 
+import TreviModdingCrew.Utilities.Block.BlockLumberJacker;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityQuiver extends TileEntity
+public class TileEntityLumberJacker extends TileEntity
 {
-    public int Arrows = 0;
-    
-    // Reading From Tag Compound
-    
-    public void readFromNBT(NBTTagCompound NBTTagCompound)
+    public void updateEntity()
     {
-        Arrows  = NBTTagCompound.getInteger("Arrows");
-        super.readFromNBT(NBTTagCompound);
+        if (!worldObj.isRemote)
+        {
+            if(worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
+            {
+                BlockLumberJacker.CutWood(worldObj, xCoord, yCoord, zCoord);
+            }
+        }
     }
     
     
-    // Writing To Tag Compound
-     
-    public void writeToNBT(NBTTagCompound NBTTagCompound)
-    {
-        NBTTagCompound.setInteger("Arrows", Arrows);
-        super.writeToNBT(NBTTagCompound);
-    }
+    // Adding Data To The Packet
     
     @Override
-    public Packet getDescriptionPacket()
+    public Packet getDescriptionPacket() 
     {
         NBTTagCompound Tag = new NBTTagCompound();
         writeToNBT(Tag);
@@ -36,9 +32,11 @@ public class TileEntityQuiver extends TileEntity
         return new Packet132TileEntityData(xCoord, yCoord, zCoord, 1, Tag);
     }
     
-    @Override
+    
+    // Sending The Packet
+    
     public void onDataPacket(INetworkManager INetworkManager, Packet132TileEntityData Packet132TileEntityData)
     {
-        readFromNBT(Packet132TileEntityData.customParam1);
+        this.readFromNBT(Packet132TileEntityData.customParam1);
     }
 }
