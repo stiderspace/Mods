@@ -17,15 +17,17 @@ public class RecipeManager
     {
         if(Main.OverideRockGrinder.getBoolean(false) == true)
         {
-            RecipeRockGrinder.Grinding().addSmelting(Block.stone.blockID, new ItemStack(Block.cobblestone), 0.5F);
-            RecipeRockGrinder.Grinding().addSmelting(Block.ice.blockID, new ItemStack(Item.snowball, 4), 0.5F);
-            RecipeRockGrinder.Grinding().addSmelting(Block.glass.blockID, new ItemStack(Block.sand), 0.5F);
-            RecipeRockGrinder.Grinding().addSmelting(Block.cobblestone.blockID, new ItemStack(Block.sand), 0.5F);
-            RecipeRockGrinder.Grinding().addSmelting(Block.blockNetherQuartz.blockID, new ItemStack(Item.netherQuartz, 4), 0.5F);
-            RecipeRockGrinder.Grinding().addSmelting(Block.sandStone.blockID, new ItemStack(Block.sand, 4), 0.5F);
+            RecipeRockGrinder.Grinding().addGrinding(Block.stone.blockID, new ItemStack(Block.cobblestone), 0.5F);
+            RecipeRockGrinder.Grinding().addGrinding(Block.ice.blockID, new ItemStack(Item.snowball, 4), 0.5F);
+            RecipeRockGrinder.Grinding().addGrinding(Block.glass.blockID, new ItemStack(Block.sand), 0.5F);
+            RecipeRockGrinder.Grinding().addGrinding(Block.cobblestone.blockID, new ItemStack(Block.sand), 0.5F);
+            RecipeRockGrinder.Grinding().addGrinding(Block.blockNetherQuartz.blockID, new ItemStack(Item.netherQuartz, 4), 0.5F);
+            RecipeRockGrinder.Grinding().addGrinding(Block.sandStone.blockID, new ItemStack(Block.sand, 4), 0.5F);
+            RecipeRockGrinder.Grinding().addGrinding(Block.glowStone.blockID, new ItemStack(Item.lightStoneDust, 4), 0.5F);
+            RecipeRockGrinder.Grinding().addGrinding(Block.gravel.blockID, new ItemStack(Item.flint, 1), 0.5F);
             
-            RecipeRockGrinder.Grinding().addSmelting(Item.bone.itemID, new ItemStack(Item.dyePowder, 6, 15), 0.5F);
-            RecipeRockGrinder.Grinding().addSmelting(Item.blazeRod.itemID, new ItemStack(Item.blazePowder, 4), 0.5F);
+            RecipeRockGrinder.Grinding().addGrinding(Item.bone.itemID, new ItemStack(Item.dyePowder, 6, 15), 0.5F);
+            RecipeRockGrinder.Grinding().addGrinding(Item.blazeRod.itemID, new ItemStack(Item.blazePowder, 4), 0.5F);
         }
         
         if (Main.OverideRockCutter.getBoolean(false) == true)

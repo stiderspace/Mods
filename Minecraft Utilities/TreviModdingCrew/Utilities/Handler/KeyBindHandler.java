@@ -28,7 +28,7 @@ public class KeyBindHandler extends KeyHandler
     }
 
     @Override
-    public void keyDown(EnumSet<TickType> Types, KeyBinding KeyBinding, boolean TickEnd, boolean IsRepeat)
+    public void keyDown(EnumSet <TickType> Types, KeyBinding KeyBinding, boolean TickEnd, boolean IsRepeat)
     {
         if(KeyBinding == More)
         {
@@ -37,7 +37,7 @@ public class KeyBindHandler extends KeyHandler
     }
 
     @Override
-    public void keyUp(EnumSet<TickType> Types, KeyBinding KeyBinding, boolean TickEnd)
+    public void keyUp(EnumSet <TickType> Types, KeyBinding KeyBinding, boolean TickEnd)
     {
         if(KeyBinding == More)
         {

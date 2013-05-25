@@ -28,6 +28,7 @@ public class ItemTreetap extends Item
     }
   
     public boolean ThisIsPersonal = false;
+    public boolean GaveWater = false;
    
     public int Outcome = 0;
     public int Chance = 3;
@@ -38,6 +39,8 @@ public class ItemTreetap extends Item
     public boolean onItemUse(ItemStack ItemStack, EntityPlayer EntityPlayer, World World, int Par4, int Par5, int Par6, int Par7, float Par8, float Par9, float Par10)
     {
         ItemSwapHandler ItemSwapHandler = new ItemSwapHandler();
+        
+        GaveWater = false;
         
         if(World.getBlockId(Par4, Par5, Par6) == Block.wood.blockID)
         {
@@ -51,21 +54,9 @@ public class ItemTreetap extends Item
                 Outcome = 1;
             }
             
-            if(!EntityPlayer.inventory.hasItem(Item.bucketEmpty.itemID) || (!EntityPlayer.inventory.hasItem(Item.glassBottle.itemID)))
+            else
             {
                 Outcome = 2;
-            }
-            
-            if (World.rand.nextInt(Chance) == 0)  
-            {
-                switch(Outcome)
-                {
-                    case 0: ItemSwapHandler.SwapItem(Item.glassBottle, new ItemStack(Item.potion.itemID, 1, 0), EntityPlayer);  
-                    break;
-                    
-                    case 1: ItemSwapHandler.SwapItem(Item.bucketEmpty, new ItemStack(Item.bucketWater), EntityPlayer);
-                    break;
-                }
             }
             
             if(Outcome == 2)
@@ -73,7 +64,29 @@ public class ItemTreetap extends Item
                 Personalization(EntityPlayer, World);
             }
             
-            ItemStack.damageItem(1, EntityPlayer);
+            if (World.rand.nextInt(Chance) == 0)  
+            {
+                switch(Outcome)
+                {
+                    case 0: ItemSwapHandler.SwapItem(Item.glassBottle, new ItemStack(Item.potion.itemID, 1, 0), EntityPlayer);
+                            ItemStack.damageItem(1, EntityPlayer);
+                            GaveWater = true;
+                    break;
+                    
+                    case 1: ItemSwapHandler.SwapItem(Item.bucketEmpty, new ItemStack(Item.bucketWater), EntityPlayer);
+                            ItemStack.damageItem(1, EntityPlayer);
+                            GaveWater = true;
+                    break;
+                }
+            }
+            
+            if(Outcome != 2)
+            {
+                if(GaveWater == false)
+                {
+                    ItemStack.damageItem(1, EntityPlayer);
+                }
+            }
             
             return true;
         } 

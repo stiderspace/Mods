@@ -33,7 +33,7 @@ public class RecipeRockGrinder
     
     //Doing Something With The Recipes
    
-    public void addSmelting(int Par1, ItemStack ItemStack, float Experience)
+    public void addGrinding(int Par1, ItemStack ItemStack, float Experience)
     {
         RockGrinderList.put(Integer.valueOf(Par1), ItemStack);
         RockGrinderExperience.put(Integer.valueOf(ItemStack.itemID), Float.valueOf(Experience));
