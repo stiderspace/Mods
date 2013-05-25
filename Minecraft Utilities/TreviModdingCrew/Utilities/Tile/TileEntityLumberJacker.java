@@ -15,7 +15,16 @@ public class TileEntityLumberJacker extends TileEntity
         {
             if(worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
             {
-                BlockLumberJacker.CutWood(worldObj, xCoord, yCoord, zCoord);
+                if(BlockLumberJacker.HasCutted == false)
+                {
+                    BlockLumberJacker.CutWood(worldObj, xCoord, yCoord, zCoord);
+                    BlockLumberJacker.HasCutted = true;
+                }
+            }
+            
+            if(!worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
+            {
+                BlockLumberJacker.HasCutted = false;
             }
         }
     }

@@ -40,6 +40,8 @@ public class BlockLumberJacker extends BlockContainer
         World.markBlockForUpdate(Par1, Par2, Par3);
     }
     
+    public static boolean HasCutted = false;
+    
     public static void CutWood(World World, int Par1, int Par2, int Par3)
     {
         if(World.getBlockId(Par1, Par2 + 1, Par3) == Block.wood.blockID)
