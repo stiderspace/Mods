@@ -73,6 +73,7 @@ public class Main
 	public static Block RockGrinder;
 	public static Block RockCutter;
 	public static Block EggHatcher;
+	public static Block LumberJacker;
 	
 	public static CreativeTabs UtilitiesBlock = new TabUtilitiesBlock(CreativeTabs.getNextID(), "Utilities Blocks");
 	public static CreativeTabs UtilitiesItem = new TabUtilitiesItem(CreativeTabs.getNextID(), "Utilities Items");
@@ -81,7 +82,7 @@ public class Main
 	public int BombID;
 	public int MagnetID;
 	public int TreetapID;
-    
+	
 	public int RockGrinderID;
 	public int RockCutterID;
 	public int EggHatcherID;
@@ -125,7 +126,7 @@ public class Main
         BombID = Config.getItem("Bomb", 5501).getInt();
         MagnetID = Config.getItem("Magnet", 5502).getInt();
         TreetapID = Config.getItem("Treetap", 5503).getInt();
-        
+       
         RockGrinderID = Config.getBlock("Rock Grinder", 2500).getInt();
         RockCutterID = Config.getBlock("Rock Cutter", 2501).getInt();
         EggHatcherID = Config.getBlock("Egg Hatcher", 2502).getInt();
@@ -158,7 +159,7 @@ public class Main
         OverideRockGrinder = Config.get("Overide", "Rock Grinder", true);
         
         Config.save();	
-        
+   
         LogHandler.Log("Configuration File Loaded");  
         
         
@@ -177,7 +178,7 @@ public class Main
     	Bomb = new ItemBomb(BombID).setUnlocalizedName("Bomb");
     	Magnet = new ItemMagnet(MagnetID).setUnlocalizedName("Magnet");
     	Treetap = new ItemTreetap(TreetapID).setUnlocalizedName("Treetap");
-        
+    	
         
     	// Item Registry
     	
@@ -185,7 +186,7 @@ public class Main
     	GameRegistry.registerItem(Bomb, "Bomb");
     	GameRegistry.registerItem(Magnet, "Magnet");
     	GameRegistry.registerItem(Treetap, "Treetap");
-        
+    	
     	
     	// Blocks
     	
@@ -232,8 +233,8 @@ public class Main
     	{
     		GameRegistry.addShapelessRecipe(new ItemStack(Block.cobblestoneMossy, 1), new Object[] {new ItemStack(Block.cobblestone),new ItemStack(Block.vine)});
     	}
-     
-     
+
+    	
     	// Smelting Recipe
      
     	if (RecipeNetherBricks.getBoolean(false) == true)
@@ -343,25 +344,12 @@ public class Main
         }
      
     	
-    	// Damage Crafting
-     
-    	if (RecipePaper.getBoolean(false) == true)
-    	{
-    		GameRegistry.addShapelessRecipe(new ItemStack(Item.paper, 3, 0), new Object[] {new ItemStack(Item.shears, 0, -1),new ItemStack(Item.book)}); 
-    	}
-    
-    	if (RecipeString.getBoolean(false) == true)
-	    {
-    		GameRegistry.addShapelessRecipe(new ItemStack(Item.silk, 3, 0), new Object[] {new ItemStack(Item.shears, 0, -1),new ItemStack(Block.cloth)});
-	    }
-     
-  
     	// Machine Recipes
     	
     	RecipeManager.RegisterMachines();
   
     	
-    	// Removing Vanilla Recipe's
+    	// Removing Vanilla Recipes
     	
     	if (OverideRockCutter.getBoolean(false) == true)
         {
@@ -422,7 +410,7 @@ public class Main
 	    LanguageRegistry.addName(Bomb, "Bomb");
 	    LanguageRegistry.addName(Magnet, "Magnet");
 	    LanguageRegistry.addName(Treetap, "Treetap");
-          
+	     
 	    LanguageRegistry.addName(RockGrinder, "Rock Grinder");
 	    LanguageRegistry.addName(RockCutter, "Rock Cutter");
 	    LanguageRegistry.addName(EggHatcher, "Egg Hatcher");

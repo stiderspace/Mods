@@ -1,0 +1,19 @@
+[
+{
+"modid": "Utilities",
+"name": "Minecraft Utilities",
+"description": "Extending Minecraft With Usefull Fun Stuff!",
+"version": "0.1.0.11",
+"credits": "Created by Trevi Modding Crew",
+"logoFile": "",
+"mcversion": "Compactable With All 1.5 Versions",
+"url": "www.TreviModdingCrew.nl",
+"updateUrl": "",
+"authors": [ "Trevi Awater", "Dustin Hecken", "Alen Struklec", "Others" ],
+"parent":"",
+"screenshots": [],
+"dependencies": [
+"Minecraft Forge"
+]
+}
+]

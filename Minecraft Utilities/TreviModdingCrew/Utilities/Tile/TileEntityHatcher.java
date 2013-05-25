@@ -79,15 +79,15 @@ public class TileEntityHatcher extends TileEntity
     @Override
 	public Packet getDescriptionPacket()
     {
-		NBTTagCompound tagCompound = new NBTTagCompound();
-		writeToNBT(tagCompound);
+		NBTTagCompound Tag = new NBTTagCompound();
+		writeToNBT(Tag);
 		
-		return new Packet132TileEntityData(xCoord, yCoord, zCoord, 1, tagCompound);
+		return new Packet132TileEntityData(xCoord, yCoord, zCoord, 1, Tag);
 	}
 	
     @Override
-	public void onDataPacket(INetworkManager net, Packet132TileEntityData packet)
+	public void onDataPacket(INetworkManager INetworkManager, Packet132TileEntityData Packet132TileEntityData)
     {
-		readFromNBT(packet.customParam1);
+		readFromNBT(Packet132TileEntityData.customParam1);
     }
 }

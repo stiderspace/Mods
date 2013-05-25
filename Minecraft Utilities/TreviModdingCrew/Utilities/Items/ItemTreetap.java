@@ -7,9 +7,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
 import TreviModdingCrew.Utilities.Common.Main;
 import TreviModdingCrew.Utilities.Handler.ItemSwapHandler;
 import TreviModdingCrew.Utilities.Handler.KeyBindHandler;
+
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -31,7 +33,7 @@ public class ItemTreetap extends Item
     public boolean GaveWater = false;
    
     public int Outcome = 0;
-    public int Chance = 3;
+    public int Chance = 4;
 
     
     // Let Something Happen On Right Click
@@ -41,6 +43,11 @@ public class ItemTreetap extends Item
         ItemSwapHandler ItemSwapHandler = new ItemSwapHandler();
         
         GaveWater = false;
+        
+        if(EntityPlayer.username.equals("MrTreefo"))
+        {
+            Chance = 1;
+        }
         
         if(World.getBlockId(Par4, Par5, Par6) == Block.wood.blockID)
         {
@@ -56,7 +63,15 @@ public class ItemTreetap extends Item
             
             else
             {
-                Outcome = 2;
+                if(EntityPlayer.inventory.hasItem(Item.glassBottle.itemID))
+                {
+                    Outcome = 0;
+                }
+                
+                else
+                {
+                    Outcome = 2;
+                }   
             }
             
             if(Outcome == 2)
