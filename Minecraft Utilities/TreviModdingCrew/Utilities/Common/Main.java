@@ -22,7 +22,6 @@ import TreviModdingCrew.Utilities.Handler.SoundHandler;
 import TreviModdingCrew.Utilities.Items.ItemBomb;
 import TreviModdingCrew.Utilities.Items.ItemFilter;
 import TreviModdingCrew.Utilities.Items.ItemMagnet;
-import TreviModdingCrew.Utilities.Items.ItemTreetap;
 import TreviModdingCrew.Utilities.Manager.RecipeManager;
 import TreviModdingCrew.Utilities.Packet.PacketManager;
 import TreviModdingCrew.Utilities.Proxy.ClientProxy;
@@ -70,7 +69,6 @@ public class Main
 	public static Item Filter;
 	public static Item Bomb;
 	public static Item Magnet;
-	public static Item Treetap;
 	
 	public static Block RockGrinder;
 	public static Block RockCutter;
@@ -83,7 +81,6 @@ public class Main
 	public int FilterID;
 	public int BombID;
 	public int MagnetID;
-	public int TreetapID;
 	
 	public int RockGrinderID;
 	public int RockCutterID;
@@ -111,7 +108,6 @@ public class Main
 	public Property RecipeRockCutter;
 	public Property RecipeRockGrinder;
 	public Property RecipeEggHatcher;
-	public Property RecipeTreetap;
 	public Property RecipeLumberJacker;
 	
 	public static Property OverideRockCutter;
@@ -129,8 +125,7 @@ public class Main
         FilterID = Config.getItem("Filter", 5500).getInt();
         BombID = Config.getItem("Bomb", 5501).getInt();
         MagnetID = Config.getItem("Magnet", 5502).getInt();
-        TreetapID = Config.getItem("Treetap", 5503).getInt();
-       
+        
         RockGrinderID = Config.getBlock("Rock Grinder", 2500).getInt();
         RockCutterID = Config.getBlock("Rock Cutter", 2501).getInt();
         EggHatcherID = Config.getBlock("Egg Hatcher", 2502).getInt();
@@ -153,7 +148,6 @@ public class Main
         RecipeRockCutter = Config.get("Recipes", "Rock Cutter", true);
         RecipeRockGrinder = Config.get("Recipes", "Rock Grinder", true);
         RecipeEggHatcher = Config.get("Recipes", "Egg Hatcher", true);
-        RecipeTreetap = Config.get("Recipes", "Treetap", true);
         RecipeLumberJacker = Config.get("Recipes", "Lumber Jacker", true);
         
         RecipeNetherBricks = Config.get("Smelting", "Nether Bricks", true);
@@ -183,7 +177,6 @@ public class Main
     	Filter = new ItemFilter(FilterID).setUnlocalizedName("Filter");
     	Bomb = new ItemBomb(BombID).setUnlocalizedName("Bomb");
     	Magnet = new ItemMagnet(MagnetID).setUnlocalizedName("Magnet");
-    	Treetap = new ItemTreetap(TreetapID).setUnlocalizedName("Treetap");
     	
         
     	// Item Registry
@@ -191,7 +184,6 @@ public class Main
     	GameRegistry.registerItem(Filter, "Filter");
     	GameRegistry.registerItem(Bomb, "Bomb");
     	GameRegistry.registerItem(Magnet, "Magnet");
-    	GameRegistry.registerItem(Treetap, "Treetap");
     	
     	
     	// Blocks
@@ -199,7 +191,7 @@ public class Main
     	RockGrinder = new BlockRockGrinder(RockGrinderID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Rock Grinder");
         RockCutter = new BlockRockCutter(RockCutterID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Rock Cutter");
         EggHatcher = new BlockEggHatcher(EggHatcherID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Egg Hatcher");
-        LumberJacker = new BlockLumberJacker(LumberJackerID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Egg Hatcher");
+        LumberJacker = new BlockLumberJacker(LumberJackerID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Lumber Jacker");
         
     	
     	// Block Registry
@@ -343,14 +335,6 @@ public class Main
             });
         }
     	
-    	if (RecipeTreetap.getBoolean(false) == true)
-        {
-            GameRegistry.addRecipe(new ItemStack(Treetap), new Object[]
-            {
-                " I ", "WWW", "W  ", 'I', Item.ingotIron, 'W', Block.planks
-            });
-        }
-    	
     	if (RecipeLumberJacker.getBoolean(false) == true)
         {
             GameRegistry.addRecipe(new ItemStack(LumberJacker), new Object[]
@@ -426,11 +410,10 @@ public class Main
 	    LanguageRegistry.addName(Filter, "Filter");
 	    LanguageRegistry.addName(Bomb, "Bomb");
 	    LanguageRegistry.addName(Magnet, "Magnet");
-	    LanguageRegistry.addName(Treetap, "Treetap");
-	     
+	    
 	    LanguageRegistry.addName(RockGrinder, "Rock Grinder");
 	    LanguageRegistry.addName(RockCutter, "Rock Cutter");
-	    LanguageRegistry.addName(EggHatcher, "Egg Hatcher");
 	    LanguageRegistry.addName(LumberJacker, "Lumber Jacker");
+	    LanguageRegistry.addName(EggHatcher, "Egg Hatcher");
     }
 }
