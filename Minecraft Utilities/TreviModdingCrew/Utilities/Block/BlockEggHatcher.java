@@ -68,7 +68,7 @@ public class BlockEggHatcher extends BlockContainer
         
         if(Par1 == 4)
         {
-            return IconBuffer[2];
+            return IconBuffer[1];
         }
         
         if(Par1 == 5)
@@ -76,7 +76,7 @@ public class BlockEggHatcher extends BlockContainer
             return IconBuffer[1];
         }
             
-        return IconBuffer[0];
+        return IconBuffer[2];
     }
     
     @Override
@@ -99,7 +99,7 @@ public class BlockEggHatcher extends BlockContainer
         
         if(Par2 == 4)
         {
-            return IconBuffer[2];
+            return IconBuffer[1];
         }
         
         if(Par2 == 5)
@@ -107,7 +107,7 @@ public class BlockEggHatcher extends BlockContainer
             return IconBuffer[1];
         }
             
-        return IconBuffer[0];
+        return IconBuffer[2];
     }
     
     
