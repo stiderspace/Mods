@@ -11,12 +11,15 @@ import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.ForgeDummyContainer;
-
 import net.minecraftforge.common.ISidedInventory;
 
 import TreviModdingCrew.Utilities.Recipes.RecipeRockGrinder;
+import TreviModdingCrew.Utilities.Util.PowerProviderAdvanced;
 
-public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
+import buildcraft.api.power.IPowerProvider;
+import buildcraft.api.power.IPowerReceptor;
+
+public class TileEntityRockGrinder extends TileEntity implements ISidedInventory, IPowerReceptor
 {   
     // Declaration
     
@@ -28,7 +31,12 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
     
     public static int Speed;
     
-    private boolean isActive;
+    private boolean IsActive;
+    
+    private float OldPower;
+    
+    public PowerProviderAdvanced myProvider;
+    
     
     // Tile Entity Configuration
     
@@ -39,6 +47,9 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
         ItemBurnTime = 0;
         CookTime = 0;
         Speed = 1;
+        
+        myProvider = new PowerProviderAdvanced();
+        myProvider.configure(100, 8000);
     }
     
   
@@ -66,9 +77,10 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
         {
             if (ItemStacks[Par1].stackSize <= Par2)
             {
-                ItemStack itemstack = ItemStacks[Par1];
+                ItemStack Items = ItemStacks[Par1];
                 ItemStacks[Par1] = null;
-                return itemstack;
+                
+                return Items;
             }
  
             ItemStack Itemstack = ItemStacks[Par1].splitStack(Par2);
@@ -99,6 +111,7 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
            
             return Itemstack;
         }
+        
         else
         {
             return null;
@@ -125,6 +138,14 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
     {
         return "container.RockGrinder";
     }
+    
+    
+    // Updating The Block
+    
+    private void updateBlock()
+    {
+        worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+    }
  
 
     // Reading From Tag Compound
@@ -137,6 +158,7 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
         for (int Var1 = 0; Var1 < nbttaglist.tagCount(); Var1++)
         {
             NBTTagCompound nbttagcompound = (NBTTagCompound)nbttaglist.tagAt(Var1);
+            
             byte byte0 = nbttagcompound.getByte("Slot");
  
             if (byte0 >= 0 && byte0 < ItemStacks.length)
@@ -150,6 +172,8 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
         Speed = NBTTagCompound.getInteger("Speed"); 
         ItemBurnTime = getItemBurnTime(ItemStacks[1]);
         
+        myProvider.setEnergyStored(NBTTagCompound.getFloat("EnergyStored"));
+        
         super.readFromNBT(NBTTagCompound);
     }
  
@@ -157,26 +181,29 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
     // Writing To Tag Compound
 
     public void writeToNBT(NBTTagCompound NBTTagCompound)
-    {       
+    {  
         NBTTagCompound.setShort("BurnTime", (short)BurnTime);
         NBTTagCompound.setShort("CookTime", (short)CookTime);
         NBTTagCompound.setInteger("Speed", (int)Speed);
-        NBTTagList nbttaglist = new NBTTagList();
+        
+        NBTTagCompound.setFloat("EnergyStored", myProvider.getEnergyStored());
+        
+        NBTTagList NBTTagList = new NBTTagList();
  
         for (int Var1 = 0; Var1 < ItemStacks.length; Var1++)
         {
             if (ItemStacks[Var1] != null)
             {
-                NBTTagCompound nbttagcompound = new NBTTagCompound();
-                nbttagcompound.setByte("Slot", (byte)Var1);
+                NBTTagCompound Tag = new NBTTagCompound();
+                Tag.setByte("Slot", (byte)Var1);
                 
-                ItemStacks[Var1].writeToNBT(nbttagcompound);
+                ItemStacks[Var1].writeToNBT(Tag);
                 
-                nbttaglist.appendTag(nbttagcompound);
+                NBTTagList.appendTag(Tag);
             }
         }
  
-        NBTTagCompound.setTag("Items", nbttaglist);
+        NBTTagCompound.setTag("Items", NBTTagList);
         
         super.writeToNBT(NBTTagCompound);
     }
@@ -223,19 +250,41 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
         boolean Var1 = BurnTime > 0;
         boolean Var2 = false;
         
-        if (BurnTime > 0)
+        if(myProvider.getEnergyStored() > 0)
         {
-            BurnTime = BurnTime - Speed;
-            
-            if(BurnTime < 0)
+            if(worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
             {
-                ItemStacks[1].stackSize--;
-                BurnTime = 1250;
-            } 
+                if (canGrind())
+                {
+                    myProvider.subtractEnergy(Speed);
+                    CookTime = CookTime + Speed;
+    
+                    if (CookTime >= 200)
+                    {
+                        CookTime = 0;
+                        grindItem();
+                        Var2 = true;
+                    }
+                }
+            }
         }
-
-        if (!worldObj.isRemote)
+        
+        else
         {
+            if (BurnTime > 0)
+            {
+                BurnTime = BurnTime - Speed;
+                
+                if(BurnTime < 0)
+                {
+                    if(ItemStacks[1] != null)
+                    {
+                        BurnTime = getItemBurnTime(ItemStacks[1]);
+                        ItemStacks[1].stackSize--;
+                    }
+                } 
+            }
+    
             if(worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord) || CookTime > 0)
             {
                 if (BurnTime == 0 && canGrind())
@@ -271,11 +320,6 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
                     }
                 }
                 
-                else
-                {
-                    CookTime = 0;
-                }
-                
                 if (Var1 != BurnTime > 0)
                 {
                     Var2 = true;
@@ -283,19 +327,26 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
                 }
             }
         }
-       
-        boolean Check = isActive;
         
-        isActive = isBurning();
-        
-        if(isActive != Check)
-        {
-            worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-        }
+        IsActive = isBurning();
        
         if (Var2)
         {
             onInventoryChanged();
+            updateBlock();
+        }
+        
+        if(OldPower != myProvider.getEnergyStored())
+        {
+            
+            updateBlock();
+        }
+        
+        OldPower = myProvider.getEnergyStored();
+        
+        if(ItemStacks[0] == null)
+        {
+            CookTime = 0;
         }
     }
 
@@ -397,7 +448,7 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
 
 
     // Making It Usable By Players
-    
+   
     public boolean isUseableByPlayer(EntityPlayer EntityPlayer)
     {
         if (worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) != this)
@@ -429,7 +480,7 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
     
     public boolean isActive() 
     {
-        return isActive;
+        return IsActive;
     }
 
     
@@ -501,6 +552,47 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
     
     public void onDataPacket(INetworkManager INetworkManager, Packet132TileEntityData Packet132TileEntityData)
     {
-        this.readFromNBT(Packet132TileEntityData.customParam1);
+        readFromNBT(Packet132TileEntityData.customParam1);
+    }
+
+
+    // Setting What Provides Power
+    
+    @Override
+    public void setPowerProvider(IPowerProvider IPowerProvider)
+    {
+        
+    }
+
+    
+    // Getting The Provider Data
+
+    @Override
+    public IPowerProvider getPowerProvider()
+    {
+        return myProvider;
+    }
+
+
+    // Doing Something With Power
+    
+    @Override
+    public void doWork()
+    {
+        
+    }
+
+    
+    // Let A Machine Request Ror Power
+
+    @Override
+    public int powerRequest(ForgeDirection ForgeDirection)
+    {
+        if(myProvider.getEnergyStored() >= myProvider.getMaxEnergyStored())
+        {
+            return 0;
+        }
+        
+        return (int)(myProvider.getMaxEnergyStored() - myProvider.getEnergyStored());
     }
 }
