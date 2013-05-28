@@ -45,7 +45,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid=Reference.ModID, name=Reference.ModName, version=Reference.Version)
+@Mod(modid=Reference.ModID, name=Reference.ModName, version=Reference.Version, dependencies = Reference.Dependencies)
 @NetworkMod(clientSideRequired=true, serverSideRequired=false, channels = {Reference.ChannelName}, packetHandler = PacketManager.class)
 
 public class Main
@@ -64,7 +64,7 @@ public class Main
 	public static ClientProxy ClientProxy;
 	
 	
-	// Declarations
+	// Declaration
 
 	public static Item Filter;
 	public static Item Bomb;
@@ -331,7 +331,7 @@ public class Main
         {
             GameRegistry.addRecipe(new ItemStack(EggHatcher), new Object[]
             {
-                "CCC", "CGC", "CWC", 'G', Block.glass, 'C', Block.cobblestone, 'W', Item.wheat
+                "CGC", "CWC", "CCC", 'G', Block.glass, 'C', Block.cobblestone, 'W', Item.wheat
             });
         }
     	
@@ -413,7 +413,7 @@ public class Main
 	    
 	    LanguageRegistry.addName(RockGrinder, "Rock Grinder");
 	    LanguageRegistry.addName(RockCutter, "Rock Cutter");
-	    LanguageRegistry.addName(LumberJacker, "Lumber Jacker");
 	    LanguageRegistry.addName(EggHatcher, "Egg Hatcher");
+	    LanguageRegistry.addName(LumberJacker, "Lumber Jacker");
     }
 }

@@ -6,8 +6,9 @@ public class Reference
     
     public static final String ModID = "Utilities";
     public static final String ModName = "Minecraft Utilities";
-    public static final String Version = "0.1.0.11";
-    
+    public static final String Version = "0.1.1.0";
+    public static final String Dependencies = "";
+   
     
     // Network Information
     

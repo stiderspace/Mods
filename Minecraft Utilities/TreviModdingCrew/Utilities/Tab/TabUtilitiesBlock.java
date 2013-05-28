@@ -33,5 +33,4 @@ public class TabUtilitiesBlock extends CreativeTabs
     {
         return "Utilities Blocks";
     }
-
 }

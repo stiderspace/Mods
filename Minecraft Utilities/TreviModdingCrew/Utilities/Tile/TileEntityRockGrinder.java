@@ -35,7 +35,7 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
     
     private float OldPower;
     
-    public PowerProviderAdvanced myProvider;
+    public PowerProviderAdvanced MyProvider;
     
     
     // Tile Entity Configuration
@@ -48,8 +48,8 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
         CookTime = 0;
         Speed = 1;
         
-        myProvider = new PowerProviderAdvanced();
-        myProvider.configure(100, 8000);
+        MyProvider = new PowerProviderAdvanced();
+        MyProvider.configure(100, 5000);
     }
     
   
@@ -159,11 +159,11 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
         {
             NBTTagCompound nbttagcompound = (NBTTagCompound)nbttaglist.tagAt(Var1);
             
-            byte byte0 = nbttagcompound.getByte("Slot");
+            byte Var2 = nbttagcompound.getByte("Slot");
  
-            if (byte0 >= 0 && byte0 < ItemStacks.length)
+            if (Var2 >= 0 && Var2 < ItemStacks.length)
             {
-                ItemStacks[byte0] = ItemStack.loadItemStackFromNBT(nbttagcompound);
+                ItemStacks[Var2] = ItemStack.loadItemStackFromNBT(nbttagcompound);
             }
         }
     
@@ -172,7 +172,7 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
         Speed = NBTTagCompound.getInteger("Speed"); 
         ItemBurnTime = getItemBurnTime(ItemStacks[1]);
         
-        myProvider.setEnergyStored(NBTTagCompound.getFloat("EnergyStored"));
+        MyProvider.setEnergyStored(NBTTagCompound.getFloat("EnergyStored"));
         
         super.readFromNBT(NBTTagCompound);
     }
@@ -186,7 +186,7 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
         NBTTagCompound.setShort("CookTime", (short)CookTime);
         NBTTagCompound.setInteger("Speed", (int)Speed);
         
-        NBTTagCompound.setFloat("EnergyStored", myProvider.getEnergyStored());
+        NBTTagCompound.setFloat("EnergyStored", MyProvider.getEnergyStored());
         
         NBTTagList NBTTagList = new NBTTagList();
  
@@ -250,13 +250,13 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
         boolean Var1 = BurnTime > 0;
         boolean Var2 = false;
         
-        if(myProvider.getEnergyStored() > 0)
+        if(MyProvider.getEnergyStored() > 0)
         {
             if(worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
             {
                 if (canGrind())
                 {
-                    myProvider.subtractEnergy(Speed);
+                    MyProvider.subtractEnergy(Speed);
                     CookTime = CookTime + Speed;
     
                     if (CookTime >= 200)
@@ -336,13 +336,12 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
             updateBlock();
         }
         
-        if(OldPower != myProvider.getEnergyStored())
-        {
-            
+        if(OldPower != MyProvider.getEnergyStored())
+        { 
             updateBlock();
         }
         
-        OldPower = myProvider.getEnergyStored();
+        OldPower = MyProvider.getEnergyStored();
         
         if(ItemStacks[0] == null)
         {
@@ -570,7 +569,7 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
     @Override
     public IPowerProvider getPowerProvider()
     {
-        return myProvider;
+        return MyProvider;
     }
 
 
@@ -588,11 +587,11 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
     @Override
     public int powerRequest(ForgeDirection ForgeDirection)
     {
-        if(myProvider.getEnergyStored() >= myProvider.getMaxEnergyStored())
+        if(MyProvider.getEnergyStored() >= MyProvider.getMaxEnergyStored())
         {
             return 0;
         }
         
-        return (int)(myProvider.getMaxEnergyStored() - myProvider.getEnergyStored());
+        return (int)(MyProvider.getMaxEnergyStored() - MyProvider.getEnergyStored());
     }
 }

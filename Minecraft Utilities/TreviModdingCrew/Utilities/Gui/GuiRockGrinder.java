@@ -35,26 +35,26 @@ public class GuiRockGrinder extends GuiContainer
     {
         super.initGui();
         
-        buttonList.add(new GuiButton(1, guiLeft + 103, guiTop + 175, StatCollector.translateToLocal("Increase Speed")));
-        buttonList.add(new GuiButton(2, guiLeft - 103, guiTop + 175, StatCollector.translateToLocal("Decrease Speed")));
+        buttonList.add(new GuiButton(1, guiLeft + 180, guiTop + 5, 100, 20, ("Increase Speed")));
+        buttonList.add(new GuiButton(2, guiLeft + 180, guiTop + 30, 100, 20, ("Decrease Speed")));
     }
     
     protected void actionPerformed(GuiButton GuiButton) 
     {
         if(GuiButton.id == 1)
         {
-            if(TileEntityRockGrinder.Speed < 5)
+            if(Tile.Speed < 5)
             {
-                TileEntityRockGrinder.Speed++;
+                Tile.Speed++;
                 Tile.worldObj.notifyBlockChange(Tile.xCoord, Tile.yCoord, Tile.zCoord, Tile.worldObj.getBlockId(Tile.xCoord, Tile.yCoord, Tile.zCoord));
             }
         }
         
         if(GuiButton.id == 2)
         {
-            if(TileEntityRockGrinder.Speed > 1)
+            if(Tile.Speed > 1)
             {
-                TileEntityRockGrinder.Speed--;
+                Tile.Speed--;
                 Tile.worldObj.notifyBlockChange(Tile.xCoord, Tile.yCoord, Tile.zCoord, Tile.worldObj.getBlockId(Tile.xCoord, Tile.yCoord, Tile.zCoord));
             }
         }
@@ -101,13 +101,13 @@ public class GuiRockGrinder extends GuiContainer
         
         drawTexturedModalRect(Var1, Var2, 0, 0, xSize, ySize);
 
-        if (Tile.myProvider.getEnergyStored() > 0)
+        if (Tile.MyProvider.getEnergyStored() > 0)
         {
             int showUntil = 0;
             
             for(int i=1; i<53; i++)
             {
-                if(Tile.myProvider.getEnergyStored() >= i * 153.846)
+                if(Tile.MyProvider.getEnergyStored() >= i * 153.846)
                 {
                     showUntil = i;
                 }
@@ -132,7 +132,7 @@ public class GuiRockGrinder extends GuiContainer
         {
             if(xMouse <= 21 && yMouse <= 69)
             {
-                drawCreativeTabHoveringText("Energy: " + MathHelper.round(Tile.myProvider.getEnergyStored()) + "/" + Tile.myProvider.getMaxEnergyStored(), xMouse, yMouse);
+                drawCreativeTabHoveringText("Energy: " + MathHelper.round(Tile.MyProvider.getEnergyStored()) + "/" + Tile.MyProvider.getMaxEnergyStored(), xMouse, yMouse);
             }
             
             return;

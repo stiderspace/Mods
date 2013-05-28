@@ -49,22 +49,24 @@ public class ContainerRockCutter extends Container
         
         for (Var6 = 0; Var6 < 3; ++Var6)
         {
-                for (Var7 = 0; Var7 < 9; ++Var7)
-                {
-                        addSlotToContainer(new Slot(InventoryPlayer, Var7 + Var6 * 9 + 9, 8 + Var7 * 18, 84 + Var6 * 18));
-                }
+            for (Var7 = 0; Var7 < 9; ++Var7)
+            {
+                addSlotToContainer(new Slot(InventoryPlayer, Var7 + Var6 * 9 + 9, 8 + Var7 * 18, 84 + Var6 * 18));
+            }
         }
+        
         for (Var6 = 0; Var6 < 9; ++Var6)
         {
-                addSlotToContainer(new Slot(InventoryPlayer, Var6, 8 + Var6 * 18, 142));
+            addSlotToContainer(new Slot(InventoryPlayer, Var6, 8 + Var6 * 18, 142));
         }
+        
         onCraftMatrixChanged(CraftMatrix);
     }
     
     @Override
     public boolean canInteractWith(EntityPlayer EntityPlayer)
     {
-             return worldObject.getBlockId(Par1, Par2, Par3) != Main.RockCutter.blockID ? false : EntityPlayer.getDistanceSq((double)Par1 + 0.5D, (double)Par2 + 0.5D, (double)Par3 + 0.5D) <= 64.0D;
+        return worldObject.getBlockId(Par1, Par2, Par3) != Main.RockCutter.blockID ? false : EntityPlayer.getDistanceSq((double)Par1 + 0.5D, (double)Par2 + 0.5D, (double)Par3 + 0.5D) <= 64.0D;
     }
 
     public void onCraftMatrixChanged(IInventory IInventory)
@@ -75,74 +77,81 @@ public class ContainerRockCutter extends Container
     
     public void onCraftGuiClosed(EntityPlayer EntityPlayer)
     {
-             super.onCraftGuiClosed(EntityPlayer);
-             if (!worldObject.isRemote)
-             {
-                     for (int Var2 = 0; Var2 < 9; ++Var2)
-                     {
-                             ItemStack Var3 = CraftMatrix.getStackInSlotOnClosing(Var2);
-                             if (Var3 != null)
-                             {
-                                     EntityPlayer.dropPlayerItem(Var3);
-                             }
-                     }
-             }
+        super.onCraftGuiClosed(EntityPlayer);
+            
+        if(!worldObject.isRemote)
+        {
+            for (int Var2 = 0; Var2 < 9; ++Var2)
+            {
+                ItemStack Var3 = CraftMatrix.getStackInSlotOnClosing(Var2);
+                if (Var3 != null)
+                {
+                    EntityPlayer.dropPlayerItem(Var3);
+                }
+            }
+        }
     }
     
     public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int Par2)
     {
-             ItemStack Var3 = null;
-             Slot Var4 = (Slot)this.inventorySlots.get(Par2);
+        ItemStack Var3 = null;
+        Slot Var4 = (Slot)this.inventorySlots.get(Par2);
 
-             if (Var4 != null && Var4.getHasStack())
-             {
-                     ItemStack Var5 = Var4.getStack();
-                     Var3 = Var5.copy();
+        if (Var4 != null && Var4.getHasStack())
+        {
+            ItemStack Var5 = Var4.getStack();
+            Var3 = Var5.copy();
 
-                     if (Par2 == 0)
-                     {
-                             if (!mergeItemStack(Var5, 10, 46, true))
-                             {
-                                     return null;
-                             }
+            if (Par2 == 0)
+            {
+                if (!mergeItemStack(Var5, 10, 46, true))
+                {
+                    return null;
+                }
 
-                             Var4.onSlotChange(Var5, Var3);
-                     }
-                     else if (Par2 >= 10 && Par2 < 37)
-                     {
-                             if (!mergeItemStack(Var5, 37, 46, false))
-                             {
-                                     return null;
-                             }
-                     }
-                     else if (Par2 >= 37 && Par2 < 46)
-                     {
-                             if (!this.mergeItemStack(Var5, 10, 37, false))
-                             {
-                                     return null;
-                             }
-                     }
-                     else if (!mergeItemStack(Var5, 10, 46, false))
-                     {
-                             return null;
-                     }
+                Var4.onSlotChange(Var5, Var3);
+            }
+            
+            else if (Par2 >= 10 && Par2 < 37)
+            {   
+                if (!mergeItemStack(Var5, 37, 46, false))
+                {
+                    return null;
+                }
+            }
+            
+            else if (Par2 >= 37 && Par2 < 46)
+            {
+                if (!this.mergeItemStack(Var5, 10, 37, false))
+                {
+                    return null;
+                }
+            }
+            
+            else if (!mergeItemStack(Var5, 10, 46, false))
+            {
+                return null;
+            }
 
-                     if (Var5.stackSize == 0)
-                     {
-                             Var4.putStack((ItemStack)null);
-                     }
-                     else
-                     {
-                             Var4.onSlotChanged();
-                     }
+            if (Var5.stackSize == 0)
+            {
+                Var4.putStack((ItemStack)null);
+            }
+            
+            else
+            {
+                Var4.onSlotChanged();
+            }
 
-                     if (Var5.stackSize == Var3.stackSize)
-                     {
-                             return null;
-                     }
+            if (Var5.stackSize == Var3.stackSize)
+            {
+                return null;
+            }
 
-                     Var4.onPickupFromSlot(par1EntityPlayer, Var5);
-             }
-             return Var3;
+            Var4.onPickupFromSlot(par1EntityPlayer, Var5);
+            
+        }
+             
+        return Var3;
     }
 }

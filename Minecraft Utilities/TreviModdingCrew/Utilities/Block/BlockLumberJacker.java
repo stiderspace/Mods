@@ -234,7 +234,7 @@ public class BlockLumberJacker extends BlockContainer
             
             Random Number = new Random();
             
-            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Item.stick, 1 + Number.nextInt(6)));
+            EntityItem Replacement = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Item.stick, 1 + Number.nextInt(3)));
             World.spawnEntityInWorld(Replacement);
         }
         
