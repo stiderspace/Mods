@@ -75,6 +75,7 @@ public class RenderMagnet implements IItemRenderer
                     {
                         GL11.glTranslatef(0.165F, 0.1F, -0.75F);
                     }
+                    
                     else
                     {
                         Scale = 0.90F;
@@ -87,6 +88,7 @@ public class RenderMagnet implements IItemRenderer
                         GL11.glTranslatef(-0.5F, 0.55F, -0.95F);
                     }
                 }
+                
                 else
                 {
                     GL11.glTranslatef(-0.4F, -0.05F, 0.3F);

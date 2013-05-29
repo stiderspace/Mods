@@ -49,7 +49,7 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
         Speed = 1;
         
         MyProvider = new PowerProviderAdvanced();
-        MyProvider.configure(100, 5000);
+        MyProvider.configure(100, 8000);
     }
     
   
