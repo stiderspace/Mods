@@ -12,11 +12,11 @@ import net.minecraft.src.ModLoader;
 import net.minecraftforge.liquids.LiquidStack;
 import net.minecraft.client.renderer.Tessellator;
 
-public class ModelGun extends ModelBase
+public class ModelLiquidGun extends ModelBase
 {
     ModelRenderer Pice0; 
 
-    public ModelGun()
+    public ModelLiquidGun()
     {
         textureWidth = 68;
         textureHeight = 68;

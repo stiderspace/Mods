@@ -21,9 +21,9 @@ import org.lwjgl.input.Keyboard;
 
 import TreviModdingCrew.LiquidGun.Entity.EntityLiquidBullet;
 
-public class ItemAquaGun extends Item
+public class ItemLiquidGun extends Item
 {
-    public ItemAquaGun(int Par1)
+    public ItemLiquidGun(int Par1)
     {
         super(Par1);
         
@@ -37,8 +37,29 @@ public class ItemAquaGun extends Item
     @Override
     public void addInformation(ItemStack ItemStack, EntityPlayer EntityPlayer, List List, boolean Par4)
     {
+        LiquidStack LiquidStacks;
+        
+        String Liquid = "None";
+        
+        try
+        {
+            LiquidStacks = LiquidStack.loadLiquidStackFromNBT((NBTTagCompound) ItemStack.getTagCompound().getTag("LiquidData"));
+            Liquid = Block.blocksList[LiquidStacks.itemID].getLocalizedName();
+        }
+        
+        catch(Exception Exception)
+        {
+            LiquidStacks = null;
+        }
+        
+        List.add("Current Liquid: " + Liquid);
+           
         if(Keyboard.isKeyDown(Keyboard.KEY_M))
         {
+            List.clear();
+            
+            List.add("Liquid Gun");
+            
             List.add("Hold right click to charge up the gun.");
             List.add("To charge it you need to click it");
             List.add("a water or lava source block.");

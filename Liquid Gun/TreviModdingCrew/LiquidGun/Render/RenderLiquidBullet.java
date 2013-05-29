@@ -8,7 +8,6 @@ import net.minecraft.src.ModLoader;
 import net.minecraftforge.liquids.IBlockLiquid;
 
 import TreviModdingCrew.LiquidGun.Entity.EntityLiquidBullet;
-import TreviModdingCrew.LiquidGun.Handler.LogHandler;
 
 public class RenderLiquidBullet extends Render
 {
@@ -28,7 +27,7 @@ public class RenderLiquidBullet extends Render
             
             catch(Exception Exception)
             {
-                LogHandler.Log("Could Load The Particle Effect");
+               
             }
         }
     }

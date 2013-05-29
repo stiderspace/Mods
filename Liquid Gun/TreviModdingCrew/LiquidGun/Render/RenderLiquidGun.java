@@ -1,17 +1,22 @@
 package TreviModdingCrew.LiquidGun.Render;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.inventory.GuiContainerCreative;
+import net.minecraft.client.gui.inventory.GuiInventory;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.src.ModLoader;
 import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
 
-import TreviModdingCrew.LiquidGun.Model.ModelGun;
+import TreviModdingCrew.LiquidGun.Model.ModelLiquidGun;
 
-public class RenderAquaGun implements IItemRenderer
+public class RenderLiquidGun implements IItemRenderer
 {
-    public ModelGun Model = new ModelGun();
+    public ModelLiquidGun Model = new ModelLiquidGun();
     
     @Override
     public boolean handleRenderType(ItemStack ItemStack, ItemRenderType ItemRenderType)
@@ -26,7 +31,7 @@ public class RenderAquaGun implements IItemRenderer
     }
 
     @Override
-    public void renderItem(ItemRenderType ItemRenderType, ItemStack ItemStack, Object... data)
+    public void renderItem(ItemRenderType ItemRenderType, ItemStack ItemStack, Object... Data)
     {
         GL11.glPushMatrix();
         {
@@ -39,11 +44,11 @@ public class RenderAquaGun implements IItemRenderer
             {
                 GL11.glRotatef(90F, 0F, 1F, 0F);
                 GL11.glTranslatef(0F, 0F, 0.4F);
-                GL11.glRotatef(15F, -1F, 0F, 0F);
-                GL11.glRotatef(16F, 0F, 0F, 1F);
+                GL11.glRotatef(14F, -1F, 0F, 0F);
+                GL11.glRotatef(14F, 0F, 0F, 1F);
                 GL11.glRotatef(10F, 0F, 1F, 0F);
-                GL11.glTranslatef(0F, 0.35F, 0F);
-                GL11.glTranslatef(0.1F, 0F, 0F);
+                GL11.glTranslatef(0F, 0.40F, 0F);
+                GL11.glTranslatef(0.1F, 0F, 0.05F);
                 
                 if(ModLoader.getMinecraftInstance().thePlayer.inventory.getCurrentItem() == ItemStack && ModLoader.getMinecraftInstance().gameSettings.thirdPersonView == 0)
                 {
@@ -55,11 +60,16 @@ public class RenderAquaGun implements IItemRenderer
                         GL11.glRotatef(30F, 0F, 0F, -1F);
                     }
                 }
+                
+                if(((EntityPlayer)Data[1] == Minecraft.getMinecraft().renderViewEntity && Minecraft.getMinecraft().gameSettings.thirdPersonView == 0 && !((Minecraft.getMinecraft().currentScreen instanceof GuiInventory || Minecraft.getMinecraft().currentScreen instanceof GuiContainerCreative) && RenderManager.instance.playerViewY == 180.0F)))
+                {
+                    GL11.glTranslatef(0.9F, 0.9F, -0.75F);
+                }
             }
             
             if(ItemRenderType == ItemRenderType.FIRST_PERSON_MAP)
             {
-                GL11.glRotatef(90f, 0f, 1f, 0f);
+                GL11.glRotatef(0f, 1f, 1f, 0f);
             }
             
             if(ItemRenderType == ItemRenderType.ENTITY)
@@ -68,12 +78,11 @@ public class RenderAquaGun implements IItemRenderer
             }
             
             GL11.glRotatef(180F, 1F, 0F, 0F);
-            
-            GL11.glBindTexture(GL11.GL_TEXTURE_2D, ModLoader.getMinecraftInstance().renderEngine.getTexture("/mods/AquaGun/textures/models/Gun.png"));
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, ModLoader.getMinecraftInstance().renderEngine.getTexture("/mods/LiquidGun/textures/models/Gun.png"));
             
             if(ItemRenderType == ItemRenderType.ENTITY) 
             { 
-                Model.render((Entity) data[1], 0, 0, 0, 0, 0, 0.0625F, ItemStack); 
+                Model.render((Entity) Data[1], 0, 0, 0, 0, 0, 0.0625F, ItemStack); 
             }
             
             else

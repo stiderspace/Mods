@@ -4,13 +4,11 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
-
 import TreviModdingCrew.LiquidGun.Handler.LogHandler;
-import TreviModdingCrew.LiquidGun.Items.ItemAquaGun;
+import TreviModdingCrew.LiquidGun.Items.ItemLiquidGun;
 import TreviModdingCrew.LiquidGun.Packet.PacketManager;
 import TreviModdingCrew.LiquidGun.Proxy.ClientProxy;
 import TreviModdingCrew.LiquidGun.Proxy.CommonProxy;
-
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -44,9 +42,9 @@ public class Main
     
     // Declaration
     
-    public static Item AquaGun;
+    public static Item LiquidGun;
     
-    public int AquaGunID;
+    public int LiquidGunID;
     
     @PreInit
     public void preInit(FMLPreInitializationEvent Event)
@@ -57,7 +55,7 @@ public class Main
 
         Config.load();
        
-        AquaGunID = Config.getItem("Aqua Gun", 5000).getInt();
+        LiquidGunID = Config.getItem("Liquid Gun", 5000).getInt();
         
         Config.save();  
    
@@ -69,12 +67,12 @@ public class Main
     {
         // Items
         
-        AquaGun = new ItemAquaGun(AquaGunID).setUnlocalizedName("Aqua Gun");
+        LiquidGun = new ItemLiquidGun(LiquidGunID).setUnlocalizedName("Liquid Gun");
     
         
         // Item Registry
         
-        GameRegistry.registerItem(AquaGun, "Aqua Gun");
+        GameRegistry.registerItem(LiquidGun, "Liquid Gun");
         
         
         // Entity Registry
@@ -89,11 +87,11 @@ public class Main
         
         // Shaped Recipe
         
-        GameRegistry.addRecipe(new ItemStack(Main.AquaGun, 1, 0), new Object[] {"#G#", "S P", "#R#", Character.valueOf('#'), Item.ingotIron, Character.valueOf('S'), Item.slimeBall, Character.valueOf('R'), Item.redstone, Character.valueOf('P'), Block.pistonStickyBase, Character.valueOf('G'), Block.glass});
+        GameRegistry.addRecipe(new ItemStack(Main.LiquidGun, 1, 0), new Object[] {"#G#", "S P", "#R#", Character.valueOf('#'), Item.ingotIron, Character.valueOf('S'), Item.slimeBall, Character.valueOf('R'), Item.redstone, Character.valueOf('P'), Block.pistonStickyBase, Character.valueOf('G'), Block.glass});
         
         
         // Language Registry
         
-        LanguageRegistry.addName(AquaGun, "Aqua Gun");
+        LanguageRegistry.addName(LiquidGun, "Liquid Gun");
     }
 }

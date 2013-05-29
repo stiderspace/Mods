@@ -9,6 +9,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.packet.Packet70GameEvent;
 import net.minecraft.src.ModLoader;
@@ -241,13 +242,12 @@ public class EntityLiquidBullet extends Entity implements IProjectile
                 MovingObjectPosition MovingObjectPosition = worldObj.rayTraceBlocks_do_do(Var1, Var2, false, true);
 
                 Var1 = worldObj.getWorldVec3Pool().getVecFromPool(posX, posY, posZ);
-                Var2 = worldObj.getWorldVec3Pool().getVecFromPool(posX + motionX, posY + motionY,
-                        posZ + motionZ);
+                Var2 = worldObj.getWorldVec3Pool().getVecFromPool(posX + motionX, posY + motionY, posZ + motionZ);
 
+                        
                 if(MovingObjectPosition != null)
                 {
-                    Var2 = worldObj.getWorldVec3Pool().getVecFromPool(MovingObjectPosition.hitVec.xCoord,
-                            MovingObjectPosition.hitVec.yCoord, MovingObjectPosition.hitVec.zCoord);
+                    Var2 = worldObj.getWorldVec3Pool().getVecFromPool(MovingObjectPosition.hitVec.xCoord, MovingObjectPosition.hitVec.yCoord, MovingObjectPosition.hitVec.zCoord);        
                 }
 
                 Entity entity = null;
@@ -406,6 +406,11 @@ public class EntityLiquidBullet extends Entity implements IProjectile
                                         worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY,MovingObjectPosition.blockZ, Block.glass.blockID);         
                                     }
                                     
+                                    if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY,MovingObjectPosition.blockZ) == Block.cobblestone.blockID)     
+                                    {
+                                        worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY,MovingObjectPosition.blockZ, Block.stone.blockID);
+                                    }
+                                    
                                     if(Var13 == 0 || Var13 == Block.vine.blockID || Var13 == Block.grass.blockID)
                                     {
                                         worldObj.setBlock(Var10, Var11, Var12, Block.fire.blockID);
@@ -498,38 +503,42 @@ public class EntityLiquidBullet extends Entity implements IProjectile
                     if(worldObj.getBlockId(MovingObjectPositionTwo.blockX, MovingObjectPositionTwo.blockY, MovingObjectPositionTwo.blockZ) == Block.lavaMoving.blockID)
                     {
                         if(!worldObj.isRemote)
+                        {
                             worldObj.setBlock(MovingObjectPositionTwo.blockX, MovingObjectPositionTwo.blockY, MovingObjectPositionTwo.blockZ, Block.cobblestone.blockID);
+                        }
+
                         if(!worldObj.isRemote)
-                            worldObj.playSoundEffect((double) ((float) MovingObjectPositionTwo.blockX + 0.5F),
-                                    (double) ((float) MovingObjectPositionTwo.blockY + 0.5F), (double) ((float) MovingObjectPositionTwo.blockZ + 0.5F),
-                                    "random.fizz", 0.5F,
-                                    2.6F + (worldObj.rand.nextFloat() - worldObj.rand.nextFloat()) * 0.8F);
+                        {
+                            worldObj.playSoundEffect((double) ((float) MovingObjectPositionTwo.blockX + 0.5F),(double) ((float) MovingObjectPositionTwo.blockY + 0.5F), (double) ((float) MovingObjectPositionTwo.blockZ + 0.5F), "random.fizz", 0.5F, 2.6F + (worldObj.rand.nextFloat() - worldObj.rand.nextFloat()) * 0.8F);
+                        }
+                                 
                         for(int S = 0; S < 8; ++S)
                         {
-                            worldObj.spawnParticle("largesmoke", (double) MovingObjectPositionTwo.blockX + Math.random(),
-                                    (double) MovingObjectPositionTwo.blockY + 1.2D, (double) MovingObjectPositionTwo.blockZ + Math.random(), 0.0D, 0.0D, 0.0D);
+                            worldObj.spawnParticle("largesmoke", (double) MovingObjectPositionTwo.blockX + Math.random(),(double) MovingObjectPositionTwo.blockY + 1.2D, (double) MovingObjectPositionTwo.blockZ + Math.random(), 0.0D, 0.0D, 0.0D);
                         }
                         setDead();
                     }
                 }
-                else if(dataWatcher.getWatchableObjectInt(16) == Block.lavaMoving.blockID
-                        || dataWatcher.getWatchableObjectInt(16) == Block.lavaStill.blockID)
+                
+                else if(dataWatcher.getWatchableObjectInt(16) == Block.lavaMoving.blockID || dataWatcher.getWatchableObjectInt(16) == Block.lavaStill.blockID)    
                 {
-                    if(worldObj.getBlockId(MovingObjectPositionTwo.blockX, MovingObjectPositionTwo.blockY, MovingObjectPositionTwo.blockZ) == Block.waterMoving.blockID
-                            || worldObj.getBlockId(MovingObjectPositionTwo.blockX, MovingObjectPositionTwo.blockY, MovingObjectPositionTwo.blockZ) == Block.waterStill.blockID)
+                    if(worldObj.getBlockId(MovingObjectPositionTwo.blockX, MovingObjectPositionTwo.blockY, MovingObjectPositionTwo.blockZ) == Block.waterMoving.blockID || worldObj.getBlockId(MovingObjectPositionTwo.blockX, MovingObjectPositionTwo.blockY, MovingObjectPositionTwo.blockZ) == Block.waterStill.blockID)   
                     {
                         if(!worldObj.isRemote)
+                        {
                             worldObj.setBlock(MovingObjectPositionTwo.blockX, MovingObjectPositionTwo.blockY, MovingObjectPositionTwo.blockZ, Block.stone.blockID);
+                        }
+                            
                         if(!worldObj.isRemote)
-                            worldObj.playSoundEffect((double) ((float) MovingObjectPositionTwo.blockX + 0.5F),
-                                    (double) ((float) MovingObjectPositionTwo.blockY + 0.5F), (double) ((float) MovingObjectPositionTwo.blockZ + 0.5F),
-                                    "random.fizz", 0.5F,
-                                    2.6F + (worldObj.rand.nextFloat() - worldObj.rand.nextFloat()) * 0.8F);
+                        {
+                            worldObj.playSoundEffect((double) ((float) MovingObjectPositionTwo.blockX + 0.5F),(double) ((float) MovingObjectPositionTwo.blockY + 0.5F), (double) ((float) MovingObjectPositionTwo.blockZ + 0.5F), "random.fizz", 0.5F,2.6F + (worldObj.rand.nextFloat() - worldObj.rand.nextFloat()) * 0.8F);
+                        }
+                               
                         for(int S = 0; S < 8; ++S)
                         {
-                            worldObj.spawnParticle("largesmoke", (double) MovingObjectPositionTwo.blockX + Math.random(),
-                                    (double) MovingObjectPositionTwo.blockY + 1.2D, (double) MovingObjectPositionTwo.blockZ + Math.random(), 0.0D, 0.0D, 0.0D);
+                            worldObj.spawnParticle("largesmoke", (double) MovingObjectPositionTwo.blockX + Math.random(),  (double) MovingObjectPositionTwo.blockY + 1.2D, (double) MovingObjectPositionTwo.blockZ + Math.random(), 0.0D, 0.0D, 0.0D);       
                         }
+                        
                         setDead();
                     }
                 }
@@ -537,9 +546,6 @@ public class EntityLiquidBullet extends Entity implements IProjectile
         }
     }
 
-    /**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     */
     public void writeEntityToNBT(NBTTagCompound NBTTagCompound)
     {
         NBTTagCompound.setByte("InGround", (byte) (InGround ? 1 : 0));
