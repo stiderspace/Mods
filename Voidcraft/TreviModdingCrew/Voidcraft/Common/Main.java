@@ -7,9 +7,11 @@ import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 
 import TreviModdingCrew.Utilities.Block.BlockLumberJacker;
+import TreviModdingCrew.Voidcraft.Blocks.BlockGreenPowderExplosive;
+import TreviModdingCrew.Voidcraft.Blocks.BlockGreenPowderOre;
 import TreviModdingCrew.Voidcraft.Handler.LogHandler;
 import TreviModdingCrew.Voidcraft.Handler.SoundHandler;
-import TreviModdingCrew.Voidcraft.Items.BlockGreenPowderExplosive;
+import TreviModdingCrew.Voidcraft.Handler.WorldGenerationHandler;
 import TreviModdingCrew.Voidcraft.Packet.PacketManager;
 import TreviModdingCrew.Voidcraft.Proxy.ClientProxy;
 import TreviModdingCrew.Voidcraft.Proxy.CommonProxy;
@@ -48,10 +50,12 @@ public class Main
     // Declaration
     
     public static Block GreenPowderExplosive;
+    public static Block GreenPowderOre;
     
     public static CreativeTabs Voidcraft = new TabVoidcraft(CreativeTabs.getNextID(), "Voidcraft");
    
     public int GreenPowderExplosiveID;
+    public int GreenPowderOreID;
     
     @PreInit
     public void preInit(FMLPreInitializationEvent Event)
@@ -63,6 +67,7 @@ public class Main
         Config.load();
         
         GreenPowderExplosiveID = Config.getBlock("Green Powder Explosive", 3000).getInt();
+        GreenPowderOreID = Config.getBlock("Green Powder Ore", 3001).getInt();
         
         Config.save();  
    
@@ -80,16 +85,24 @@ public class Main
     {
         // Blocks
         
-        GreenPowderExplosive = new BlockGreenPowderExplosive(GreenPowderExplosiveID, Material.tnt).setHardness(0.25F).setResistance(0.25F).setUnlocalizedName("Green Powder Explosive");
+        GreenPowderExplosive = new BlockGreenPowderExplosive(GreenPowderExplosiveID, Material.tnt).setHardness(0F).setResistance(100F).setUnlocalizedName("Green Powder Explosive");
+        GreenPowderOre = new BlockGreenPowderOre(GreenPowderOreID, Material.rock).setHardness(5F).setResistance(5F).setUnlocalizedName("Green Powder Ore");
         
         
         // Block Registry
         
         GameRegistry.registerBlock(GreenPowderExplosive, "Green Powder Explosive"); 
+        GameRegistry.registerBlock(GreenPowderOre, "Green Powder Ore"); 
+        
+        
+        // World Generation Registry
+        
+        GameRegistry.registerWorldGenerator(new WorldGenerationHandler());
         
         
         // Language Registry
         
         LanguageRegistry.addName(GreenPowderExplosive, "Green Powder Explosive");
+        LanguageRegistry.addName(GreenPowderOre, "Green Powder Ore");
     }
 }
