@@ -37,6 +37,20 @@ public class GuiRockGrinder extends GuiContainer
         
         buttonList.add(new GuiButton(1, guiLeft + 180, guiTop + 5, 100, 20, ("Increase Speed")));
         buttonList.add(new GuiButton(2, guiLeft + 180, guiTop + 30, 100, 20, ("Decrease Speed")));
+        
+        GuiButton Button;
+        
+        if(Tile.Speed == 5)
+        {
+            Button = (GuiButton)buttonList.get(0);
+            Button.enabled = false;
+        }
+        
+        else if(Tile.Speed == 1)
+        {
+            Button = (GuiButton)buttonList.get(1);
+            Button.enabled = false;
+        }
     }
     
     protected void actionPerformed(GuiButton GuiButton) 
@@ -46,7 +60,22 @@ public class GuiRockGrinder extends GuiContainer
             if(Tile.Speed < 5)
             {
                 Tile.Speed++;
-                Tile.worldObj.notifyBlockChange(Tile.xCoord, Tile.yCoord, Tile.zCoord, Tile.worldObj.getBlockId(Tile.xCoord, Tile.yCoord, Tile.zCoord));
+                
+                
+                GuiButton Decrease = (GuiButton)buttonList.get(1);
+                Decrease.enabled = true;
+                
+                if(Tile.Speed == 5)
+                {
+                    GuiButton Button = (GuiButton)buttonList.get(0);
+                    Button.enabled = false;
+                }
+                
+                else
+                {
+                    GuiButton Button = (GuiButton)buttonList.get(0);
+                    Button.enabled = true;
+                }
             }
         }
         
@@ -55,7 +84,21 @@ public class GuiRockGrinder extends GuiContainer
             if(Tile.Speed > 1)
             {
                 Tile.Speed--;
-                Tile.worldObj.notifyBlockChange(Tile.xCoord, Tile.yCoord, Tile.zCoord, Tile.worldObj.getBlockId(Tile.xCoord, Tile.yCoord, Tile.zCoord));
+                
+                GuiButton Increase = (GuiButton)buttonList.get(0);
+                Increase.enabled = true;
+                
+                if(Tile.Speed == 1)
+                {
+                    GuiButton Button = (GuiButton)buttonList.get(1);
+                    Button.enabled = false;
+                }
+                
+                else
+                {
+                    GuiButton Button = (GuiButton)buttonList.get(1);
+                    Button.enabled = true;
+                }
             }
         }
     }
