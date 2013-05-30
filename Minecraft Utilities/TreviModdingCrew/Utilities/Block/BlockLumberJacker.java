@@ -9,10 +9,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -114,6 +118,33 @@ public class BlockLumberJacker extends BlockContainer
     public TileEntity createNewTileEntity(World World)
     {
         return new TileEntityLumberJacker();
+    }
+    
+    
+    // Custom Block Render
+    
+    @Override
+    public boolean hasTileEntity(int Metadata)
+    {
+        return true;
+    }
+    
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return true;
+    }
+    
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
+    
+    @Override
+    public int getRenderType()
+    {
+        return -1;
     }
     
     
@@ -296,5 +327,12 @@ public class BlockLumberJacker extends BlockContainer
             EntityItem Second = new EntityItem(World, Par1, Par2 + 1.4, Par3, new ItemStack(Item.stick, 1));
             World.spawnEntityInWorld(Second);
         }
+    }
+    
+    // Hurts You If You Walk On Top Of The Machine
+    
+    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
+    {
+        par5Entity.attackEntityFrom(DamageSource.cactus, 1);
     }
 }

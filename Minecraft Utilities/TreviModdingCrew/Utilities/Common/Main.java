@@ -1,3 +1,11 @@
+/**
+ * Minecraft Utilities
+ *
+ *
+ * @Author Trevi Awater 
+ * @License Gnu Public License Version 3
+ **/
+
 package TreviModdingCrew.Utilities.Common;
 
 import net.minecraft.block.Block;
@@ -8,7 +16,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
 
 import TreviModdingCrew.Utilities.Block.BlockEggHatcher;
@@ -18,7 +25,6 @@ import TreviModdingCrew.Utilities.Block.BlockRockGrinder;
 import TreviModdingCrew.Utilities.Entity.EntityBomb;
 import TreviModdingCrew.Utilities.Handler.FuelHandler;
 import TreviModdingCrew.Utilities.Handler.LogHandler;
-import TreviModdingCrew.Utilities.Handler.SoundHandler;
 import TreviModdingCrew.Utilities.Items.ItemBomb;
 import TreviModdingCrew.Utilities.Items.ItemFilter;
 import TreviModdingCrew.Utilities.Items.ItemMagnet;
@@ -161,11 +167,6 @@ public class Main
         Config.save();	
    
         LogHandler.Log("Configuration File Loaded");  
-        
-        
-        // Loading Sound Files
-        
-        MinecraftForge.EVENT_BUS.register(new SoundHandler());
     }
 
 
@@ -379,6 +380,7 @@ public class Main
 	     
 	    CommonProxy.LoadRenderers();
 	    CommonProxy.KeyBinding();
+	    CommonProxy.LoadSounds();
 	    
 	    
 	    // Chest Looting

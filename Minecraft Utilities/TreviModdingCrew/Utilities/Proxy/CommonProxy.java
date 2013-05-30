@@ -50,7 +50,6 @@ public class CommonProxy implements IGuiHandler
         }
             
         return TileEntity;  
-        
     }
       
     
@@ -108,5 +107,9 @@ public class CommonProxy implements IGuiHandler
     {
        
     }
+    
+    public void LoadSounds()
+    {
+        
+    }
 }
-
