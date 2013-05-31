@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.Property;
 import TreviModdingCrew.LiquidGun.Handler.LogHandler;
 import TreviModdingCrew.LiquidGun.Items.ItemLiquidGun;
 import TreviModdingCrew.LiquidGun.Packet.PacketManager;
@@ -43,8 +44,11 @@ public class Main
     // Declaration
     
     public static Item LiquidGun;
-    
+   
     public int LiquidGunID;
+    
+    public Property RecipeLiquidGun;
+    
     
     @PreInit
     public void preInit(FMLPreInitializationEvent Event)
@@ -56,6 +60,8 @@ public class Main
         Config.load();
        
         LiquidGunID = Config.getItem("Liquid Gun", 5000).getInt();
+        
+        RecipeLiquidGun = Config.get("Recipes", "Liquid Gun", true);
         
         Config.save();  
    
@@ -87,8 +93,13 @@ public class Main
         
         // Shaped Recipe
         
-        GameRegistry.addRecipe(new ItemStack(Main.LiquidGun, 1, 0), new Object[] {"#G#", "S P", "#R#", Character.valueOf('#'), Item.ingotIron, Character.valueOf('S'), Item.slimeBall, Character.valueOf('R'), Item.redstone, Character.valueOf('P'), Block.pistonStickyBase, Character.valueOf('G'), Block.glass});
-        
+        if (RecipeLiquidGun.getBoolean(false) == true)
+        {
+            GameRegistry.addRecipe(new ItemStack(LiquidGun, 1), new Object[]
+            {
+                " G ", "III", "  I", 'G', Block.glass, 'I', Item.ingotIron
+            });
+        }
         
         // Language Registry
         

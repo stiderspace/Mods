@@ -67,9 +67,15 @@ public class RenderLiquidGun implements IItemRenderer
                 }
             }
             
-            if(ItemRenderType == ItemRenderType.FIRST_PERSON_MAP)
+            if(ItemRenderType == ItemRenderType.EQUIPPED_FIRST_PERSON)
             {
-                GL11.glRotatef(0f, 1f, 1f, 0f);
+                GL11.glTranslatef(0F, 1.90F, 1F);
+                GL11.glRotatef(225f, 0f, 1f, 0f);
+            }
+            
+            if(ItemRenderType == ItemRenderType.INVENTORY)
+            {
+                GL11.glScalef(1.5F, 1.5F, 1.5F);
             }
             
             if(ItemRenderType == ItemRenderType.ENTITY)
