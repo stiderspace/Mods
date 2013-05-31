@@ -328,11 +328,4 @@ public class BlockLumberJacker extends BlockContainer
             World.spawnEntityInWorld(Second);
         }
     }
-    
-    // Hurts You If You Walk On Top Of The Machine
-    
-    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
-    {
-        par5Entity.attackEntityFrom(DamageSource.cactus, 1);
-    }
 }
