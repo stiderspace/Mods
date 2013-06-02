@@ -84,7 +84,7 @@ public class RenderLiquidGun implements IItemRenderer
             }
             
             GL11.glRotatef(180F, 1F, 0F, 0F);
-            GL11.glBindTexture(GL11.GL_TEXTURE_2D, ModLoader.getMinecraftInstance().renderEngine.getTexture("/mods/LiquidGun/textures/models/Gun.png"));
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, ModLoader.getMinecraftInstance().renderEngine.getTexture("/TreviModdingCrew/LiquidGun/Textures/Gun.png"));
             
             if(ItemRenderType == ItemRenderType.ENTITY) 
             { 
