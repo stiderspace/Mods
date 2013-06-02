@@ -37,82 +37,7 @@ public class BlockLumberJacker extends BlockContainer
     }
     
     
-    // Setting Textures
-    
-    private Icon[] IconBuffer = new Icon[3];
-    
-    @Override
-    @SideOnly(Side.CLIENT)
-    
-    public void registerIcons(IconRegister IconRegister)
-    {
-        IconBuffer[0] = IconRegister.registerIcon(Reference.ModID + ":" + "RockCutterBottom");
-        IconBuffer[1] = IconRegister.registerIcon(Reference.ModID + ":" + "MachineSide");
-        IconBuffer[2] = IconRegister.registerIcon(Reference.ModID + ":" + "RockCutterTop");
-    }
-    
-    @Override
-    public Icon getIcon(int Par1, int Par2)
-    {
-        if(Par1 == 0)
-        {
-            return IconBuffer[0];
-        }
-        
-        if(Par1 == 2)
-        {
-            return IconBuffer[1];
-        }
-        
-        if(Par1 == 3)
-        {
-            return IconBuffer[1];
-        }
-        
-        if(Par1 == 4)
-        {
-            return IconBuffer[1];
-        }
-        
-        if(Par1 == 5)
-        {
-            return IconBuffer[1];
-        }
-            
-        return IconBuffer[2];
-    }
-    
-    @Override
-    public Icon getBlockTexture(IBlockAccess Par1, int Var1, int Var2, int Var3, int Par2)
-    {
-        if(Par2 == 0)
-        {
-            return IconBuffer[0];
-        }
-        
-        if(Par2 == 2)
-        {
-            return IconBuffer[1];
-        }
-        
-        if(Par2 == 3)
-        {
-            return IconBuffer[1];
-        }
-        
-        if(Par2 == 4)
-        {
-            return IconBuffer[1];
-        }
-        
-        if(Par2 == 5)
-        {
-            return IconBuffer[1];
-        }
-            
-        return IconBuffer[2];
-    }
-    
+    // Creating A Tile
     
     @Override
     public TileEntity createNewTileEntity(World World)
@@ -132,7 +57,7 @@ public class BlockLumberJacker extends BlockContainer
     @Override
     public boolean renderAsNormalBlock()
     {
-        return true;
+        return false;
     }
     
     @Override

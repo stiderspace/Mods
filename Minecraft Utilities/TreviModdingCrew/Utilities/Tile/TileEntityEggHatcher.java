@@ -8,7 +8,7 @@ import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class TileEntityHatcher extends TileEntity
+public class TileEntityEggHatcher extends TileEntity
 {
     // Declaration
     

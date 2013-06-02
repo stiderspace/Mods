@@ -15,19 +15,19 @@ import net.minecraftforge.client.model.IModelCustom;
 @SideOnly(Side.CLIENT)
 public class ModelLumberJacker extends ModelBase
 {
-    private IModelCustom Model;
+    private IModelCustom LumberJacker;
     
     public ModelLumberJacker()
     {
-        Model = AdvancedModelLoader.loadModel("/TreviModdingCrew/Utilities/Libery/Lumber Jacker.obj");
+        LumberJacker = AdvancedModelLoader.loadModel("/TreviModdingCrew/Utilities/Libery/Lumber Jacker.obj");
     }
     
-    public void render()
+    public void Render()
     {
-        Model.renderAll();
+        LumberJacker.renderAll();
     }
 
-    public void render(TileEntityLumberJacker TileEntityLumberJacker, double Var1, double Var2, double Var3)
+    public void Render(TileEntityLumberJacker TileEntityLumberJacker, double Var1, double Var2, double Var3)
     {
         GL11.glPushMatrix();
         GL11.glTranslatef((float)Var1 + 0.5f, (float)Var2 + 0f, (float)Var3 + 0.5f);
@@ -36,7 +36,7 @@ public class ModelLumberJacker extends ModelBase
      
         FMLClientHandler.instance().getClient().renderEngine.bindTexture("/TreviModdingCrew/Utilities/Textures/Model/Lumber Jacker.png");
      
-        render();
+        Render();
      
         GL11.glPopMatrix();
     } 

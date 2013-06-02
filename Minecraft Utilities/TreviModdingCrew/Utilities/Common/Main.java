@@ -34,7 +34,7 @@ import TreviModdingCrew.Utilities.Proxy.ClientProxy;
 import TreviModdingCrew.Utilities.Proxy.CommonProxy;
 import TreviModdingCrew.Utilities.Tab.TabUtilitiesBlock;
 import TreviModdingCrew.Utilities.Tab.TabUtilitiesItem;
-import TreviModdingCrew.Utilities.Tile.TileEntityHatcher;
+import TreviModdingCrew.Utilities.Tile.TileEntityEggHatcher;
 import TreviModdingCrew.Utilities.Tile.TileEntityLumberJacker;
 import TreviModdingCrew.Utilities.Tile.TileEntityRockGrinder;
 
@@ -403,7 +403,7 @@ public class Main
 	    // Tile Registry
 	    
 	    GameRegistry.registerTileEntity(TileEntityRockGrinder.class, "Rock Grinder");
-	    GameRegistry.registerTileEntity(TileEntityHatcher.class, "Egg Hatcher");
+	    GameRegistry.registerTileEntity(TileEntityEggHatcher.class, "Egg Hatcher");
 	    GameRegistry.registerTileEntity(TileEntityLumberJacker.class, "Lumber Jacker");
 
 	    

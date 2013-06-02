@@ -5,17 +5,17 @@ import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
 
-import TreviModdingCrew.Utilities.Model.ModelLumberJacker;
+import TreviModdingCrew.Utilities.Model.ModelEggHatcher;
 
 import cpw.mods.fml.client.FMLClientHandler;
 
-public class RenderLumberJacker implements IItemRenderer
+public class RenderEggHatcher implements IItemRenderer
 {
-    private ModelLumberJacker Model;
+    private ModelEggHatcher EggHatcher;
     
-    public RenderLumberJacker()
+    public RenderEggHatcher()
     {
-        Model = new ModelLumberJacker();
+        EggHatcher = new ModelEggHatcher();
     }
     
     @Override
@@ -82,9 +82,9 @@ public class RenderLumberJacker implements IItemRenderer
             GL11.glRotatef(180F, 0F, 1F, 0F);
         }
         
-        FMLClientHandler.instance().getClient().renderEngine.bindTexture("/TreviModdingCrew/Utilities/Textures/Model/Lumber Jacker.png");
+        FMLClientHandler.instance().getClient().renderEngine.bindTexture("/TreviModdingCrew/Utilities/Textures/Model/Egg Hatcher.png");
         
-        Model.Render();
+        EggHatcher.Render();
         
         GL11.glEnable(GL11.GL_LIGHTING);
         GL11.glPopMatrix();

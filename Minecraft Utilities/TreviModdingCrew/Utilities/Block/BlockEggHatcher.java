@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 import TreviModdingCrew.Utilities.Common.Main;
 import TreviModdingCrew.Utilities.Common.Reference;
-import TreviModdingCrew.Utilities.Tile.TileEntityHatcher;
+import TreviModdingCrew.Utilities.Tile.TileEntityEggHatcher;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,81 +33,30 @@ public class BlockEggHatcher extends BlockContainer
         setCreativeTab(Main.UtilitiesBlock);
     }
     
-    
-    // Setting Textures
-    
-    private Icon[] IconBuffer = new Icon[3];
+    // Custom Block Render
     
     @Override
-    @SideOnly(Side.CLIENT)
-    
-    public void registerIcons(IconRegister IconRegister)
+    public boolean hasTileEntity(int Metadata)
     {
-    	IconBuffer[0] = IconRegister.registerIcon(Reference.ModID + ":" + "RockCutterBottom");
-    	IconBuffer[1] = IconRegister.registerIcon(Reference.ModID + ":" + "MachineSide");
-    	IconBuffer[2] = IconRegister.registerIcon(Reference.ModID + ":" + "EggHatcherFront");
+        return true;
     }
     
     @Override
-    public Icon getIcon(int Par1, int Par2)
+    public boolean renderAsNormalBlock()
     {
-        if(Par1 == 0)
-        {
-            return IconBuffer[0];
-        }
-        
-        if(Par1 == 2)
-        {
-            return IconBuffer[1];
-        }
-        
-        if(Par1 == 3)
-        {
-            return IconBuffer[1];
-        }
-        
-        if(Par1 == 4)
-        {
-            return IconBuffer[1];
-        }
-        
-        if(Par1 == 5)
-        {
-            return IconBuffer[1];
-        }
-            
-        return IconBuffer[2];
+        return false;
     }
     
     @Override
-    public Icon getBlockTexture(IBlockAccess Par1, int Var1, int Var2, int Var3, int Par2)
+    public boolean isOpaqueCube()
     {
-        if(Par2 == 0)
-        {
-            return IconBuffer[0];
-        }
-        
-        if(Par2 == 2)
-        {
-            return IconBuffer[1];
-        }
-        
-        if(Par2 == 3)
-        {
-            return IconBuffer[1];
-        }
-        
-        if(Par2 == 4)
-        {
-            return IconBuffer[1];
-        }
-        
-        if(Par2 == 5)
-        {
-            return IconBuffer[1];
-        }
-            
-        return IconBuffer[2];
+        return false;
+    }
+    
+    @Override
+    public int getRenderType()
+    {
+        return -1;
     }
     
     
@@ -123,7 +72,7 @@ public class BlockEggHatcher extends BlockContainer
     	
     	if(EntityPlayer.getHeldItem().itemID == Item.egg.itemID)
         {
-            TileEntityHatcher Tile = (TileEntityHatcher) World.getBlockTileEntity(Var1, Var2, Var3);
+            TileEntityEggHatcher Tile = (TileEntityEggHatcher) World.getBlockTileEntity(Var1, Var2, Var3);
             
             Random Var4 = new Random();
             
@@ -154,7 +103,7 @@ public class BlockEggHatcher extends BlockContainer
     	
     	if(EntityPlayer.getHeldItem().itemID == Item.wheat.itemID)
     	{
-    	    TileEntityHatcher Tile = (TileEntityHatcher) World.getBlockTileEntity(Var1, Var2, Var3);
+    	    TileEntityEggHatcher Tile = (TileEntityEggHatcher) World.getBlockTileEntity(Var1, Var2, Var3);
     	    
     	    if(Tile.TickToHatch > 0)
     	    {
@@ -178,7 +127,7 @@ public class BlockEggHatcher extends BlockContainer
     @Override
     public TileEntity createNewTileEntity(World World)
     {
-        TileEntityHatcher TileEntityHatcher = new TileEntityHatcher();
+        TileEntityEggHatcher TileEntityHatcher = new TileEntityEggHatcher();
         
         TileEntityHatcher.TickToHatch = 0;
         TileEntityHatcher.CanPutEggIn = true;
@@ -188,7 +137,7 @@ public class BlockEggHatcher extends BlockContainer
     
     public void breakBlock(World World, int Par2, int Par3, int Par4, int Par5, int Par6)
     {
-    	TileEntityHatcher Tile = (TileEntityHatcher) World.getBlockTileEntity(Par2, Par3, Par4);
+    	TileEntityEggHatcher Tile = (TileEntityEggHatcher) World.getBlockTileEntity(Par2, Par3, Par4);
         
     	if(Tile.TickToHatch > 0)
         {
