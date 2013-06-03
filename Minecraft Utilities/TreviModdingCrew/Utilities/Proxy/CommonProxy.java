@@ -84,7 +84,7 @@ public class CommonProxy implements IGuiHandler
     public void RemoveRecipe(ItemStack ItemStack)
     {
         ItemStack RecipeResult = null;
-        ArrayList Recipes = (ArrayList) CraftingManager.getInstance().getRecipeList();
+        ArrayList <?> Recipes = (ArrayList <?>) CraftingManager.getInstance().getRecipeList();
             
         for (int Scan = 0; Scan < Recipes.size(); Scan++)
         {

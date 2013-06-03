@@ -10,7 +10,7 @@ import cpw.mods.fml.common.TickType;
 
 public class KeyBindHandler extends KeyHandler
 {
-    private EnumSet Type = EnumSet.of(TickType.CLIENT);
+    private EnumSet <TickType> Type = EnumSet.of(TickType.CLIENT);
     
     static KeyBinding More = new KeyBinding("More Information", Keyboard.KEY_M);
     

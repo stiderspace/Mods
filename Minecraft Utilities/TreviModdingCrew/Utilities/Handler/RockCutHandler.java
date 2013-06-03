@@ -23,7 +23,8 @@ public class RockCutHandler
     // Declaration
     
 	private static final RockCutHandler Instance = new RockCutHandler();
-	private List Recipes = new ArrayList();
+	
+	private List <IRecipe> Recipes = new ArrayList <IRecipe>();
 	
 	public static final RockCutHandler getInstance()
 	{
@@ -35,7 +36,7 @@ public class RockCutHandler
 		Collections.sort(Recipes, new RecipeRockCutter(this));
 	}
 	
-	public List getRecipeList()
+	public List <IRecipe> getRecipeList()
 	{
 		return Recipes;
 	}
@@ -76,9 +77,9 @@ public class RockCutHandler
 	                 }
 	         }
 	         
-	         HashMap Var14;
+	         HashMap <Character, ItemStack> Var14;
 	         
-	         for (Var14 = new HashMap(); Var4 < inputArray.length; Var4 += 2)
+	         for (Var14 = new HashMap <Character, ItemStack>(); Var4 < inputArray.length; Var4 += 2)
 	         {
 	                 Character Var16 = (Character)inputArray[Var4];
 	                 ItemStack Var17 = null;
@@ -118,7 +119,7 @@ public class RockCutHandler
 	
 	void addShapelessRecipe(ItemStack ItemStack, Object ... inputArray)
 	{
-	         ArrayList Var3 = new ArrayList();
+	         ArrayList <ItemStack> Var3 = new ArrayList <ItemStack>();
 	         Object[] Var4 = inputArray;
 	         int Var5 = inputArray.length;
 	         for (int Var6 = 0; Var6 < Var5; ++Var6)
@@ -187,7 +188,7 @@ public class RockCutHandler
 	         }
 	         else
 	         {
-	                 Iterator Var11 = Recipes.iterator();
+	                 Iterator <IRecipe> Var11 = Recipes.iterator();
 	                 IRecipe Var13;
 	                 do
 	                 {
