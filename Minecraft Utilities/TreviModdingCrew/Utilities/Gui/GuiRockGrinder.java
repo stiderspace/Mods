@@ -19,8 +19,6 @@ public class GuiRockGrinder extends GuiContainer
     private int xMouse = 0;
     private int yMouse = 0;
     
-    public static boolean Signal = true;
-    
     private TileEntityRockGrinder Tile;
     
     public GuiRockGrinder(InventoryPlayer InventoryPlayer, TileEntityRockGrinder TileEntityRockGrinder)
@@ -55,6 +53,9 @@ public class GuiRockGrinder extends GuiContainer
             Button.enabled = false;
         }
     }
+    
+    
+    // Does Something If You Press One Of The Buttons
     
     protected void actionPerformed(GuiButton GuiButton) 
     {
@@ -125,6 +126,9 @@ public class GuiRockGrinder extends GuiContainer
         drawMouse();
     }
     
+    
+    // Getting The Mouse Cordinates Depending On The Screensize 
+    
     @Override
     public void handleMouseInput()
     {
@@ -175,6 +179,9 @@ public class GuiRockGrinder extends GuiContainer
         Var3 = Tile.getCookProgressScaled(24);
         drawTexturedModalRect(Var1 + 79, Var2 + 34, 176, 14, Var3 + 1, 16);
     }
+    
+    
+    // Drawing The Tooltip On The Screen When The Mouse Hovers Over The Right Spot
     
     private void drawMouse()
     {

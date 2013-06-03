@@ -30,6 +30,9 @@ public class GuiRockCutter extends GuiContainer
         buttonList.add(new GuiButton(1, guiLeft + 180, guiTop + 5, 100, 20, ("Close Cutter")));
     }
     
+    
+    // Does Something If You Press One Of The Buttons
+    
     protected void actionPerformed(GuiButton GuiButton) 
     {
         if(GuiButton.id == 1)
@@ -37,6 +40,7 @@ public class GuiRockCutter extends GuiContainer
             mc.thePlayer.closeScreen();
         }
     }
+    
     
     // Drawing Text On Gui
     
