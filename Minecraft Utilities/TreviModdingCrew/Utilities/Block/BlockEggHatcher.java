@@ -2,6 +2,9 @@ package TreviModdingCrew.Utilities.Block;
 
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -11,15 +14,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import TreviModdingCrew.Utilities.Common.Main;
 import TreviModdingCrew.Utilities.Common.Reference;
 import TreviModdingCrew.Utilities.Tile.TileEntityEggHatcher;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockEggHatcher extends BlockContainer
 {
@@ -32,6 +31,38 @@ public class BlockEggHatcher extends BlockContainer
         setHardness(5F);
         setCreativeTab(Main.UtilitiesBlock);
     }
+    
+    
+    // Setting Textures
+    
+    private Icon[] IconBuffer = new Icon[3];
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    
+    public void registerIcons(IconRegister IconRegister)
+    {
+        IconBuffer[0] = IconRegister.registerIcon(Reference.ModID + ":" + "RockCutterBottom");
+        IconBuffer[1] = IconRegister.registerIcon(Reference.ModID + ":" + "Glass");
+        IconBuffer[2] = IconRegister.registerIcon(Reference.ModID + ":" + "MachineSide");
+    }
+    
+    @Override
+    public Icon getIcon(int Par1, int Par2)
+    {
+        if(Par1 == 0)
+        {
+            return IconBuffer[0];
+        }
+        
+        if(Par1 == 1)
+        {
+            return IconBuffer[1];
+        }
+        
+        return IconBuffer[2];
+    }
+    
     
     // Custom Block Render
     

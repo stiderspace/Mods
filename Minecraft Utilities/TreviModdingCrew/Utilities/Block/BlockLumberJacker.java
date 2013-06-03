@@ -37,6 +37,36 @@ public class BlockLumberJacker extends BlockContainer
     }
     
     
+    // Setting Textures
+    
+    private Icon[] IconBuffer = new Icon[2];
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    
+    public void registerIcons(IconRegister IconRegister)
+    {
+        IconBuffer[0] = IconRegister.registerIcon(Reference.ModID + ":" + "RockCutterBottom");
+        IconBuffer[1] = IconRegister.registerIcon(Reference.ModID + ":" + "MachineSide");
+    }
+    
+    @Override
+    public Icon getIcon(int Par1, int Par2)
+    {
+        if(Par1 == 0)
+        {
+            return IconBuffer[0];
+        }
+        
+        if(Par1 == 1)
+        {
+            return IconBuffer[0];
+        }
+        
+        return IconBuffer[1];
+    }
+    
+    
     // Creating A Tile
     
     @Override
@@ -70,6 +100,14 @@ public class BlockLumberJacker extends BlockContainer
     public int getRenderType()
     {
         return -1;
+    }
+    
+    
+    // Lets A Redstone Wire Connect To The Block
+    
+    public boolean canConnectRedstone(IBlockAccess iba, int i, int j, int k, int dir)
+    {
+        return true;
     }
     
     

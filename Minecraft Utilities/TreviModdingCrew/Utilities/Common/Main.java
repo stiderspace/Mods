@@ -4,6 +4,7 @@
  *
  * @Author Trevi Awater 
  * @License Gnu Public License Version 3
+ * 
  **/
 
 package TreviModdingCrew.Utilities.Common;
@@ -92,7 +93,7 @@ public class Main
 	public int RockCutterID;
 	public int EggHatcherID;
 	public int LumberJackerID;
-    
+	
 	public Property RecipeBone;
 	public Property RecipeCyanDye;
 	public Property RecipeIce;
@@ -166,7 +167,7 @@ public class Main
         
         Config.save();	
    
-        LogHandler.Log("Configuration File Loaded");  
+        LogHandler.Log("Configuration File Loaded", 0);  
     }
 
 
@@ -193,7 +194,7 @@ public class Main
         RockCutter = new BlockRockCutter(RockCutterID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Rock Cutter");
         EggHatcher = new BlockEggHatcher(EggHatcherID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Egg Hatcher");
         LumberJacker = new BlockLumberJacker(LumberJackerID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Lumber Jacker");
-        
+       
     	
     	// Block Registry
     	
@@ -201,7 +202,7 @@ public class Main
     	GameRegistry.registerBlock(RockCutter, "Rock Cutter");
     	GameRegistry.registerBlock(EggHatcher, "Egg Hatcher");
     	GameRegistry.registerBlock(LumberJacker, "Lumber Jacker");
-        
+    	
     	
     	// Network Registry
     	

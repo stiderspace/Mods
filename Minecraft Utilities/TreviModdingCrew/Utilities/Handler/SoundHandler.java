@@ -13,12 +13,12 @@ public class SoundHandler
     {
         try 
         {
-            LogHandler.Log("Sound Files Loaded");
+            LogHandler.Log("Sound Files Loaded", 0);
         } 
         
         catch (Exception Exception)
         {
-            LogHandler.Log("Could Not Load Sound Files");
+            LogHandler.Log("Could Not Load Sound Files", 1);
         }
     }
 }

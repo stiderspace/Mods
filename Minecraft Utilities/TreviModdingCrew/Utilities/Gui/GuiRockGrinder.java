@@ -19,6 +19,8 @@ public class GuiRockGrinder extends GuiContainer
     private int xMouse = 0;
     private int yMouse = 0;
     
+    public static boolean Signal = true;
+    
     private TileEntityRockGrinder Tile;
     
     public GuiRockGrinder(InventoryPlayer InventoryPlayer, TileEntityRockGrinder TileEntityRockGrinder)
@@ -37,7 +39,8 @@ public class GuiRockGrinder extends GuiContainer
         
         buttonList.add(new GuiButton(1, guiLeft + 180, guiTop + 5, 100, 20, ("Increase Speed")));
         buttonList.add(new GuiButton(2, guiLeft + 180, guiTop + 30, 100, 20, ("Decrease Speed")));
-        
+        buttonList.add(new GuiButton(3, guiLeft + 180, guiTop + 140, 100, 20, ("Close Grinder")));
+       
         GuiButton Button;
         
         if(Tile.Speed == 5)
@@ -60,7 +63,6 @@ public class GuiRockGrinder extends GuiContainer
             if(Tile.Speed < 5)
             {
                 Tile.Speed++;
-                
                 
                 GuiButton Decrease = (GuiButton)buttonList.get(1);
                 Decrease.enabled = true;
@@ -100,6 +102,11 @@ public class GuiRockGrinder extends GuiContainer
                     Button.enabled = true;
                 }
             }
+        }
+        
+        if(GuiButton.id == 3)
+        {
+            mc.thePlayer.closeScreen();
         }
     }
     
@@ -162,11 +169,11 @@ public class GuiRockGrinder extends GuiContainer
         if (Tile.isBurning())
         {
             Var3 = Tile.getBurnTimeRemainingScaled(12);
-                   drawTexturedModalRect(Var1 + 57, Var2 + 36 + 12 - Var3, 176, 12 - Var3, 14, Var3 + 2);
+            drawTexturedModalRect(Var1 + 57, Var2 + 36 + 12 - Var3, 176, 12 - Var3, 14, Var3 + 2);
         }
 
         Var3 = Tile.getCookProgressScaled(24);
-               drawTexturedModalRect(Var1 + 79, Var2 + 34, 176, 14, Var3 + 1, 16);
+        drawTexturedModalRect(Var1 + 79, Var2 + 34, 176, 14, Var3 + 1, 16);
     }
     
     private void drawMouse()

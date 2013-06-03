@@ -1,5 +1,6 @@
 package TreviModdingCrew.Utilities.Gui;
 
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.StatCollector;
@@ -19,6 +20,24 @@ public class GuiRockCutter extends GuiContainer
     }
     
     
+    // Before The Gui Loads
+    
+    @Override
+    public void initGui() 
+    {
+        super.initGui();
+        
+        buttonList.add(new GuiButton(1, guiLeft + 180, guiTop + 5, 100, 20, ("Close Cutter")));
+    }
+    
+    protected void actionPerformed(GuiButton GuiButton) 
+    {
+        if(GuiButton.id == 1)
+        {
+            mc.thePlayer.closeScreen();
+        }
+    }
+    
     // Drawing Text On Gui
     
     protected void drawGuiContainerForegroundLayer(int Par1, int Par2)
@@ -35,6 +54,7 @@ public class GuiRockCutter extends GuiContainer
     protected void drawGuiContainerBackgroundLayer(float Par1, int Par2, int Par3)
     {
         mc.renderEngine.bindTexture("/TreviModdingCrew/Utilities/Textures/Gui/Rock Cutter.png");
+        
         GL11.glColor4f(1F, 1F, 1F, 1F);
         
         int Var4 = (width - xSize) / 2;

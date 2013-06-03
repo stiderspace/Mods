@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import TreviModdingCrew.Utilities.Common.Main;
@@ -74,6 +75,14 @@ public class BlockRockGrinder extends BlockContainer
     }
     
     
+    // Lets A Redstone Wire Connect To The Block
+    
+    public boolean canConnectRedstone(IBlockAccess iba, int i, int j, int k, int dir)
+    {
+        return true;
+    }
+    
+    
     // Creating The Tile
     
 	@Override
@@ -100,7 +109,6 @@ public class BlockRockGrinder extends BlockContainer
         int BlockAbove = World.getBlockId(Var1, Var2 + 1, Var3);
         int BlockRight = World.getBlockId(Var1, Var2, Var3 + 1);
         int BlockLeft = World.getBlockId(Var1 + 1, Var2, Var3);
-        int BlockFront = World.getBlockId(Var1 - 1, Var2, Var3);
         int BlockBack = World.getBlockId(Var1, Var2, Var3 - 1);
         
         if (BlockAbove == Block.hopperBlock.blockID && (BlockLeft == Block.lever.blockID || BlockRight == Block.lever.blockID || BlockBack == Block.lever.blockID))
