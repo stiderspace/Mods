@@ -104,6 +104,8 @@ public class RenderMagnet implements IItemRenderer
             
             break;
             
+            default:
+            break;
         }
     }
 }

@@ -99,7 +99,9 @@ public class RenderBomb implements IItemRenderer
 			}
 			
 			break;
-			
+            
+			default:
+            break;
 		}	
 	}
 }

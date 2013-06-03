@@ -80,7 +80,6 @@ public class Main
         
         GameRegistry.registerItem(LiquidGun, "Liquid Gun");
         
-        
         // Entity Registry
         
         EntityRegistry.registerModEntity(TreviModdingCrew.LiquidGun.Entity.EntityLiquidBullet.class, "EntityLiquidBullet", 99, this, 99, 1, true);
@@ -97,9 +96,10 @@ public class Main
         {
             GameRegistry.addRecipe(new ItemStack(LiquidGun, 1), new Object[]
             {
-                " G ", "III", "  I", 'G', Block.glass, 'I', Item.ingotIron
+                " G ", "III", " II", 'G', Block.glass, 'I', Item.ingotIron
             });
         }
+        
         
         // Language Registry
         

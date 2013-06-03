@@ -1,11 +1,9 @@
 package TreviModdingCrew.LiquidGun.Render;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.particle.EntitySmokeFX;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.src.ModLoader;
-import net.minecraftforge.liquids.IBlockLiquid;
 
 import TreviModdingCrew.LiquidGun.Entity.EntityLiquidBullet;
 
@@ -19,7 +17,6 @@ public class RenderLiquidBullet extends Render
             try
             {
                 int Par6 = ((EntityLiquidBullet)Entity).getLiquidItemID();
-                byte[] Par7 = ((IBlockLiquid)Block.blocksList[Par6]).getLiquidRGB();
                
                 EntitySmokeFX EntitySmokeFX = new EntitySmokeFX(Entity.worldObj, Par1, Par2, Par3, 0, 0, 0);
                 ModLoader.getMinecraftInstance().effectRenderer.addEffect(EntitySmokeFX);

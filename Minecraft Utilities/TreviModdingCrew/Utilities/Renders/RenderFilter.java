@@ -98,7 +98,9 @@ public class RenderFilter implements IItemRenderer
 			}
 			
 			break;
-			
+            
+			default:
+            break;	
 		}
 	}
 }

@@ -64,7 +64,7 @@ public class ItemLiquidGun extends Item
             List.add("To charge it you need to click it");
             List.add("a water or lava source block.");
             List.add("We have not tested this out with");
-            List.add("other mods, it might crash you.");
+            List.add("other mods, it might crash your game.");
         }
     }
 
@@ -249,8 +249,8 @@ public class ItemLiquidGun extends Item
                 
                 LiquidStack Par9 = Par8.copy();
                 Par9.amount = (int) Math.floor(10 * Par6);
-                EntityLiquidBullet bullet = new EntityLiquidBullet(World, EntityPlayer, Par7 * 2.0F, Par9, Par6);
-                World.spawnEntityInWorld(bullet);
+                EntityLiquidBullet Bullet = new EntityLiquidBullet(World, EntityPlayer, Par7 * 2.0F, Par9, Par6);
+                World.spawnEntityInWorld(Bullet);
             }
             
             if(Par8 != null)

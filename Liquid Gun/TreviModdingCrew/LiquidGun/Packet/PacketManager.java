@@ -12,7 +12,7 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-import TreviModdingCrew.Utilities.Handler.LogHandler;
+import TreviModdingCrew.LiquidGun.Handler.LogHandler;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
