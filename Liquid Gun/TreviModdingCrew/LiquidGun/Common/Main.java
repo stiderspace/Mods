@@ -65,7 +65,7 @@ public class Main
         
         Config.save();  
    
-        LogHandler.Log("Configuration File Loaded");  
+        LogHandler.Log("Configuration File Loaded", 0);  
     }
     
     @Init
