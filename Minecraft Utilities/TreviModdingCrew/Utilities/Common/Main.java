@@ -1,7 +1,7 @@
 /**
  * Minecraft Utilities
  *
- *
+ * 
  * @Author Trevi Awater 
  * @License Gnu Public License Version 3
  * 
@@ -23,6 +23,7 @@ import TreviModdingCrew.Utilities.Block.BlockEggHatcher;
 import TreviModdingCrew.Utilities.Block.BlockLumberJacker;
 import TreviModdingCrew.Utilities.Block.BlockRockCutter;
 import TreviModdingCrew.Utilities.Block.BlockRockGrinder;
+import TreviModdingCrew.Utilities.Block.BlockWashingMachine;
 import TreviModdingCrew.Utilities.Entity.EntityBomb;
 import TreviModdingCrew.Utilities.Handler.FuelHandler;
 import TreviModdingCrew.Utilities.Handler.LogHandler;
@@ -38,6 +39,7 @@ import TreviModdingCrew.Utilities.Tab.TabUtilitiesItem;
 import TreviModdingCrew.Utilities.Tile.TileEntityEggHatcher;
 import TreviModdingCrew.Utilities.Tile.TileEntityLumberJacker;
 import TreviModdingCrew.Utilities.Tile.TileEntityRockGrinder;
+import TreviModdingCrew.Utilities.Tile.TileEntityWashingMachine;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -81,6 +83,7 @@ public class Main
 	public static Block RockCutter;
 	public static Block EggHatcher;
 	public static Block LumberJacker;
+	public static Block WashingMachine;
 	
 	public static CreativeTabs UtilitiesBlock = new TabUtilitiesBlock(CreativeTabs.getNextID(), "Utilities Blocks");
 	public static CreativeTabs UtilitiesItem = new TabUtilitiesItem(CreativeTabs.getNextID(), "Utilities Items");
@@ -93,6 +96,7 @@ public class Main
 	public int RockCutterID;
 	public int EggHatcherID;
 	public int LumberJackerID;
+	public int WashingMachineID;
 	
 	public Property RecipeBone;
 	public Property RecipeCyanDye;
@@ -116,7 +120,8 @@ public class Main
 	public Property RecipeRockGrinder;
 	public Property RecipeEggHatcher;
 	public Property RecipeLumberJacker;
-	
+	public Property RecipeWashingMachine;
+    
 	public static Property OverideRockCutter;
 	public static Property OverideRockGrinder;
 	
@@ -137,6 +142,7 @@ public class Main
         RockCutterID = Config.getBlock("Rock Cutter", 2501).getInt();
         EggHatcherID = Config.getBlock("Egg Hatcher", 2502).getInt();
         LumberJackerID = Config.getBlock("Lumber Jacker", 2503).getInt();
+        WashingMachineID = Config.getBlock("Washing Machine", 2504).getInt();
         
         RecipeBone = Config.get("Recipes", "Bone", true);
         RecipeCyanDye = Config.get("Recipes", "Cyan Dye", true);
@@ -156,6 +162,7 @@ public class Main
         RecipeRockGrinder = Config.get("Recipes", "Rock Grinder", true);
         RecipeEggHatcher = Config.get("Recipes", "Egg Hatcher", true);
         RecipeLumberJacker = Config.get("Recipes", "Lumber Jacker", true);
+        RecipeWashingMachine = Config.get("Recipes", "Washing Machine", true);
         
         RecipeNetherBricks = Config.get("Smelting", "Nether Bricks", true);
         RecipeNetherBrick = Config.get("Smelting", "Nether Bricks", true);
@@ -194,7 +201,8 @@ public class Main
         RockCutter = new BlockRockCutter(RockCutterID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Rock Cutter");
         EggHatcher = new BlockEggHatcher(EggHatcherID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Egg Hatcher");
         LumberJacker = new BlockLumberJacker(LumberJackerID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Lumber Jacker");
-       
+        WashingMachine = new BlockWashingMachine(WashingMachineID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Washing Machine");
+        
     	
     	// Block Registry
     	
@@ -202,7 +210,8 @@ public class Main
     	GameRegistry.registerBlock(RockCutter, "Rock Cutter");
     	GameRegistry.registerBlock(EggHatcher, "Egg Hatcher");
     	GameRegistry.registerBlock(LumberJacker, "Lumber Jacker");
-    	
+    	GameRegistry.registerBlock(WashingMachine, "Washing Machine");
+        
     	
     	// Network Registry
     	
@@ -241,26 +250,22 @@ public class Main
      
     	if (RecipeNetherBricks.getBoolean(false) == true)
     	{
-    		GameRegistry.addSmelting(Block.brick.blockID,
-    			 new ItemStack(Block.netherBrick), 1.5F);
+    		GameRegistry.addSmelting(Block.brick.blockID, new ItemStack(Block.netherBrick), 1.5F);	
     	}
      
     	if (RecipeNetherBrick.getBoolean(false) == true)
         {
-            GameRegistry.addSmelting(Item.brick.itemID,
-                 new ItemStack(Item.netherrackBrick), 0.5F);
+            GameRegistry.addSmelting(Item.brick.itemID, new ItemStack(Item.netherrackBrick), 0.5F);   
         }
     	
     	if (RecipeNetherStairs.getBoolean(false) == true)
     	{
-    		GameRegistry.addSmelting(Block.stairsBrick.blockID,
-    				new ItemStack(Block.stairsNetherBrick), 1.5F);
+    		GameRegistry.addSmelting(Block.stairsBrick.blockID, new ItemStack(Block.stairsNetherBrick), 1.5F);		
     	}
      
     	if (RecipeLeather.getBoolean(false) == true)
     	{
-    		GameRegistry.addSmelting(Item.rottenFlesh.itemID,
-    			 new ItemStack(Item.leather), 0.5F);
+    		GameRegistry.addSmelting(Item.rottenFlesh.itemID, new ItemStack(Item.leather), 0.5F);	
     	}
     
     	
@@ -406,6 +411,7 @@ public class Main
 	    GameRegistry.registerTileEntity(TileEntityRockGrinder.class, "Rock Grinder");
 	    GameRegistry.registerTileEntity(TileEntityEggHatcher.class, "Egg Hatcher");
 	    GameRegistry.registerTileEntity(TileEntityLumberJacker.class, "Lumber Jacker");
+	    GameRegistry.registerTileEntity(TileEntityWashingMachine.class, "Washing Machine");
 
 	    
 	    // Language Registry
@@ -418,5 +424,6 @@ public class Main
 	    LanguageRegistry.addName(RockCutter, "Rock Cutter");
 	    LanguageRegistry.addName(EggHatcher, "Egg Hatcher");
 	    LanguageRegistry.addName(LumberJacker, "Lumber Jacker");
+	    LanguageRegistry.addName(WashingMachine, "Washing Machine");
     }
 }

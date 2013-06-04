@@ -101,7 +101,7 @@ public class BlockLumberJacker extends BlockContainer
     
     // Lets A Redstone Wire Connect To The Block
     
-    public boolean canConnectRedstone(IBlockAccess iba, int i, int j, int k, int dir)
+    public boolean canConnectRedstone(IBlockAccess IBlockAccess, int Var1, int Var2, int Var3, int Var4)
     {
         return true;
     }

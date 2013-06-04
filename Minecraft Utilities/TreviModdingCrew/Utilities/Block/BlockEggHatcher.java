@@ -112,7 +112,8 @@ public class BlockEggHatcher extends BlockContainer
             	if(!World.isRemote)
             	{
             		EntityPlayer.inventory.consumeInventoryItem(Item.egg.itemID);
-	                EntityItem Var5 = new EntityItem(World, Var1 + 0.5, Var2 + 1, Var3 + 0.5, new ItemStack(Item.egg));
+	                
+            		EntityItem Var5 = new EntityItem(World, Var1 + 0.5, Var2 + 1, Var3 + 0.5, new ItemStack(Item.egg));
 	                World.spawnEntityInWorld(Var5);
             	}
             }
@@ -158,12 +159,12 @@ public class BlockEggHatcher extends BlockContainer
     @Override
     public TileEntity createNewTileEntity(World World)
     {
-        TileEntityEggHatcher TileEntityHatcher = new TileEntityEggHatcher();
+        TileEntityEggHatcher Tile = new TileEntityEggHatcher();
         
-        TileEntityHatcher.TickToHatch = 0;
-        TileEntityHatcher.CanPutEggIn = true;
+        Tile.TickToHatch = 0;
+        Tile.CanPutEggIn = true;
         
-        return TileEntityHatcher;
+        return Tile;
     }
     
     public void breakBlock(World World, int Par2, int Par3, int Par4, int Par5, int Par6)

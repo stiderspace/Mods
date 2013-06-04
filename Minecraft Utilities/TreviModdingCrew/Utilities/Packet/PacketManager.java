@@ -57,7 +57,7 @@ public class PacketManager implements IPacketHandler
 		
         catch(Exception Exception)
         {
-            LogHandler.Log("Could Not Sent Tag Compound Packet", 2);
+            LogHandler.Log("Could Not Sent Tag Compound Packet", 1);
         }
 	}
 	
@@ -80,7 +80,7 @@ public class PacketManager implements IPacketHandler
 	
 		catch(IOException IOException)
 		{
-		    LogHandler.Log("Could Not Sent Tile Entity Data", 2);
+		    LogHandler.Log("Could Not Sent Tile Entity Data", 1);
 		}
 	}
 	
@@ -136,13 +136,13 @@ public class PacketManager implements IPacketHandler
 		
 	        FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().sendPacketToAllPlayers(Packet);
 		
-	        LogHandler.Log("Packet Successfully Sent To Client", 2);
+	        LogHandler.Log("Packet Successfully Sent To Client", 0);
 		
 	    }
 	    
 	    catch(IOException IOException)
 	    {
-	        LogHandler.Log("Failed To Sent Packet To Client", 2);
+	        LogHandler.Log("Failed To Sent Packet To Client", 1);
 	    }
 	}
 	
@@ -198,13 +198,13 @@ public class PacketManager implements IPacketHandler
 	           
 	            PacketDispatcher.sendPacketToServer(Packet);
 	            
-	            LogHandler.Log("Packet Successfully Sent To Server", 2);
+	            LogHandler.Log("Packet Successfully Sent To Server", 0);
 	            
         }
 	    
         catch(IOException IOException)
         {
-            LogHandler.Log("Failed To Sent Packet To Server", 2);
+            LogHandler.Log("Failed To Sent Packet To Server", 1);
         }
 	}
 }
