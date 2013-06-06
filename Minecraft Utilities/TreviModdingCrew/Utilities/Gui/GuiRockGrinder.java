@@ -120,8 +120,8 @@ public class GuiRockGrinder extends GuiContainer
         String SpeedValue = "Speed: " + TileEntityRockGrinder.Speed;
         
         fontRenderer.drawString(Name, xSize / 2 - fontRenderer.getStringWidth(Name) / 2, 6, 4210752);
-        fontRenderer.drawString(SpeedValue, xSize / 2 + 60 - fontRenderer.getStringWidth(SpeedValue) / 2, 72, 4210752);
-        fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, (ySize - 96) + 2, 4210752);
+        fontRenderer.drawString(SpeedValue, xSize / 2 + 60 - fontRenderer.getStringWidth(SpeedValue) / 2, 73, 4210752);
+        fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, (ySize - 95) + 2, 4210752);
         
         drawMouse();
     }
@@ -159,11 +159,11 @@ public class GuiRockGrinder extends GuiContainer
         {
             int showUntil = 0;
             
-            for(int i=1; i<53; i++)
+            for(int I=1; I<53; I++)
             {
-                if(Tile.MyProvider.getEnergyStored() >= i * 153.846)
+                if(Tile.MyProvider.getEnergyStored() >= I * 153.846)
                 {
-                    showUntil = i;
+                    showUntil = I;
                 }
             }
             

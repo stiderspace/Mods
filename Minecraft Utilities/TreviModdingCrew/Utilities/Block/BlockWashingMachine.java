@@ -2,19 +2,24 @@ package TreviModdingCrew.Utilities.Block;
 
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import TreviModdingCrew.Utilities.Common.Main;
-import TreviModdingCrew.Utilities.Tile.TileEntityEggHatcher;
+import TreviModdingCrew.Utilities.Common.Reference;
 import TreviModdingCrew.Utilities.Tile.TileEntityWashingMachine;
 
 public class BlockWashingMachine extends BlockContainer
@@ -105,6 +110,25 @@ public class BlockWashingMachine extends BlockContainer
         }
         
         super.breakBlock(World, Par2, Par3, Par4, Par5, Par6);
+    }
+    
+    
+    // Setting Textures
+    
+    private Icon[] IconBuffer = new Icon[1];
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    
+    public void registerIcons(IconRegister IconRegister)
+    {
+        IconBuffer[0] = IconRegister.registerIcon(Reference.ModID + ":" + "RockCutterBottom");
+    }
+    
+    @Override
+    public Icon getIcon(int Par1, int Par2)
+    {
+        return IconBuffer[0];
     }
     
     
