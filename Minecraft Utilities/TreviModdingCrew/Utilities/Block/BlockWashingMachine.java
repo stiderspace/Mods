@@ -97,7 +97,7 @@ public class BlockWashingMachine extends BlockContainer
     }
     
     
-    // If Block Breaks Drop Items Inside
+    // Lets Something Happen If The Block Breaks
     
     public void breakBlock(World World, int Par2, int Par3, int Par4, int Par5, int Par6)
     {

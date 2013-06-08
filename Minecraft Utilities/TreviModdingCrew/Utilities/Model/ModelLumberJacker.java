@@ -15,18 +15,29 @@ import net.minecraftforge.client.model.IModelCustom;
 @SideOnly(Side.CLIENT)
 public class ModelLumberJacker extends ModelBase
 {
+    // Declaration
+    
     private IModelCustom LumberJacker;
+    
+    
+    // Constructor
     
     public ModelLumberJacker()
     {
         LumberJacker = AdvancedModelLoader.loadModel("/TreviModdingCrew/Utilities/Libery/Lumber Jacker.obj");
     }
     
+    
+    // Main Render Method
+    
     public void Render()
     {
         LumberJacker.renderAll();
     }
 
+    
+    // Secondary Render Method
+    
     public void Render(TileEntityLumberJacker TileEntityLumberJacker, double Var1, double Var2, double Var3)
     {
         GL11.glPushMatrix();

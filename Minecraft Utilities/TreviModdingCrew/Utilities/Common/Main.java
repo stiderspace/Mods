@@ -125,6 +125,7 @@ public class Main
 	public Property RecipeEggHatcher;
 	public Property RecipeLumberJacker;
 	public Property RecipeWashingMachine;
+	public Property RecipeTrashCan;
     
 	public static Property OverideRockCutter;
 	public static Property OverideRockGrinder;
@@ -168,6 +169,7 @@ public class Main
         RecipeEggHatcher = Config.get("Recipes", "Egg Hatcher", true);
         RecipeLumberJacker = Config.get("Recipes", "Lumber Jacker", true);
         RecipeWashingMachine = Config.get("Recipes", "Washing Machine", true);
+        RecipeTrashCan = Config.get("Recipes", "Trash Can", true);
         
         RecipeNetherBricks = Config.get("Smelting", "Nether Bricks", true);
         RecipeNetherBrick = Config.get("Smelting", "Nether Bricks", true);
@@ -354,6 +356,22 @@ public class Main
             GameRegistry.addRecipe(new ItemStack(LumberJacker), new Object[]
             {
                 "CIC", "CRC", "CCC", 'C', Block.cobblestone, 'R', Item.redstone, 'I', Item.ingotIron
+            });
+        }
+    	
+    	if (RecipeWashingMachine.getBoolean(false) == true)
+        {
+            GameRegistry.addRecipe(new ItemStack(WashingMachine), new Object[]
+            {
+                "CGC", "CBC", "CCC", 'C', Block.cobblestone, 'B', Item.bucketEmpty, 'G', Block.glass
+            });
+        }
+    	
+    	if (RecipeTrashCan.getBoolean(false) == true)
+        {
+            GameRegistry.addRecipe(new ItemStack(TrashCan), new Object[]
+            {
+                "C C", "C C", "CCC", 'C', Block.cobblestone 
             });
         }
      

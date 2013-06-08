@@ -16,6 +16,8 @@ import TreviModdingCrew.Utilities.Handler.RockCutHandler;
 
 public class ContainerRockCutter extends Container 
 {
+    // Declaration 
+    
     private World worldObject;
     
     private int Par1;
@@ -25,9 +27,11 @@ public class ContainerRockCutter extends Container
     public InventoryCrafting CraftMatrix = new InventoryCrafting(this, 3, 3);
     public IInventory CraftResult = new InventoryCraftResult();
     
+    
+    // Constructor
+    
     public ContainerRockCutter(InventoryPlayer InventoryPlayer, World World, int Var1, int Var2, int Var3)
     {
-        
         worldObject = World;
         
         Par1 = Var1;
@@ -63,17 +67,26 @@ public class ContainerRockCutter extends Container
         onCraftMatrixChanged(CraftMatrix);
     }
     
+    
+    // Who Can Interact With This Block?
+    
     @Override
     public boolean canInteractWith(EntityPlayer EntityPlayer)
     {
         return worldObject.getBlockId(Par1, Par2, Par3) != Main.RockCutter.blockID ? false : EntityPlayer.getDistanceSq((double)Par1 + 0.5D, (double)Par2 + 0.5D, (double)Par3 + 0.5D) <= 64.0D;
     }
 
+    
+    // Shows What You Get From Crafting
+    
     public void onCraftMatrixChanged(IInventory IInventory)
     {
         ItemStack Stacks = RockCutHandler.getInstance().findMatchingRecipe(CraftMatrix, worldObject);
         CraftResult.setInventorySlotContents(0, ItemStack.areItemStacksEqual(Stacks, new ItemStack(Block.planks, 2, 0)) ? null : Stacks);
     }
+    
+    
+    // If You Close The Gui
     
     public void onCraftGuiClosed(EntityPlayer EntityPlayer)
     {
@@ -91,6 +104,9 @@ public class ContainerRockCutter extends Container
             }
         }
     }
+    
+    
+    // Transfers Items Into The Slots
     
     public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int Par2)
     {
@@ -149,7 +165,6 @@ public class ContainerRockCutter extends Container
             }
 
             Var4.onPickupFromSlot(par1EntityPlayer, Var5);
-            
         }
              
         return Var3;

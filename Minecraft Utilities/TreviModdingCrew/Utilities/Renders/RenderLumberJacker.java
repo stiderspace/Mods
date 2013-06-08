@@ -11,6 +11,8 @@ import cpw.mods.fml.client.FMLClientHandler;
 
 public class RenderLumberJacker implements IItemRenderer
 {
+    // Declaration 
+    
     private ModelLumberJacker Model;
     
     public RenderLumberJacker()
@@ -18,17 +20,26 @@ public class RenderLumberJacker implements IItemRenderer
         Model = new ModelLumberJacker();
     }
     
+    
+    // If It Needs To Handle The Render Type
+    
     @Override
     public boolean handleRenderType(ItemStack ItemStack, ItemRenderType ItemRenderType)
     {
         return true;
     }
     
+    
+    // Should It Use The Render Helper
+    
     @Override
     public boolean shouldUseRenderHelper(ItemRenderType ItemRenderType, ItemStack ItemStack, ItemRendererHelper ItemRendererHelper)
     {
         return true;
     }
+    
+    
+    // Main Rendering Method 
     
     @Override
     public void renderItem(ItemRenderType ItemRenderType, ItemStack ItemStack, Object... data)
@@ -62,6 +73,9 @@ public class RenderLumberJacker implements IItemRenderer
             default: return;
         }
     }
+
+    
+    // Secondary Render Method
     
     private void Render(float Var1, float Var2, float Var3, float Scale, ItemRenderType ItemRenderType)
     { 

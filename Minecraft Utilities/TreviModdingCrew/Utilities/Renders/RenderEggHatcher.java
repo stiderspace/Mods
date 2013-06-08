@@ -11,12 +11,17 @@ import cpw.mods.fml.client.FMLClientHandler;
 
 public class RenderEggHatcher implements IItemRenderer
 {
+    // Declaration
+    
     private ModelEggHatcher EggHatcher;
     
     public RenderEggHatcher()
     {
         EggHatcher = new ModelEggHatcher();
     }
+
+    
+    // If It Needs To Handle The Render Type
     
     @Override
     public boolean handleRenderType(ItemStack ItemStack, ItemRenderType ItemRenderType)
@@ -24,11 +29,17 @@ public class RenderEggHatcher implements IItemRenderer
         return true;
     }
     
+    
+    // Should It Use The Render Helper
+    
     @Override
     public boolean shouldUseRenderHelper(ItemRenderType ItemRenderType, ItemStack ItemStack, ItemRendererHelper ItemRendererHelper)
     {
         return true;
     }
+
+    
+    // Main Rendering Method 
     
     @Override
     public void renderItem(ItemRenderType ItemRenderType, ItemStack ItemStack, Object... data)
@@ -62,6 +73,9 @@ public class RenderEggHatcher implements IItemRenderer
             default: return;
         }
     }
+    
+    
+    // Secondary Render Method
     
     private void Render(float Var1, float Var2, float Var3, float Scale, ItemRenderType ItemRenderType)
     { 

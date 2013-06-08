@@ -10,16 +10,24 @@ import cpw.mods.fml.common.TickType;
 
 public class KeyBindHandler extends KeyHandler
 {
+    // Declaration
+    
     private EnumSet <TickType> Type = EnumSet.of(TickType.CLIENT);
     
     static KeyBinding More = new KeyBinding("More Information", Keyboard.KEY_M);
     
     public static boolean MoreKeyDown = false;
     
+    
+    // Constructor
+    
     public KeyBindHandler()
     {
         super(new KeyBinding[]{More}, new boolean[]{false, false});
     }
+    
+    
+    // Sets A Button Description
     
     @Override
     public String getLabel() 
@@ -27,6 +35,9 @@ public class KeyBindHandler extends KeyHandler
         return "More Information";
     }
 
+    
+    // Checks If A Key Is Held Down And Returns True
+    
     @Override
     public void keyDown(EnumSet <TickType> Types, KeyBinding KeyBinding, boolean TickEnd, boolean IsRepeat)
     {
@@ -36,6 +47,9 @@ public class KeyBindHandler extends KeyHandler
         }
     }
 
+    
+    // Checks If A Key Is Up And Returns False
+    
     @Override
     public void keyUp(EnumSet <TickType> Types, KeyBinding KeyBinding, boolean TickEnd)
     {
@@ -45,8 +59,11 @@ public class KeyBindHandler extends KeyHandler
         }  
     }
 
+    
+    // Makes It A Enum Tick Type
+    
     @Override
-    public EnumSet<TickType> ticks() 
+    public EnumSet <TickType> ticks() 
     {
         return Type;
     }

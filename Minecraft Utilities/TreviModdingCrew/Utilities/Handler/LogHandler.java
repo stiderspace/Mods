@@ -10,17 +10,17 @@ public class LogHandler
     {
         if(Level == 0)
         {
-            System.out.println(Reference.ModID + ": " + "\u00a7a" + Message);
+            System.out.println(Reference.ModID + ": " + Message);
         }
         
         if(Level == 1)
         {
-            System.out.println(Reference.ModID + ": " + "\u00a7e" + Message);
+            System.out.println(Reference.ModID + ": " + Message);
         }
         
         if(Level == 2)
         {
-            System.out.println(Reference.ModID + ": " + "\u00a7c" + Message);
+            System.out.println(Reference.ModID + ": " + Message);
         }
     }   
 }

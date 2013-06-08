@@ -18,84 +18,84 @@ public class EntityBomb extends EntityThrowable
 	
 	// Getting The Texture File
 
-  public String getTextureFile()
-  {
-	  return "/TreviModdingCrew/Utilities/Textures/Item.png";
-  }
+	public String getTextureFile()
+	{
+	    return "/TreviModdingCrew/Utilities/Textures/Item.png";
+	}
 
   
-  // Telling The Computer Where To Throw The Entity
+	// Telling The Computer Where To Throw The Entity
   
-  public EntityBomb(World World)
-  {
-	  super(World);
+	public EntityBomb(World World)
+	{
+	    super(World);
 	  
-	  setSize(0.5F, 0.5F);
-	  yOffset = (height / -0.6F);
-	  BounceFactor = 0.75F;
-	  Exploded = false;
-	  Fuse = 0;
-  }
+	    setSize(0.5F, 0.5F);
+	    yOffset = (height / -0.6F);
+	    BounceFactor = 0.75F;
+	    Exploded = false;
+	    Fuse = 0;
+	}
   
   
-  // Making It A Entity
+	// Making It A Entity
   
-  public EntityBomb(World World, EntityLiving EntityLiving)
-  {
-	  super(World, EntityLiving);
-  }
+	public EntityBomb(World World, EntityLiving EntityLiving)
+	{
+	    super(World, EntityLiving);
+	}
 
   
-  // Letting It Render From All Sides
-  
-  public EntityBomb(World World, float Par1, float Par2, float Par3)
-  {
-	  super(World, Par1, Par2, Par3);
-  }
+	// Letting It Render From All Sides
+	
+	public EntityBomb(World World, float Par1, float Par2, float Par3)
+	{
+	    super(World, Par1, Par2, Par3);
+	}
 
   
-  // Set How It Acts In The Air & Ground
+	// Set How It Acts In The Air & Ground
   
-  public void onUpdate()
-  {
-	  prevPosX = posX;
-	  prevPosY = posY;
-	  prevPosZ = posZ;
-	  motionY -= 0.03999999910593033D;
+	public void onUpdate()
+	{
+	    prevPosX = posX;
+	    prevPosY = posY;
+	    prevPosZ = posZ;
+	    motionY -= 0.03999999910593033D;
 	  
-	  moveEntity(motionX, motionY, motionZ);
+	    moveEntity(motionX, motionY, motionZ);
 	  
-	  motionX *= 0.9800000190734863F;
-	  motionY *= 0.9800000190734863F;
-	  motionZ *= 0.9800000190734863F;
+	    motionX *= 0.9800000190734863F;
+	    motionY *= 0.9800000190734863F;
+	    motionZ *= 0.9800000190734863F;
+	  
+	    if (onGround)
+	    {
+	        motionX *= 0.699999988079071F;
+	        motionZ *= 0.699999988079071F;
+	        motionY *= -0.5F;
+	    }
 
-	  if (onGround)
-	  {
-		  motionX *= 0.699999988079071F;
-		  motionZ *= 0.699999988079071F;
-      	  motionY *= -0.5F;
-	  }
-
-	  if (Fuse++ >= 50)
-	  {
-		  setDead();
+	    if (Fuse++ >= 50)
+	    {
+	        setDead();
     	
-		  if (!worldObj.isRemote)
-		  {
-			  Explode();
-		  }
-	  }
+	        if (!worldObj.isRemote)
+	        {
+	            Explode();
+	        }
+	    }
 	  
-	  else
-	  {
-		  worldObj.spawnParticle("smoke", this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D);
-	  }
-  }
+	    else
+	    {
+	        worldObj.spawnParticle("smoke", this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D);
+	    }
+	}
 
   
-  	// Setting How Big The Explosion Is
+	// Setting How Big The Explosion Is
   
-  	private void Explode()
+	private void Explode()
   	{
 	  	float Var1 = 2.5F;
 	

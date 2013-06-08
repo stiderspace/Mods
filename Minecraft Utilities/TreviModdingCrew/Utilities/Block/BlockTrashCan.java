@@ -33,8 +33,9 @@ import static net.minecraftforge.common.ForgeDirection.DOWN;
 
 public class BlockTrashCan extends BlockContainer
 {
-    private final Random random = new Random();
-   
+    // Decelaration
+    
+    public final Random random = new Random();
     public final int Value;
 
     public BlockTrashCan(int Par1, int Par2)
@@ -45,6 +46,8 @@ public class BlockTrashCan extends BlockContainer
     }
 
   
+    // When The Player Places It Down
+    
     public void onBlockAdded(World World, int Par2, int Par3, int Par4)
     {
         super.onBlockAdded(World, Par2, Par3, Par4);
@@ -77,6 +80,9 @@ public class BlockTrashCan extends BlockContainer
         }
     }
 
+    
+    // Checks Who Placed The Block
+    
     public void onBlockPlacedBy(World World, int Par2, int Par3, int Par4, EntityLiving EntityLiving, ItemStack ItemStack)
     {
         int Var1 = World.getBlockId(Par2, Par3, Par4 - 1);
@@ -152,6 +158,9 @@ public class BlockTrashCan extends BlockContainer
         }
     }
 
+    
+    // Combines The Chests Together
+    
     public void unifyAdjacentChests(World World, int Par2, int Par3, int Par4)
     {
         if (!World.isRemote)
@@ -161,12 +170,10 @@ public class BlockTrashCan extends BlockContainer
             int Var3 = World.getBlockId(Par2 - 1, Par3, Par4);
             int Var4 = World.getBlockId(Par2 + 1, Par3, Par4);
             
-            boolean Flag1 = true;
-            
             int Var5;
             int Var6;
             
-            boolean Flag2;
+            boolean Flag;
             
             byte Var7;
             
@@ -205,7 +212,7 @@ public class BlockTrashCan extends BlockContainer
                     Var6 = World.getBlockId(Var3 == blockID ? Par2 - 1 : Par2 + 1, Par3, Par4 + 1);
                     Var7 = 3;
                     
-                    Flag2 = true;
+                    Flag = true;
 
                     if (Var3 == blockID)
                     {
@@ -240,7 +247,7 @@ public class BlockTrashCan extends BlockContainer
                 Var6 = World.getBlockId(Par2 + 1, Par3, Var2 == blockID ? Par4 - 1 : Par4 + 1);
                 Var7 = 5;
                 
-                Flag2 = true;
+                Flag = true;
 
                 if (Var2 == blockID)
                 {
@@ -272,6 +279,9 @@ public class BlockTrashCan extends BlockContainer
         }
     }
 
+    
+    // Sets It If You Can Place The Block
+    
     public boolean canPlaceBlockAt(World World, int Par2, int Par3, int Par4)
     {
         int Var1 = 0;
@@ -299,11 +309,17 @@ public class BlockTrashCan extends BlockContainer
         return Var1 > 1 ? false : (isThereANeighborChest(World, Par2 - 1, Par3, Par4) ? false : (isThereANeighborChest(World, Par2 + 1, Par3, Par4) ? false : (isThereANeighborChest(World, Par2, Par3, Par4 - 1) ? false : !isThereANeighborChest(World, Par2, Par3, Par4 + 1))));
     }
 
+    
+    // Checks If There Is A Chest On The Side
+    
     private boolean isThereANeighborChest(World World, int Par2, int Par3, int Par4)
     {
         return World.getBlockId(Par2, Par3, Par4) != blockID ? false : (World.getBlockId(Par2 - 1, Par3, Par4) == blockID ? true : (World.getBlockId(Par2 + 1, Par3, Par4) == blockID ? true : (World.getBlockId(Par2, Par3, Par4 - 1) == blockID ? true : World.getBlockId(Par2, Par3, Par4 + 1) == blockID)));
     }
 
+    
+    // Checks If Block On Sides Updates
+    
     public void onNeighborBlockChange(World World, int Par2, int Par3, int Par4, int Par5)
     {
         super.onNeighborBlockChange(World, Par2, Par3, Par4, Par5);
@@ -315,7 +331,10 @@ public class BlockTrashCan extends BlockContainer
             TileEntityTrashCan.updateContainingBlockInfo();
         }
     }
-
+    
+    
+    // Lets Something Happen If The Block Breaks
+    
     public void breakBlock(World World, int Par2, int Par3, int Par4, int Par5, int Par6)
     {
         TileEntityTrashCan TileEntityTrashCan = (TileEntityTrashCan)World.getBlockTileEntity(Par2, Par3, Par4);
@@ -366,6 +385,9 @@ public class BlockTrashCan extends BlockContainer
         super.breakBlock(World, Par2, Par3, Par4, Par5, Par6);
     }
 
+    
+    // Let Something Happen On Right Click
+    
     public boolean onBlockActivated(World World, int Par2, int Par3, int Par4, EntityPlayer EntityPlayer, int Par6, float Par7, float Par8, float Par9)
     {
         if (World.isRemote)
@@ -386,6 +408,9 @@ public class BlockTrashCan extends BlockContainer
         }
     }
 
+    
+    // Changes Container String If There Are 2 Trash Cans Next To Each Other
+    
     public IInventory func_94442_h_(World World, int Par2, int Par3, int Par4)
     {
         Object Object = (TileEntityTrashCan)World.getBlockTileEntity(Par2, Par3, Par4);
@@ -450,7 +475,9 @@ public class BlockTrashCan extends BlockContainer
             return (IInventory)Object;
         }
     }
-
+    
+    // Creating The Tile
+    
     public TileEntity createNewTileEntity(World World)
     {
         TileEntityTrashCan TileEntityTrashCan = new TileEntityTrashCan();
@@ -458,45 +485,23 @@ public class BlockTrashCan extends BlockContainer
         return TileEntityTrashCan;
     }
 
-    public boolean canProvidePower()
-    {
-        return Value == 1;
-    }
-
-    public int isProvidingWeakPower(IBlockAccess Par1IBlockAccess, int Par2, int Par3, int Par4, int Par5)
-    {
-        if (!canProvidePower())
-        {
-            return 0;
-        }
-        
-        else
-        {
-            int Var2 = ((TileEntityTrashCan)Par1IBlockAccess.getBlockTileEntity(Par2, Par3, Par4)).NumUsingPlayers;
-           
-            return MathHelper.clamp_int(Var2, 0, 15);
-        }
-    }
-
-    public int isProvidingStrongPower(IBlockAccess IBlockAccess, int Par2, int Par3, int Par4, int Par5)
-    {
-        return Par5 == 1 ? isProvidingWeakPower(IBlockAccess, Par2, Par3, Par4, Par5) : 0;
-    }
-
+   
+    // Checks If A Ocelot Is Blocking The Chest
+    
     public static boolean isOcelotBlockingChest(World World, int Par1, int Par2, int Par3)
     {
-        Iterator iterator = World.getEntitiesWithinAABB(EntityOcelot.class, AxisAlignedBB.getAABBPool().getAABB((double)Par1, (double)(Par2 + 1), (double)Par3, (double)(Par1 + 1), (double)(Par2 + 2), (double)(Par3 + 1))).iterator();
+        Iterator Iterator = World.getEntitiesWithinAABB(EntityOcelot.class, AxisAlignedBB.getAABBPool().getAABB((double)Par1, (double)(Par2 + 1), (double)Par3, (double)(Par1 + 1), (double)(Par2 + 2), (double)(Par3 + 1))).iterator();
         
         EntityOcelot Entityocelot1;
 
         do
         {
-            if (!iterator.hasNext())
+            if (!Iterator.hasNext())
             {
                 return false;
             }
 
-            EntityOcelot EntityOcelot2 = (EntityOcelot)iterator.next();
+            EntityOcelot EntityOcelot2 = (EntityOcelot)Iterator.next();
             Entityocelot1 = (EntityOcelot)EntityOcelot2;
         }
         
@@ -506,11 +511,14 @@ public class BlockTrashCan extends BlockContainer
         }
     }
 
-    public boolean hasComparatorInputOverride()
-    {
-        return false;
-    }
 
+    // Lets A Redstone Wire Connect To The Block
+    
+    public boolean canConnectRedstone(IBlockAccess IBlockAccess, int Var1, int Var2, int Var3, int Var4)
+    {
+        return true;
+    }
+    
     
     // Setting Textures
     

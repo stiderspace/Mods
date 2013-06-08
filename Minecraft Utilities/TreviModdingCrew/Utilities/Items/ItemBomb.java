@@ -49,6 +49,9 @@ public class ItemBomb extends Item
 		return ItemStack;
 	}
 	
+	
+	// Adding The Tooltip
+	
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack ItemStack, EntityPlayer EntityPlayer, List List, boolean Par1)
     {

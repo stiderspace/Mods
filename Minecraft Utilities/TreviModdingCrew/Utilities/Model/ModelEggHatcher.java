@@ -15,18 +15,29 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModelEggHatcher extends ModelBase
 {
+    // Declaration 
+    
     private IModelCustom EggHatcher;
+    
+    
+    // Constructor
     
     public ModelEggHatcher()
     {
         EggHatcher = AdvancedModelLoader.loadModel("/TreviModdingCrew/Utilities/Libery/Egg Hatcher.obj");
     }
     
+    
+    // Main Render Method
+    
     public void Render()
     {
         EggHatcher.renderAll();
     }
 
+    
+    // Secondary Render Method
+    
     public void Render(TileEntityEggHatcher TileEntityEggHatcher, double Var1, double Var2, double Var3)
     {
         GL11.glPushMatrix();
