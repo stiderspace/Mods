@@ -43,9 +43,37 @@ public class BlockTrashCan extends BlockContainer
         super(Par1, Material.rock);
         setCreativeTab(Main.UtilitiesBlock);
         Value = Par2;
+        setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 1.05F, 0.9375F);
     }
 
-  
+
+    // Custom Block Render
+    
+    @Override
+    public boolean hasTileEntity(int Metadata)
+    {
+        return true;
+    }
+    
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
+    
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
+    
+    @Override
+    public int getRenderType()
+    {
+        return -1;
+    }
+    
+    
     // When The Player Places It Down
     
     public void onBlockAdded(World World, int Par2, int Par3, int Par4)
