@@ -30,7 +30,7 @@ public class ItemLiquidGun extends Item
         setMaxStackSize(1);
         setCreativeTab(CreativeTabs.tabCombat); 
         setNoRepair();
-        setUnlocalizedName("Aqua Gun");
+        setUnlocalizedName("Liquid Gun");
         setMaxDamage(1000);
     }
 
