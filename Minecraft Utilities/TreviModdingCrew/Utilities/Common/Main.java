@@ -23,7 +23,6 @@ import TreviModdingCrew.Utilities.Block.BlockEggHatcher;
 import TreviModdingCrew.Utilities.Block.BlockLumberJacker;
 import TreviModdingCrew.Utilities.Block.BlockRockCutter;
 import TreviModdingCrew.Utilities.Block.BlockRockGrinder;
-import TreviModdingCrew.Utilities.Block.BlockTrashCan;
 import TreviModdingCrew.Utilities.Block.BlockWashingMachine;
 import TreviModdingCrew.Utilities.Entity.EntityBomb;
 import TreviModdingCrew.Utilities.Handler.FuelHandler;
@@ -40,7 +39,6 @@ import TreviModdingCrew.Utilities.Tab.TabUtilitiesItem;
 import TreviModdingCrew.Utilities.Tile.TileEntityEggHatcher;
 import TreviModdingCrew.Utilities.Tile.TileEntityLumberJacker;
 import TreviModdingCrew.Utilities.Tile.TileEntityRockGrinder;
-import TreviModdingCrew.Utilities.Tile.TileEntityTrashCan;
 import TreviModdingCrew.Utilities.Tile.TileEntityWashingMachine;
 
 import cpw.mods.fml.common.Mod;
@@ -86,7 +84,6 @@ public class Main
 	public static Block EggHatcher;
 	public static Block LumberJacker;
 	public static Block WashingMachine;
-	public static Block TrashCan;
 	
 	public static CreativeTabs UtilitiesBlock = new TabUtilitiesBlock(CreativeTabs.getNextID(), "Utilities Blocks");
 	public static CreativeTabs UtilitiesItem = new TabUtilitiesItem(CreativeTabs.getNextID(), "Utilities Items");
@@ -100,7 +97,6 @@ public class Main
 	public int EggHatcherID;
 	public int LumberJackerID;
 	public int WashingMachineID;
-	public int TrashCanID;
 	
 	public Property RecipeBone;
 	public Property RecipeCyanDye;
@@ -148,8 +144,7 @@ public class Main
         EggHatcherID = Config.getBlock("Egg Hatcher", 2502).getInt();
         LumberJackerID = Config.getBlock("Lumber Jacker", 2503).getInt();
         WashingMachineID = Config.getBlock("Washing Machine", 2504).getInt();
-        TrashCanID = Config.getBlock("Trash Can", 2505).getInt();
-        
+       
         RecipeBone = Config.get("Recipes", "Bone", true);
         RecipeCyanDye = Config.get("Recipes", "Cyan Dye", true);
         RecipeIce = Config.get("Recipes", "Ice", true);
@@ -209,9 +204,8 @@ public class Main
         EggHatcher = new BlockEggHatcher(EggHatcherID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Egg Hatcher");
         LumberJacker = new BlockLumberJacker(LumberJackerID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Lumber Jacker");
         WashingMachine = new BlockWashingMachine(WashingMachineID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Washing Machine");
-        TrashCan = new BlockTrashCan(TrashCanID, 0).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Trash Can");
+       
         
-    	
     	// Block Registry
     	
     	GameRegistry.registerBlock(RockGrinder, "Rock Grinder");
@@ -219,8 +213,7 @@ public class Main
     	GameRegistry.registerBlock(EggHatcher, "Egg Hatcher");
     	GameRegistry.registerBlock(LumberJacker, "Lumber Jacker");
     	GameRegistry.registerBlock(WashingMachine, "Washing Machine");
-        GameRegistry.registerBlock(TrashCan ,"Trash Can");
-    	
+       
         
     	// Network Registry
     	
@@ -363,18 +356,10 @@ public class Main
         {
             GameRegistry.addRecipe(new ItemStack(WashingMachine), new Object[]
             {
-                "CGC", "CBC", "CCC", 'C', Block.cobblestone, 'B', Item.bucketEmpty, 'G', Block.glass
+                "CCC", "CBC", "CCC", 'C', Block.cobblestone, 'B', Item.bucketEmpty
             });
         }
     	
-    	if (RecipeTrashCan.getBoolean(false) == true)
-        {
-            GameRegistry.addRecipe(new ItemStack(TrashCan), new Object[]
-            {
-                "C C", "C C", "CCC", 'C', Block.cobblestone 
-            });
-        }
-     
     	
     	// Machine Recipes
     	
@@ -437,7 +422,6 @@ public class Main
 	    GameRegistry.registerTileEntity(TileEntityEggHatcher.class, "Egg Hatcher");
 	    GameRegistry.registerTileEntity(TileEntityLumberJacker.class, "Lumber Jacker");
 	    GameRegistry.registerTileEntity(TileEntityWashingMachine.class, "Washing Machine");
-	    GameRegistry.registerTileEntity(TileEntityTrashCan.class, "Trash Can");
 
 	    
 	    // Language Registry
@@ -451,6 +435,5 @@ public class Main
 	    LanguageRegistry.addName(EggHatcher, "Egg Hatcher");
 	    LanguageRegistry.addName(LumberJacker, "Lumber Jacker");
 	    LanguageRegistry.addName(WashingMachine, "Washing Machine");
-	    LanguageRegistry.addName(TrashCan, "Trash Can");
     }
 }

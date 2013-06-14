@@ -48,7 +48,7 @@ public class CommonProxy implements IGuiHandler
         {
             return new ContainerRockCutter(EntityPlayer.inventory, World, Var1, Var2, Var3);
         }
-            
+           
         return TileEntity;  
     }
       

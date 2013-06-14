@@ -25,7 +25,7 @@ public class ItemMagnet extends Item
         super(Par1);
         setMaxStackSize(1);
         setCreativeTab(Main.UtilitiesItem);
-        setMaxDamage(300);
+        setMaxDamage(275);
     }
     
     @Override
@@ -120,7 +120,7 @@ public class ItemMagnet extends Item
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack ItemStack, EntityPlayer EntityPlayer, List List, boolean Par1)
     {
-        List.add(ItemStack.getItemDamage()+ "/300 Uses Remaining");
+        List.add(ItemStack.getItemDamage()+ "/275 Uses Remaining");
         
         if(KeyBindHandler.MoreKeyDown == true)
         {
