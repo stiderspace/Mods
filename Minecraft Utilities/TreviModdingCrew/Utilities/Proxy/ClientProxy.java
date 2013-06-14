@@ -13,11 +13,14 @@ import TreviModdingCrew.Utilities.Renders.RenderEggHatcher;
 import TreviModdingCrew.Utilities.Renders.RenderFilter;
 import TreviModdingCrew.Utilities.Renders.RenderLumberJacker;
 import TreviModdingCrew.Utilities.Renders.RenderMagnet;
+import TreviModdingCrew.Utilities.Renders.RenderWashingMachine;
 import TreviModdingCrew.Utilities.Renders.ThrowableBomb;
 import TreviModdingCrew.Utilities.Tile.TileEntityEggHatcher;
 import TreviModdingCrew.Utilities.Tile.TileEntityLumberJacker;
+import TreviModdingCrew.Utilities.Tile.TileEntityWashingMachine;
 import TreviModdingCrew.Utilities.Tile.TileRenderEggHatcher;
 import TreviModdingCrew.Utilities.Tile.TileRenderLumberJacker;
+import TreviModdingCrew.Utilities.Tile.TileRenderWashingMachine;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
@@ -38,10 +41,12 @@ public class ClientProxy extends CommonProxy
         MinecraftForgeClient.registerItemRenderer(Main.Magnet.itemID, (IItemRenderer) new RenderMagnet());
         MinecraftForgeClient.registerItemRenderer(Main.LumberJacker.blockID, new RenderLumberJacker());
         MinecraftForgeClient.registerItemRenderer(Main.EggHatcher.blockID, new RenderEggHatcher());
-       
+        MinecraftForgeClient.registerItemRenderer(Main.WashingMachine.blockID, new RenderWashingMachine());
+        
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLumberJacker.class, new TileRenderLumberJacker());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEggHatcher.class, new TileRenderEggHatcher());
-       
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWashingMachine.class, new TileRenderWashingMachine());
+        
 		RenderingRegistry.registerEntityRenderingHandler(EntityBomb.class, new ThrowableBomb(0, "/TreviModdingCrew/Utilities/Textures/Render/Throwable.png"));   
 		
 		super.LoadRenderers();

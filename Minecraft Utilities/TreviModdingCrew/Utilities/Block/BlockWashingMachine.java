@@ -33,15 +33,7 @@ public class BlockWashingMachine extends BlockContainer
         setHardness(5F);
         setCreativeTab(Main.UtilitiesBlock);
     }
-    
-    // Custom Block Render
-    
-    @Override
-    public boolean hasTileEntity(int Metadata)
-    {
-        return true;
-    }
-    
+ 
     
     // Let Something Happen On Right Click
     
@@ -110,6 +102,33 @@ public class BlockWashingMachine extends BlockContainer
         }
         
         super.breakBlock(World, Par2, Par3, Par4, Par5, Par6);
+    }
+
+    
+    // Custom Block Render
+    
+    @Override
+    public boolean hasTileEntity(int Metadata)
+    {
+        return true;
+    }
+    
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
+    
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
+    
+    @Override
+    public int getRenderType()
+    {
+        return -1;
     }
     
     

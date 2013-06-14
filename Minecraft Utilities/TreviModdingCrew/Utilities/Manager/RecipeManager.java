@@ -1,6 +1,9 @@
 package TreviModdingCrew.Utilities.Manager;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 import TreviModdingCrew.Utilities.Common.Main;
+import TreviModdingCrew.Utilities.Handler.LogHandler;
 import TreviModdingCrew.Utilities.Handler.RockCutHandler;
 import TreviModdingCrew.Utilities.Recipes.RecipeRockGrinder;
 
@@ -13,6 +16,8 @@ import net.minecraft.item.ItemStack;
 
 public class RecipeManager 
 {
+    public static String MissingModID;
+    
     public static void RegisterMachines()
     {
         if(Main.OverideRockGrinder.getBoolean(false) == true)
@@ -28,6 +33,16 @@ public class RecipeManager
             
             RecipeRockGrinder.Grinding().addGrinding(Item.bone.itemID, new ItemStack(Item.dyePowder, 6, 15), 0.5F);
             RecipeRockGrinder.Grinding().addGrinding(Item.blazeRod.itemID, new ItemStack(Item.blazePowder, 4), 0.5F);
+            
+            try
+            {
+                RecipeRockGrinder.Grinding().addGrinding(GameRegistry.findItem("", "").itemID, GameRegistry.findItemStack("", "", 1), 0.5F);
+            }
+            
+            catch(Exception Exception)
+            {
+                LogHandler.Log("Could Not Find " + MissingModID , 0);  
+            }
         }
         
         if (Main.OverideRockCutter.getBoolean(false) == true)

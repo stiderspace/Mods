@@ -2,8 +2,6 @@ package TreviModdingCrew.Utilities.Tile;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.INetworkManager;
@@ -20,7 +18,7 @@ public class TileEntityWashingMachine extends TileEntity
     
     public boolean CanPutWoolIn = false;
    
-    public int TickToWash = 0;
+    public int TickToWash;
     
     public void updateEntity() 
     {
@@ -31,6 +29,7 @@ public class TileEntityWashingMachine extends TileEntity
                 if(CanPutWoolIn == false)
                 {
                     SpawnWool(worldObj, xCoord, yCoord, zCoord);
+                    worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
                     CanPutWoolIn = true;
                 }
             }

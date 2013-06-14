@@ -356,7 +356,7 @@ public class Main
         {
             GameRegistry.addRecipe(new ItemStack(WashingMachine), new Object[]
             {
-                "CCC", "CBC", "CCC", 'C', Block.cobblestone, 'B', Item.bucketEmpty
+                "CCC", "CGC", "CCC", 'C', Block.cobblestone, 'G', Block.glass
             });
         }
     	
