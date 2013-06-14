@@ -7,8 +7,11 @@ import net.minecraft.block.BlockFluid;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IProjectile;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.packet.Packet70GameEvent;
 import net.minecraft.src.ModLoader;
@@ -24,6 +27,7 @@ import net.minecraftforge.liquids.LiquidStack;
 public class EntityLiquidBullet extends Entity implements IProjectile
 {
     private boolean InGround = false;
+    private boolean IsOre = false;
     
     public Entity ShootingEntity;
     public LiquidStack LiquidStored;
@@ -386,12 +390,16 @@ public class EntityLiquidBullet extends Entity implements IProjectile
                             {
                                 case 9:
                                 case 8:
-                                        if(Var13 == Block.fire.blockID)
+                                        if(IsOre == false)
                                         {
-                                            worldObj.setBlock(Var10, Var11, Var12, 0);
-                                            if(!worldObj.isRemote)
+                                            if(Var13 == Block.fire.blockID)
                                             {
-                                                worldObj.playSoundEffect((double) ((float) Var10 + 0.5F), (double) ((float) Var11 + 0.5F), (double) ((float) Var12 + 0.5F), "random.fizz ", 0.5F, 2.6F + (worldObj.rand.nextFloat() - worldObj.rand.nextFloat()) * 0.8F);                
+                                                worldObj.setBlock(Var10, Var11, Var12, 0);
+                                               
+                                                if(!worldObj.isRemote)
+                                                {
+                                                    worldObj.playSoundEffect((double) ((float) Var10 + 0.5F), (double) ((float) Var11 + 0.5F), (double) ((float) Var12 + 0.5F), "random.fizz ", 0.5F, 2.6F + (worldObj.rand.nextFloat() - worldObj.rand.nextFloat()) * 0.8F);                
+                                                }
                                             }
                                         }
                                         
@@ -400,19 +408,70 @@ public class EntityLiquidBullet extends Entity implements IProjectile
                                 case 10:
                                 case 11:
                                     
-                                    if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY,MovingObjectPosition.blockZ) == Block.sand.blockID)     
+                                    if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ) == Block.sand.blockID)     
                                     {
-                                        worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY,MovingObjectPosition.blockZ, Block.glass.blockID);         
+                                        worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ, Block.glass.blockID);         
+                                    
+                                        IsOre = false;
                                     }
                                     
-                                    if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY,MovingObjectPosition.blockZ) == Block.cobblestone.blockID)     
+                                    if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ) == Block.cobblestone.blockID)     
                                     {
-                                        worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY,MovingObjectPosition.blockZ, Block.stone.blockID);
+                                        worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ, Block.stone.blockID);
+                                   
+                                        IsOre = false;
+                                    }
+                                    
+                                    if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ) == Block.brick.blockID)     
+                                    {
+                                        worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ, Block.netherBrick.blockID);
+                                    
+                                        IsOre = false;
+                                    }
+                                    
+                                    if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ) == Block.stairsBrick.blockID)     
+                                    {
+                                        worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ, Block.stairsNetherBrick.blockID);
+                                    
+                                        IsOre = false;
+                                    }
+                                    
+                                    if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ) == Block.oreIron.blockID)     
+                                    {
+                                        worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ, 0);
+                                        
+                                        EntityItem Replacement = new EntityItem(worldObj, MovingObjectPosition.blockX + 0, MovingObjectPosition.blockY + 0.5, MovingObjectPosition.blockZ + 0, new ItemStack(Item.ingotIron));
+                                        worldObj.spawnEntityInWorld(Replacement);
+                                        
+                                        IsOre = true;
+                                    }
+                                    
+                                    if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ) == Block.oreGold.blockID)     
+                                    {
+                                        worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ, 0);
+                                        
+                                        EntityItem Replacement = new EntityItem(worldObj, MovingObjectPosition.blockX + 0, MovingObjectPosition.blockY + 0.5, MovingObjectPosition.blockZ + 0, new ItemStack(Item.ingotGold));
+                                        worldObj.spawnEntityInWorld(Replacement);
+                                        
+                                        IsOre = true;
+                                    }
+                                    
+                                    if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ) == Block.wood.blockID)     
+                                    {
+                                        worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ, 0);
+                                        
+                                        EntityItem Replacement = new EntityItem(worldObj, MovingObjectPosition.blockX + 0, MovingObjectPosition.blockY + 0.5, MovingObjectPosition.blockZ + 0, new ItemStack(Item.coal, 1, 2));
+                                        worldObj.spawnEntityInWorld(Replacement);
+                                        
+                                        IsOre = false;
                                     }
                                     
                                     if(Var13 == 0 || Var13 == Block.vine.blockID || Var13 == Block.grass.blockID)
                                     {
-                                        worldObj.setBlock(Var10, Var11, Var12, Block.fire.blockID);
+                                        if(IsOre == false)
+                                        {
+                                            worldObj.setBlock(Var10, Var11, Var12, Block.fire.blockID);
+                                        }
                                     }
                                     
                                 break;
