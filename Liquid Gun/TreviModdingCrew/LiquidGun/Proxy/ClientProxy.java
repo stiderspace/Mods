@@ -12,14 +12,15 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy
 {
-    public IItemRenderer itemrendererGun = new RenderLiquidGun();
-    public Render renderLiquidBullet = new RenderLiquidBullet();
+    public IItemRenderer ItemRenderLiquidGun = new RenderLiquidGun();
+    public Render RenderLiquidBullet = new RenderLiquidBullet();
     
     @Override
     public void LoadRenderers()
     {
         super.LoadRenderers();
-        MinecraftForgeClient.registerItemRenderer(Main.LiquidGun.itemID, itemrendererGun);
-        RenderingRegistry.registerEntityRenderingHandler(TreviModdingCrew.LiquidGun.Entity.EntityLiquidBullet.class, renderLiquidBullet);
+        
+        MinecraftForgeClient.registerItemRenderer(Main.LiquidGun.itemID, ItemRenderLiquidGun);
+        RenderingRegistry.registerEntityRenderingHandler(TreviModdingCrew.LiquidGun.Entity.EntityLiquidBullet.class, RenderLiquidBullet);
     }
 }

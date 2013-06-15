@@ -80,6 +80,7 @@ public class Main
         
         GameRegistry.registerItem(LiquidGun, "Liquid Gun");
         
+        
         // Entity Registry
         
         EntityRegistry.registerModEntity(TreviModdingCrew.LiquidGun.Entity.EntityLiquidBullet.class, "EntityLiquidBullet", 99, this, 99, 1, true);

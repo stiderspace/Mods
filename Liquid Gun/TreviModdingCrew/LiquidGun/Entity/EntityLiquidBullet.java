@@ -2,12 +2,15 @@ package TreviModdingCrew.LiquidGun.Entity;
 
 import java.util.List;
 
+import TreviModdingCrew.LiquidGun.Items.ItemLiquidGun;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFluid;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
@@ -411,36 +414,46 @@ public class EntityLiquidBullet extends Entity implements IProjectile
                                     if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ) == Block.sand.blockID)     
                                     {
                                         worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ, Block.glass.blockID);         
-                                    
-                                        IsOre = false;
+                                        
+                                        IsOre = true;
                                     }
                                     
                                     if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ) == Block.cobblestone.blockID)     
                                     {
                                         worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ, Block.stone.blockID);
                                    
-                                        IsOre = false;
+                                        IsOre = true;
                                     }
                                     
                                     if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ) == Block.brick.blockID)     
                                     {
                                         worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ, Block.netherBrick.blockID);
                                     
-                                        IsOre = false;
+                                        IsOre = true;
                                     }
                                     
                                     if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ) == Block.stairsBrick.blockID)     
                                     {
                                         worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ, Block.stairsNetherBrick.blockID);
                                     
-                                        IsOre = false;
+                                        IsOre = true;
                                     }
-                                    
+                                     
                                     if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ) == Block.oreIron.blockID)     
                                     {
                                         worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ, 0);
                                         
                                         EntityItem Replacement = new EntityItem(worldObj, MovingObjectPosition.blockX + 0, MovingObjectPosition.blockY + 0.5, MovingObjectPosition.blockZ + 0, new ItemStack(Item.ingotIron));
+                                        worldObj.spawnEntityInWorld(Replacement);
+                                        
+                                        IsOre = true;
+                                    }
+                                    
+                                    if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ) == Block.blockClay.blockID)     
+                                    {
+                                        worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ, 0);
+                                        
+                                        EntityItem Replacement = new EntityItem(worldObj, MovingObjectPosition.blockX + 0, MovingObjectPosition.blockY + 0.5, MovingObjectPosition.blockZ + 0, new ItemStack(Item.brick, 4));
                                         worldObj.spawnEntityInWorld(Replacement);
                                         
                                         IsOre = true;
@@ -460,10 +473,23 @@ public class EntityLiquidBullet extends Entity implements IProjectile
                                     {
                                         worldObj.setBlock(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ, 0);
                                         
-                                        EntityItem Replacement = new EntityItem(worldObj, MovingObjectPosition.blockX + 0, MovingObjectPosition.blockY + 0.5, MovingObjectPosition.blockZ + 0, new ItemStack(Item.coal, 1, 2));
+                                        EntityItem Replacement = new EntityItem(worldObj, MovingObjectPosition.blockX + 0, MovingObjectPosition.blockY + 0.5, MovingObjectPosition.blockZ + 0, new ItemStack(Item.coal, 1, 1));
                                         worldObj.spawnEntityInWorld(Replacement);
                                         
-                                        IsOre = false;
+                                        IsOre = true;
+                                    }
+                                    
+                                    if(worldObj.getBlockId(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ) == Block.tnt.blockID)     
+                                    {
+                                        worldObj.setBlockToAir(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ);
+                                        
+                                        EntityTNTPrimed Tnt = new EntityTNTPrimed(worldObj);
+                                        
+                                        Tnt.setPosition(MovingObjectPosition.blockX, MovingObjectPosition.blockY, MovingObjectPosition.blockZ);
+                                 
+                                        worldObj.spawnEntityInWorld(Tnt);
+                                        
+                                        IsOre = true;
                                     }
                                     
                                     if(Var13 == 0 || Var13 == Block.vine.blockID || Var13 == Block.grass.blockID)
