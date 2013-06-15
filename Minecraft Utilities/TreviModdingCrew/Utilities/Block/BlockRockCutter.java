@@ -35,10 +35,10 @@ public class BlockRockCutter extends Block
     
     public void registerIcons(IconRegister IconRegister)
     {
-        IconBuffer[0] = IconRegister.registerIcon(Reference.ModID + ":" + "RockCutterBottom");
-        IconBuffer[1] = IconRegister.registerIcon(Reference.ModID + ":" + "RockCutterTop");
-        IconBuffer[2] = IconRegister.registerIcon(Reference.ModID + ":" + "RockCutterSide");
-        IconBuffer[3] = IconRegister.registerIcon(Reference.ModID + ":" + "MachineSide");
+        IconBuffer[0] = IconRegister.registerIcon(Reference.ModID + ":" + "Rock Cutter Bottom");
+        IconBuffer[1] = IconRegister.registerIcon(Reference.ModID + ":" + "Rock Cutter Top");
+        IconBuffer[2] = IconRegister.registerIcon(Reference.ModID + ":" + "Rock Cutter Side");
+        IconBuffer[3] = IconRegister.registerIcon(Reference.ModID + ":" + "Machine Side");
     }
     
     @Override

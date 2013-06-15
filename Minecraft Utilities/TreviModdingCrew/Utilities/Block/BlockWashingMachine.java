@@ -134,20 +134,31 @@ public class BlockWashingMachine extends BlockContainer
     
     // Setting Textures
     
-    private Icon[] IconBuffer = new Icon[1];
+    private Icon[] IconBuffer = new Icon[2];
     
     @Override
     @SideOnly(Side.CLIENT)
     
     public void registerIcons(IconRegister IconRegister)
     {
-        IconBuffer[0] = IconRegister.registerIcon(Reference.ModID + ":" + "RockCutterBottom");
+        IconBuffer[0] = IconRegister.registerIcon(Reference.ModID + ":" + "Rock Cutter Bottom");
+        IconBuffer[1] = IconRegister.registerIcon(Reference.ModID + ":" + "Machine Side");
     }
     
     @Override
     public Icon getIcon(int Par1, int Par2)
     {
-        return IconBuffer[0];
+        if(Par1 == 0)
+        {
+            return IconBuffer[0];
+        }
+        
+        if(Par1 == 1)
+        {
+            return IconBuffer[0];
+        }
+        
+        return IconBuffer[1];
     }
     
     

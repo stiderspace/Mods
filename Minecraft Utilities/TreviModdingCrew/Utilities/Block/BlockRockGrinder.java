@@ -47,10 +47,10 @@ public class BlockRockGrinder extends BlockContainer
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister IconRegister)
     {
-        IconBuffer[0] = IconRegister.registerIcon(Reference.ModID + ":" + "RockCutterBottom");
-        IconBuffer[1] = IconRegister.registerIcon(Reference.ModID + ":" + "RockCutterTop");
-        IconBuffer[2] = IconRegister.registerIcon(Reference.ModID + ":" + "MachineSide");
-        IconBuffer[3] = IconRegister.registerIcon(Reference.ModID + ":" + "RockGrinderFront");
+        IconBuffer[0] = IconRegister.registerIcon(Reference.ModID + ":" + "Rock Cutter Bottom");
+        IconBuffer[1] = IconRegister.registerIcon(Reference.ModID + ":" + "Rock Cutter Top");
+        IconBuffer[2] = IconRegister.registerIcon(Reference.ModID + ":" + "Machine Side");
+        IconBuffer[3] = IconRegister.registerIcon(Reference.ModID + ":" + "Rock Grinder Front");
     }
     
     @Override

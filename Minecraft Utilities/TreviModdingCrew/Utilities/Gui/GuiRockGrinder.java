@@ -167,17 +167,17 @@ public class GuiRockGrinder extends GuiContainer
                 }
             }
             
-            drawTexturedModalRect(Var1 + 8, Var2 + 69 - showUntil, 0, 250 - showUntil, 13, showUntil);
+            drawTexturedModalRect(Var1 + 8, Var2 + 69 - showUntil, 176, 250 - showUntil, 13, showUntil);
         }
         
         if (Tile.isBurning())
         {
             Var3 = Tile.getBurnTimeRemainingScaled(12);
-            drawTexturedModalRect(Var1 + 57, Var2 + 36 + 12 - Var3, 0, 178 - Var3, 14, Var3 + 2);
+            drawTexturedModalRect(Var1 + 57, Var2 + 36 + 12 - Var3, 176, 178 - Var3, 14, Var3 + 2);
         }
 
         Var3 = Tile.getCookProgressScaled(24);
-        drawTexturedModalRect(Var1 + 79, Var2 + 34, 0, 180, Var3 + 1, 16);
+        drawTexturedModalRect(Var1 + 79, Var2 + 34, 176, 180, Var3 + 1, 16);
     }
     
     

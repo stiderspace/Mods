@@ -93,7 +93,7 @@ public class RenderWashingMachine implements IItemRenderer
         
         if(ItemRenderType == ItemRenderType.EQUIPPED)
         {
-            GL11.glRotatef(180F, 0F, 1F, 0F);
+            GL11.glRotatef(270F, 0F, 1F, 0F);
         }
         
         FMLClientHandler.instance().getClient().renderEngine.bindTexture("/TreviModdingCrew/Utilities/Textures/Model/Washing Machine.png");
