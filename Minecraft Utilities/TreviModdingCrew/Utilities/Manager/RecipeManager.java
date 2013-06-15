@@ -16,7 +16,7 @@ import net.minecraft.item.ItemStack;
 
 public class RecipeManager 
 {
-    public static String MissingModID;
+    public static String MissingModID = "";
     
     public static void RegisterMachines()
     {
@@ -41,7 +41,7 @@ public class RecipeManager
             
             catch(Exception Exception)
             {
-                LogHandler.Log("Could Not Find " + MissingModID , 0);  
+                
             }
         }
         

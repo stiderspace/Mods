@@ -27,7 +27,7 @@ public class GuiRockCutter extends GuiContainer
     {
         super.initGui();
         
-        buttonList.add(new GuiButton(1, guiLeft + 180, guiTop + 5, 100, 20, ("Close Cutter")));
+        buttonList.add(new GuiButton(1, guiLeft + 179, guiTop + 12, 71, 20, ("Close")));
     }
     
     
@@ -64,6 +64,6 @@ public class GuiRockCutter extends GuiContainer
         int Var4 = (width - xSize) / 2;
         int Var5 = (height - ySize) / 2;
         
-        drawTexturedModalRect(Var4, Var5, 0, 0, xSize, ySize);
+        drawTexturedModalRect(Var4, Var5, 0, 0, xSize + 80, ySize);
     }
 }

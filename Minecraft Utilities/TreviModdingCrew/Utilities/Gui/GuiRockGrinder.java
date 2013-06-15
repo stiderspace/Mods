@@ -35,9 +35,9 @@ public class GuiRockGrinder extends GuiContainer
     {
         super.initGui();
         
-        buttonList.add(new GuiButton(1, guiLeft + 180, guiTop + 5, 100, 20, ("Increase Speed")));
-        buttonList.add(new GuiButton(2, guiLeft + 180, guiTop + 30, 100, 20, ("Decrease Speed")));
-        buttonList.add(new GuiButton(3, guiLeft + 180, guiTop + 140, 100, 20, ("Close Grinder")));
+        buttonList.add(new GuiButton(1, guiLeft + 179, guiTop + 12, 71, 20, ("Increase")));
+        buttonList.add(new GuiButton(2, guiLeft + 179, guiTop + 35, 71, 20, ("Decrease")));
+        buttonList.add(new GuiButton(3, guiLeft + 179, guiTop + 135, 71, 20, ("Close")));
        
         GuiButton Button;
         
@@ -153,13 +153,13 @@ public class GuiRockGrinder extends GuiContainer
         int Var2 = (height - ySize) / 2;
         int Var3;
         
-        drawTexturedModalRect(Var1, Var2, 0, 0, xSize, ySize);
+        drawTexturedModalRect(Var1, Var2, 0, 0, xSize + 80, ySize);
 
         if (Tile.MyProvider.getEnergyStored() > 0)
         {
             int showUntil = 0;
             
-            for(int I=1; I<53; I++)
+            for(int I = 1; I < 53; I++)
             {
                 if(Tile.MyProvider.getEnergyStored() >= I * 153.846)
                 {
@@ -167,17 +167,17 @@ public class GuiRockGrinder extends GuiContainer
                 }
             }
             
-            drawTexturedModalRect(Var1 + 8, Var2 + 69 - showUntil, 176, 84 - showUntil, 13, showUntil + 31);
+            drawTexturedModalRect(Var1 + 8, Var2 + 69 - showUntil, 0, 250 - showUntil, 13, showUntil);
         }
         
         if (Tile.isBurning())
         {
             Var3 = Tile.getBurnTimeRemainingScaled(12);
-            drawTexturedModalRect(Var1 + 57, Var2 + 36 + 12 - Var3, 176, 12 - Var3, 14, Var3 + 2);
+            drawTexturedModalRect(Var1 + 57, Var2 + 36 + 12 - Var3, 0, 178 - Var3, 14, Var3 + 2);
         }
 
         Var3 = Tile.getCookProgressScaled(24);
-        drawTexturedModalRect(Var1 + 79, Var2 + 34, 176, 14, Var3 + 1, 16);
+        drawTexturedModalRect(Var1 + 79, Var2 + 34, 0, 180, Var3 + 1, 16);
     }
     
     

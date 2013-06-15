@@ -340,7 +340,7 @@ public class Main
         {
             GameRegistry.addRecipe(new ItemStack(EggHatcher), new Object[]
             {
-                "CGC", "CWC", "CCC", 'G', Block.glass, 'C', Block.cobblestone, 'W', Item.wheat
+                "GGG", "CWC", "CCC", 'G', Block.glass, 'C', Block.cobblestone, 'W', Item.wheat
             });
         }
     	
