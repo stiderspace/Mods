@@ -68,7 +68,7 @@ public class SlotRockMachine extends Slot
     {
         ItemStack.onCrafting(Player.worldObj, Player, Slot);
 
-        if (!this.Player.worldObj.isRemote)
+        if (!Player.worldObj.isRemote)
         {
             int Var4;
             int Var2 = Slot;
