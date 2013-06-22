@@ -3,14 +3,12 @@ package TreviModdingCrew.Utilities.Manager;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 import TreviModdingCrew.Utilities.Common.Main;
-import TreviModdingCrew.Utilities.Handler.LogHandler;
 import TreviModdingCrew.Utilities.Handler.RockCutHandler;
 import TreviModdingCrew.Utilities.Recipes.RecipeRockGrinder;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
 
 // Configurating The Recipes
 
@@ -33,6 +31,7 @@ public class RecipeManager
             
             RecipeRockGrinder.Grinding().addGrinding(Item.bone.itemID, new ItemStack(Item.dyePowder, 6, 15), 0.5F);
             RecipeRockGrinder.Grinding().addGrinding(Item.blazeRod.itemID, new ItemStack(Item.blazePowder, 4), 0.5F);
+            RecipeRockGrinder.Grinding().addGrinding(Item.reed.itemID, new ItemStack(Item.sugar, 2), 0.5F);
             
             try
             {

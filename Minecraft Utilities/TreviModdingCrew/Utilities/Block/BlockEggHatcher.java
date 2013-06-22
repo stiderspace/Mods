@@ -39,7 +39,6 @@ public class BlockEggHatcher extends BlockContainer
     
     @Override
     @SideOnly(Side.CLIENT)
-    
     public void registerIcons(IconRegister IconRegister)
     {
         IconBuffer[0] = IconRegister.registerIcon(Reference.ModID + ":" + "Rock Cutter Bottom");
