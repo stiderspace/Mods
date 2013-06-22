@@ -29,7 +29,7 @@ public class BlockWashingMachine extends BlockContainer
     public BlockWashingMachine(int Par1, Material Rock)
     {
         super(Par1, Rock);
-        setUnlocalizedName("Egg Hatcher");
+        setUnlocalizedName("Washing Machine");
         setHardness(5F);
         setCreativeTab(Main.UtilitiesBlock);
     }
