@@ -32,6 +32,10 @@ public class BlockEggHatcher extends BlockContainer
         setCreativeTab(Main.UtilitiesBlock);
     }
     
+    public static float PosX;
+    public static float PosY;
+    public static float PosZ;
+    
     
     // Setting Textures
     
@@ -95,15 +99,91 @@ public class BlockEggHatcher extends BlockContainer
     @Override
     public boolean onBlockActivated(World World, int Var1, int Var2, int Var3, EntityPlayer EntityPlayer, int Par1, float Par2, float Par3, float Par4)
     {
+        TileEntityEggHatcher Tile = (TileEntityEggHatcher) World.getBlockTileEntity(Var1, Var2, Var3);
+        
     	if(EntityPlayer.getHeldItem() == null)
     	{
-    		return false;
+    	    String Location = null;
+
+    	    Tile.Buffer = Tile.Buffer + 1;
+    	    
+    	    if(Tile.Buffer == 0)
+    	    {
+    	        Location = "Top";
+    	        
+    	        PosX = 0.5F;
+    	        PosY = 1.2F;
+    	        PosZ = 0.5F;
+    	    }
+    	    
+    	    if(Tile.Buffer == 1)
+            {
+                Location = "Top";
+                
+                PosX = 0.5F;
+                PosY = 1.2F;
+                PosZ = 0.5F;
+            }
+    	    
+    	    if(Tile.Buffer == 2)
+    	    {
+    	        Location = "Bottom";
+    	        
+    	        PosX = 0.5F;
+                PosY = -0.7F;
+                PosZ = 0.5F;
+    	    }
+    	    
+    	    if(Tile.Buffer == 3)
+    	    {
+    	        Location = "Left";
+    	        
+    	        PosX = 0.5F;
+                PosY = 0.5F;
+                PosZ = -0.5F;
+    	    }
+    	    
+    	    if(Tile.Buffer == 4)
+            {
+                Location = "Right";
+                
+                PosX = 0.5F;
+                PosY = 0.5F;
+                PosZ = 1.5F;
+            }
+    	    
+    	    if(Tile.Buffer == 5)
+            {
+                Location = "Front";
+                
+                PosX = -0.5F;
+                PosY = 0.5F;
+                PosZ = 0.5F;
+            }
+    	    
+    	    if(Tile.Buffer == 6)
+            {
+                Location = "Back";
+                
+                PosX = 1.5F;
+                PosY = 0.5F;
+                PosZ = 0.5F;
+                
+                Tile.Buffer = 0;
+            }
+    	    
+    	    System.out.println(Tile.Buffer);
+    	    
+            if(World.isRemote)
+            {
+                EntityPlayer.addChatMessage("Chicken Spawns On: " + Location);
+            }
+            
+            return false;
     	}
     	
     	if(EntityPlayer.getHeldItem().itemID == Item.egg.itemID)
         {
-            TileEntityEggHatcher Tile = (TileEntityEggHatcher) World.getBlockTileEntity(Var1, Var2, Var3);
-            
             Random Var4 = new Random();
             
             if(Tile.CanPutEggIn == false)
@@ -134,8 +214,6 @@ public class BlockEggHatcher extends BlockContainer
     	
     	if(EntityPlayer.getHeldItem().itemID == Item.wheat.itemID)
     	{
-    	    TileEntityEggHatcher Tile = (TileEntityEggHatcher) World.getBlockTileEntity(Var1, Var2, Var3);
-    	    
     	    if(Tile.TickToHatch > 0)
     	    {
         	    Tile.TickToHatch = Tile.TickToHatch - 2000;

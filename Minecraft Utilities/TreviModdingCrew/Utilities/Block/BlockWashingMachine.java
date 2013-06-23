@@ -44,7 +44,7 @@ public class BlockWashingMachine extends BlockContainer
         {
             return false;
         }
-        
+                
         if(EntityPlayer.getHeldItem().itemID == Block.cloth.blockID)
         {
             TileEntityWashingMachine Tile = (TileEntityWashingMachine) World.getBlockTileEntity(Var1, Var2, Var3);
@@ -138,7 +138,6 @@ public class BlockWashingMachine extends BlockContainer
     
     @Override
     @SideOnly(Side.CLIENT)
-    
     public void registerIcons(IconRegister IconRegister)
     {
         IconBuffer[0] = IconRegister.registerIcon(Reference.ModID + ":" + "Rock Cutter Bottom");

@@ -1,5 +1,6 @@
 package TreviModdingCrew.Utilities.Tile;
 
+import TreviModdingCrew.Utilities.Block.BlockEggHatcher;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.INetworkManager;
@@ -17,6 +18,7 @@ public class TileEntityEggHatcher extends TileEntity
     public boolean CanPutEggIn = false;
    
     public int TickToHatch = 0;
+    public int Buffer = 0;
     
     public void updateEntity() 
     {
@@ -41,7 +43,7 @@ public class TileEntityEggHatcher extends TileEntity
     public static void SpawnChicken(World World, int Var1, int Var2, int Var3)
     {
         EntityChicken Chicken = new EntityChicken(World);
-        Chicken.setPosition(Var1 + 0.5, Var2 + 1, Var3 + 0.5);
+        Chicken.setPosition(Var1 + BlockEggHatcher.PosX, Var2 + BlockEggHatcher.PosY, Var3 + BlockEggHatcher.PosZ);
         World.spawnEntityInWorld(Chicken);
         Chicken.setGrowingAge(-24000);
         World.markBlockForUpdate(Var1, Var2, Var3);
@@ -54,6 +56,7 @@ public class TileEntityEggHatcher extends TileEntity
     {
         CanPutEggIn  = NBTTagCompound.getBoolean("CanPutEggIn");
         TickToHatch  = NBTTagCompound.getInteger("TickToHatch");
+        Buffer = NBTTagCompound.getInteger("Buffer");
        
         super.readFromNBT(NBTTagCompound);
         
@@ -72,6 +75,7 @@ public class TileEntityEggHatcher extends TileEntity
     {
         NBTTagCompound.setBoolean("CanPutEggIn", CanPutEggIn); 
         NBTTagCompound.setInteger("TickToHatch", TickToHatch);
+        NBTTagCompound.setInteger("Buffer", Buffer);
        
         super.writeToNBT(NBTTagCompound);
     }
