@@ -61,7 +61,7 @@ public class RenderMagnet implements IItemRenderer
             
                 Minecraft.getMinecraft().renderEngine.bindTexture("/TreviModdingCrew/Utilities/Textures/Model/Magnet.png");
                 
-                float Scale = 1.25F;
+                float Scale = 0.95F;
                 
                 GL11.glRotatef(107F, 1F, 0F, 0F);
                 GL11.glRotatef(12F, 0F, 1F, 0F);
@@ -94,7 +94,7 @@ public class RenderMagnet implements IItemRenderer
                     GL11.glTranslatef(-0.4F, -0.05F, 0.3F);
                 }
                 
-                GL11.glTranslatef(-0.03F, 0.06F, 0.77F);
+                GL11.glTranslatef(0.05F, 0.06F, 0.77F);
                 GL11.glScalef(Scale, Scale, Scale);
             
                 Magnet.render((Entity)Data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
