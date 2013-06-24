@@ -63,7 +63,7 @@ public class BlockWashingMachine extends BlockContainer
                     EntityPlayer.inventory.consumeInventoryItem(Block.cloth.blockID);
                    
                     Tile.CanPutWoolIn = false;
-                    Tile.TickToWash = 50 + Var4.nextInt(100);
+                    Tile.TickToWash = 35 + Var4.nextInt(65);
                     World.markBlockForUpdate(Var1, Var2, Var3);
                 }
             } 

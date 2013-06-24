@@ -29,7 +29,6 @@ import TreviModdingCrew.Utilities.Handler.FuelHandler;
 import TreviModdingCrew.Utilities.Handler.LogHandler;
 import TreviModdingCrew.Utilities.Items.ItemBomb;
 import TreviModdingCrew.Utilities.Items.ItemFilter;
-import TreviModdingCrew.Utilities.Items.ItemMagnet;
 import TreviModdingCrew.Utilities.Manager.RecipeManager;
 import TreviModdingCrew.Utilities.Packet.PacketManager;
 import TreviModdingCrew.Utilities.Proxy.ClientProxy;
@@ -77,7 +76,6 @@ public class Main
 
 	public static Item Filter;
 	public static Item Bomb;
-	public static Item Magnet;
 	
 	public static Block RockGrinder;
 	public static Block RockCutter;
@@ -90,7 +88,6 @@ public class Main
 	
 	public int FilterID;
 	public int BombID;
-	public int MagnetID;
 	
 	public int RockGrinderID;
 	public int RockCutterID;
@@ -137,7 +134,6 @@ public class Main
             
         FilterID = Config.getItem("Filter", 5500).getInt();
         BombID = Config.getItem("Bomb", 5501).getInt();
-        MagnetID = Config.getItem("Magnet", 5502).getInt();
         
         RockGrinderID = Config.getBlock("Rock Grinder", 2500).getInt();
         RockCutterID = Config.getBlock("Rock Cutter", 2501).getInt();
@@ -187,14 +183,12 @@ public class Main
 	
     	Filter = new ItemFilter(FilterID).setUnlocalizedName("Filter");
     	Bomb = new ItemBomb(BombID).setUnlocalizedName("Bomb");
-    	Magnet = new ItemMagnet(MagnetID).setUnlocalizedName("Magnet");
     	
         
     	// Item Registry
     	
     	GameRegistry.registerItem(Filter, "Filter");
     	GameRegistry.registerItem(Bomb, "Bomb");
-    	GameRegistry.registerItem(Magnet, "Magnet");
     	
     	
     	// Blocks
@@ -348,7 +342,7 @@ public class Main
         {
             GameRegistry.addRecipe(new ItemStack(LumberJacker), new Object[]
             {
-                "CIC", "CRC", "CCC", 'C', Block.cobblestone, 'R', Item.redstone, 'I', Item.ingotIron
+                "CAC", "CRC", "CCC", 'C', Block.cobblestone, 'R', Item.redstone, 'A', Item.axeIron
             });
         }
     	
@@ -403,8 +397,7 @@ public class Main
 	 
 	    ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH).addItem(new WeightedRandomChestContent(new ItemStack(Filter), 1, 1, 50));
 	    ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR).addItem(new WeightedRandomChestContent(new ItemStack(Bomb), 1, 5, 25));
-	    ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(Magnet), 1, 2, 25));
-        
+	   
 	     
 	    // Fuel Registry
 	     
@@ -428,8 +421,7 @@ public class Main
 	     
 	    LanguageRegistry.addName(Filter, "Filter");
 	    LanguageRegistry.addName(Bomb, "Bomb");
-	    LanguageRegistry.addName(Magnet, "Magnet");
-	    
+	   
 	    LanguageRegistry.addName(RockGrinder, "Rock Grinder");
 	    LanguageRegistry.addName(RockCutter, "Rock Cutter");
 	    LanguageRegistry.addName(EggHatcher, "Egg Hatcher");

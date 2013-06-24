@@ -32,9 +32,9 @@ public class BlockEggHatcher extends BlockContainer
         setCreativeTab(Main.UtilitiesBlock);
     }
     
-    public static float PosX;
-    public static float PosY;
-    public static float PosZ;
+    public static float PosX = 0.5F;
+    public static float PosY = 1.2F;
+    public static float PosZ = 0.5F;
     
     
     // Setting Textures
@@ -172,14 +172,12 @@ public class BlockEggHatcher extends BlockContainer
                 Tile.Buffer = 0;
             }
     	    
-    	    System.out.println(Tile.Buffer);
-    	    
             if(World.isRemote)
             {
                 EntityPlayer.addChatMessage("Chicken Spawns On: " + Location);
             }
             
-            return false;
+            return true;
     	}
     	
     	if(EntityPlayer.getHeldItem().itemID == Item.egg.itemID)

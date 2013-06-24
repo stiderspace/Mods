@@ -12,7 +12,6 @@ import TreviModdingCrew.Utilities.Renders.RenderBomb;
 import TreviModdingCrew.Utilities.Renders.RenderEggHatcher;
 import TreviModdingCrew.Utilities.Renders.RenderFilter;
 import TreviModdingCrew.Utilities.Renders.RenderLumberJacker;
-import TreviModdingCrew.Utilities.Renders.RenderMagnet;
 import TreviModdingCrew.Utilities.Renders.RenderWashingMachine;
 import TreviModdingCrew.Utilities.Renders.ThrowableBomb;
 import TreviModdingCrew.Utilities.Tile.TileEntityEggHatcher;
@@ -38,7 +37,6 @@ public class ClientProxy extends CommonProxy
 	{
         MinecraftForgeClient.registerItemRenderer(Main.Filter.itemID, (IItemRenderer) new RenderFilter());
         MinecraftForgeClient.registerItemRenderer(Main.Bomb.itemID, (IItemRenderer) new RenderBomb());
-        MinecraftForgeClient.registerItemRenderer(Main.Magnet.itemID, (IItemRenderer) new RenderMagnet());
         MinecraftForgeClient.registerItemRenderer(Main.LumberJacker.blockID, new RenderLumberJacker());
         MinecraftForgeClient.registerItemRenderer(Main.EggHatcher.blockID, new RenderEggHatcher());
         MinecraftForgeClient.registerItemRenderer(Main.WashingMachine.blockID, new RenderWashingMachine());
