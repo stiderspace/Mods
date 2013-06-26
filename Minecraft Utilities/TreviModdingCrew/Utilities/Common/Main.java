@@ -23,6 +23,7 @@ import TreviModdingCrew.Utilities.Block.BlockEggHatcher;
 import TreviModdingCrew.Utilities.Block.BlockLumberJacker;
 import TreviModdingCrew.Utilities.Block.BlockRockCutter;
 import TreviModdingCrew.Utilities.Block.BlockRockGrinder;
+import TreviModdingCrew.Utilities.Block.BlockScarecrow;
 import TreviModdingCrew.Utilities.Block.BlockWashingMachine;
 import TreviModdingCrew.Utilities.Entity.EntityBomb;
 import TreviModdingCrew.Utilities.Handler.FuelHandler;
@@ -82,6 +83,7 @@ public class Main
 	public static Block EggHatcher;
 	public static Block LumberJacker;
 	public static Block WashingMachine;
+	public static Block Scarecrow;
 	
 	public static CreativeTabs UtilitiesBlock = new TabUtilitiesBlock(CreativeTabs.getNextID(), "Utilities Blocks");
 	public static CreativeTabs UtilitiesItem = new TabUtilitiesItem(CreativeTabs.getNextID(), "Utilities Items");
@@ -94,6 +96,7 @@ public class Main
 	public int EggHatcherID;
 	public int LumberJackerID;
 	public int WashingMachineID;
+	public int ScarecrowID;
 	
 	public Property RecipeBone;
 	public Property RecipeCyanDye;
@@ -118,7 +121,7 @@ public class Main
 	public Property RecipeEggHatcher;
 	public Property RecipeLumberJacker;
 	public Property RecipeWashingMachine;
-	public Property RecipeTrashCan;
+	public Property RecipeScarecrow;
     
 	public static Property OverideRockCutter;
 	public static Property OverideRockGrinder;
@@ -140,6 +143,7 @@ public class Main
         EggHatcherID = Config.getBlock("Egg Hatcher", 2502).getInt();
         LumberJackerID = Config.getBlock("Lumber Jacker", 2503).getInt();
         WashingMachineID = Config.getBlock("Washing Machine", 2504).getInt();
+        ScarecrowID = Config.getBlock("Scarecrow", 2505).getInt();
        
         RecipeBone = Config.get("Recipes", "Bone", true);
         RecipeCyanDye = Config.get("Recipes", "Cyan Dye", true);
@@ -160,7 +164,7 @@ public class Main
         RecipeEggHatcher = Config.get("Recipes", "Egg Hatcher", true);
         RecipeLumberJacker = Config.get("Recipes", "Lumber Jacker", true);
         RecipeWashingMachine = Config.get("Recipes", "Washing Machine", true);
-        RecipeTrashCan = Config.get("Recipes", "Trash Can", true);
+        RecipeScarecrow = Config.get("Recipes", "Scarecrow", true);
         
         RecipeNetherBricks = Config.get("Smelting", "Nether Bricks", true);
         RecipeNetherBrick = Config.get("Smelting", "Nether Bricks", true);
@@ -198,6 +202,7 @@ public class Main
         EggHatcher = new BlockEggHatcher(EggHatcherID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Egg Hatcher");
         LumberJacker = new BlockLumberJacker(LumberJackerID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Lumber Jacker");
         WashingMachine = new BlockWashingMachine(WashingMachineID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Washing Machine");
+        Scarecrow = new BlockScarecrow(ScarecrowID, Material.wood).setHardness(2.5F).setResistance(4.0F).setUnlocalizedName("Scarecrow");
         
         
     	// Block Registry
@@ -207,6 +212,7 @@ public class Main
     	GameRegistry.registerBlock(EggHatcher, "Egg Hatcher");
     	GameRegistry.registerBlock(LumberJacker, "Lumber Jacker");
     	GameRegistry.registerBlock(WashingMachine, "Washing Machine");
+    	GameRegistry.registerBlock(Scarecrow, "Scarecrow");
     	
         
     	// Network Registry
@@ -354,6 +360,14 @@ public class Main
             });
         }
     	
+    	if (RecipeScarecrow.getBoolean(false) == true)
+        {
+    	    GameRegistry.addRecipe(new ItemStack(Scarecrow), new Object[]
+            {
+    	        " P ", "WAW", " S ", 'P', Block.pumpkin, 'W', Item.wheat, 'A', Item.plateLeather, 'S', Item.stick
+            });
+        }
+    	
     	
     	// Machine Recipes
     	
@@ -427,5 +441,6 @@ public class Main
 	    LanguageRegistry.addName(EggHatcher, "Egg Hatcher");
 	    LanguageRegistry.addName(LumberJacker, "Lumber Jacker");
 	    LanguageRegistry.addName(WashingMachine, "Washing Machine");
+	    LanguageRegistry.addName(Scarecrow, "Scarecrow");
     }
 }
