@@ -2,96 +2,96 @@ package TreviModdingCrew.Utilities.Tile;
 
 import java.util.List;
 
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityMooshroom;
+import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.passive.EntityPig;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
+import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 
 public class TileEntityScarecrow extends TileEntity
 {
     public void updateEntity() 
-    {
+    {  
         if(!worldObj.isRemote)
         {
-            AxisAlignedBB Axis = AxisAlignedBB.getBoundingBox(xCoord - 5, yCoord - 5, zCoord - 5, xCoord + 5, yCoord + 5, zCoord + 5);
+            AxisAlignedBB Axis = AxisAlignedBB.getBoundingBox(xCoord - 5, yCoord, zCoord - 5, xCoord + 5, yCoord + 1, zCoord + 5);
             
-            List Pig = worldObj.getEntitiesWithinAABB(EntityPig.class, Axis);
-           
-            for(int Size = 0; Size < Pig.size(); Size++)
+            List Entities = worldObj.getEntitiesWithinAABB(EntityLiving.class, Axis);
+            
+            for(int Size = 0; Size < Entities.size(); Size++)
             {
-                EntityPig EntityPig = (EntityPig) Pig.get(Size);
-               
-                if(Axis != null)
-                {    
-                    if(xCoord > xCoord)
-                    {
-                        xCoord -= 1;
-                        
-                        EntityPig.setPosition(xCoord - 0.05, yCoord, zCoord);
-                    }
+                EntityLiving CurrentEntity = (EntityLiving) Entities.get(Size);
+                
+                if(CurrentEntity instanceof EntityPig)
+                {
+                    double xVel = 0;
+                    double zVel = 0;
+
+                    xVel = (CurrentEntity.posX - xCoord) / 5;
+                    zVel = (CurrentEntity.posZ - zCoord) / 5;
                     
-                    else
-                    {
-                        xCoord += 1;
-                        
-                        EntityPig.setPosition(xCoord + 0.05, yCoord, zCoord);
-                    }
+                    CurrentEntity.setVelocity(xVel, 0.1, zVel);
+                }
+                
+                else if(CurrentEntity instanceof EntityCow)
+                {
+                    double xVel = 0;
+                    double zVel = 0;
+
+                    xVel = (CurrentEntity.posX - xCoord) / 5;
+                    zVel = (CurrentEntity.posZ - zCoord) / 5;
                     
-                    if(yCoord > yCoord)
-                    {
-                        yCoord -= 0.5;
-                       
-                        EntityPig.setPosition(xCoord, yCoord - 0.05, zCoord);  
-                    }
+                    CurrentEntity.setVelocity(xVel, 0.1, zVel);
+                }
+                
+                else if(CurrentEntity instanceof EntityChicken)
+                {
+                    double xVel = 0;
+                    double zVel = 0;
+
+                    xVel = (CurrentEntity.posX - xCoord) / 5;
+                    zVel = (CurrentEntity.posZ - zCoord) / 5;
                     
-                    else
-                    {
-                        yCoord += 0.5;
-                   
-                        EntityPig.setPosition(xCoord, yCoord + 0.05, zCoord);
-                    }
+                    CurrentEntity.setVelocity(xVel, 0.1, zVel);              
+                }
+                
+                else if(CurrentEntity instanceof EntitySheep)
+                {
+                    double xVel = 0;
+                    double zVel = 0;
+
+                    xVel = (CurrentEntity.posX - xCoord) / 5;
+                    zVel = (CurrentEntity.posZ - zCoord) / 5;
+                    
+                    CurrentEntity.setVelocity(xVel, 0.05, zVel);
+                }
+                
+                else if(CurrentEntity instanceof EntityOcelot)
+                {
+                    double xVel = 0;
+                    double zVel = 0;
+
+                    xVel = (CurrentEntity.posX - xCoord) / 5;
+                    zVel = (CurrentEntity.posZ - zCoord) / 5;
+                    
+                    CurrentEntity.setVelocity(xVel, 0.05, zVel);
+                }
+                
+                else if(CurrentEntity instanceof EntityMooshroom)
+                {
+                    double xVel = 0;
+                    double zVel = 0;
+
+                    xVel = (CurrentEntity.posX - xCoord) / 5;
+                    zVel = (CurrentEntity.posZ - zCoord) / 5;
+                    
+                    CurrentEntity.setVelocity(xVel, 0.05, zVel);
                 }
             }
         }
     }
-    
-    
-    // Reading From Tag Compound
-    
-    public void readFromNBT(NBTTagCompound NBTTagCompound)
-    {   
-        super.readFromNBT(NBTTagCompound);
-    }
- 
-    
-    // Writing To Tag Compound
-
-    public void writeToNBT(NBTTagCompound NBTTagCompound)
-    {       
-        super.writeToNBT(NBTTagCompound);
-    }
-    
-    
-    // Adding Data To The Packet
-    
-    @Override
-    public Packet getDescriptionPacket() 
-    {
-        NBTTagCompound Tag = new NBTTagCompound();
-        writeToNBT(Tag);
-        
-        return new Packet132TileEntityData(xCoord, yCoord, zCoord, 1, Tag);
-    }
-    
-    
-    // Sending The Packet
-    
-    public void onDataPacket(INetworkManager INetworkManager, Packet132TileEntityData Packet132TileEntityData)
-    {
-        this.readFromNBT(Packet132TileEntityData.customParam1);
-    }
 }
-

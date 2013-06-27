@@ -17,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
 
 import TreviModdingCrew.Utilities.Block.BlockEggHatcher;
@@ -39,6 +40,7 @@ import TreviModdingCrew.Utilities.Tab.TabUtilitiesItem;
 import TreviModdingCrew.Utilities.Tile.TileEntityEggHatcher;
 import TreviModdingCrew.Utilities.Tile.TileEntityLumberJacker;
 import TreviModdingCrew.Utilities.Tile.TileEntityRockGrinder;
+import TreviModdingCrew.Utilities.Tile.TileEntityScarecrow;
 import TreviModdingCrew.Utilities.Tile.TileEntityWashingMachine;
 
 import cpw.mods.fml.common.Mod;
@@ -213,6 +215,11 @@ public class Main
     	GameRegistry.registerBlock(LumberJacker, "Lumber Jacker");
     	GameRegistry.registerBlock(WashingMachine, "Washing Machine");
     	GameRegistry.registerBlock(Scarecrow, "Scarecrow");
+    	
+    	
+    	// Setting The Toolclass
+    	
+    	MinecraftForge.setBlockHarvestLevel(Scarecrow, "axe", 0);
     	
         
     	// Network Registry
@@ -429,6 +436,7 @@ public class Main
 	    GameRegistry.registerTileEntity(TileEntityEggHatcher.class, "Egg Hatcher");
 	    GameRegistry.registerTileEntity(TileEntityLumberJacker.class, "Lumber Jacker");
 	    GameRegistry.registerTileEntity(TileEntityWashingMachine.class, "Washing Machine");
+	    GameRegistry.registerTileEntity(TileEntityScarecrow.class, "Scarecrow");
 
 	    
 	    // Language Registry

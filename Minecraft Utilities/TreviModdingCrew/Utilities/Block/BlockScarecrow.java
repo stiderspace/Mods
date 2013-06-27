@@ -27,6 +27,25 @@ public class BlockScarecrow extends BlockContainer
         return true;
     }
     
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
+    
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
+    
+    @Override
+    public int getRenderType()
+    {
+        return -1;
+    }
+    
+    
     // Creating The Tile
     
     @Override
