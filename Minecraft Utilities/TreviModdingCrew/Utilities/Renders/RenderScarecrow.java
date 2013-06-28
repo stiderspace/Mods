@@ -66,7 +66,7 @@ public class RenderScarecrow implements IItemRenderer
              
             case INVENTORY:
             {
-                Render(0f, -0.67f, 0f, 0.5f, ItemRenderType);
+                Render(0f, -0.80f, 0f, 0.5f, ItemRenderType);
                 return;
             }
             
@@ -98,7 +98,7 @@ public class RenderScarecrow implements IItemRenderer
         
         if(ItemRenderType == ItemRenderType.INVENTORY)
         {
-            GL11.glScalef(0.68F, 0.62F, 0.62F);
+            GL11.glScalef(0.72F, 0.66F, 0.66F);
         }
         
         FMLClientHandler.instance().getClient().renderEngine.bindTexture("/TreviModdingCrew/Utilities/Textures/Model/Scarecrow.png");

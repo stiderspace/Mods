@@ -16,82 +16,81 @@ public class TileEntityScarecrow extends TileEntity
 {
     public void updateEntity() 
     {  
-        if(!worldObj.isRemote)
+    
+        AxisAlignedBB Axis = AxisAlignedBB.getBoundingBox(xCoord - 5, yCoord, zCoord - 5, xCoord + 5, yCoord + 1, zCoord + 5);
+        
+        List Entities = worldObj.getEntitiesWithinAABB(EntityLiving.class, Axis);
+        
+        for(int Size = 0; Size < Entities.size(); Size++)
         {
-            AxisAlignedBB Axis = AxisAlignedBB.getBoundingBox(xCoord - 5, yCoord, zCoord - 5, xCoord + 5, yCoord + 1, zCoord + 5);
+            EntityLiving CurrentEntity = (EntityLiving) Entities.get(Size);
             
-            List Entities = worldObj.getEntitiesWithinAABB(EntityLiving.class, Axis);
-            
-            for(int Size = 0; Size < Entities.size(); Size++)
+            if(CurrentEntity instanceof EntityPig)
             {
-                EntityLiving CurrentEntity = (EntityLiving) Entities.get(Size);
-                
-                if(CurrentEntity instanceof EntityPig)
-                {
-                    double xVel = 0;
-                    double zVel = 0;
+                double xVel = 0;
+                double zVel = 0;
 
-                    xVel = (CurrentEntity.posX - xCoord) / 5;
-                    zVel = (CurrentEntity.posZ - zCoord) / 5;
-                    
-                    CurrentEntity.setVelocity(xVel, 0.1, zVel);
-                }
+                xVel = (CurrentEntity.posX - xCoord) / 5;
+                zVel = (CurrentEntity.posZ - zCoord) / 5;
                 
-                else if(CurrentEntity instanceof EntityCow)
-                {
-                    double xVel = 0;
-                    double zVel = 0;
-
-                    xVel = (CurrentEntity.posX - xCoord) / 5;
-                    zVel = (CurrentEntity.posZ - zCoord) / 5;
-                    
-                    CurrentEntity.setVelocity(xVel, 0.1, zVel);
-                }
-                
-                else if(CurrentEntity instanceof EntityChicken)
-                {
-                    double xVel = 0;
-                    double zVel = 0;
-
-                    xVel = (CurrentEntity.posX - xCoord) / 5;
-                    zVel = (CurrentEntity.posZ - zCoord) / 5;
-                    
-                    CurrentEntity.setVelocity(xVel, 0.1, zVel);              
-                }
-                
-                else if(CurrentEntity instanceof EntitySheep)
-                {
-                    double xVel = 0;
-                    double zVel = 0;
-
-                    xVel = (CurrentEntity.posX - xCoord) / 5;
-                    zVel = (CurrentEntity.posZ - zCoord) / 5;
-                    
-                    CurrentEntity.setVelocity(xVel, 0.05, zVel);
-                }
-                
-                else if(CurrentEntity instanceof EntityOcelot)
-                {
-                    double xVel = 0;
-                    double zVel = 0;
-
-                    xVel = (CurrentEntity.posX - xCoord) / 5;
-                    zVel = (CurrentEntity.posZ - zCoord) / 5;
-                    
-                    CurrentEntity.setVelocity(xVel, 0.05, zVel);
-                }
-                
-                else if(CurrentEntity instanceof EntityMooshroom)
-                {
-                    double xVel = 0;
-                    double zVel = 0;
-
-                    xVel = (CurrentEntity.posX - xCoord) / 5;
-                    zVel = (CurrentEntity.posZ - zCoord) / 5;
-                    
-                    CurrentEntity.setVelocity(xVel, 0.05, zVel);
-                }
+                CurrentEntity.setVelocity(xVel, 0.1, zVel);
             }
+            
+            else if(CurrentEntity instanceof EntityCow)
+            {
+                double xVel = 0;
+                double zVel = 0;
+
+                xVel = (CurrentEntity.posX - xCoord) / 5;
+                zVel = (CurrentEntity.posZ - zCoord) / 5;
+                
+                CurrentEntity.setVelocity(xVel, 0.1, zVel);
+            }
+            
+            else if(CurrentEntity instanceof EntityChicken)
+            {
+                double xVel = 0;
+                double zVel = 0;
+
+                xVel = (CurrentEntity.posX - xCoord) / 5;
+                zVel = (CurrentEntity.posZ - zCoord) / 5;
+                
+                CurrentEntity.setVelocity(xVel, 0.1, zVel);              
+            }
+            
+            else if(CurrentEntity instanceof EntitySheep)
+            {
+                double xVel = 0;
+                double zVel = 0;
+
+                xVel = (CurrentEntity.posX - xCoord) / 5;
+                zVel = (CurrentEntity.posZ - zCoord) / 5;
+                
+                CurrentEntity.setVelocity(xVel, 0.05, zVel);
+            }
+            
+            else if(CurrentEntity instanceof EntityOcelot)
+            {
+                double xVel = 0;
+                double zVel = 0;
+
+                xVel = (CurrentEntity.posX - xCoord) / 5;
+                zVel = (CurrentEntity.posZ - zCoord) / 5;
+                
+                CurrentEntity.setVelocity(xVel, 0.05, zVel);
+            }
+            
+            else if(CurrentEntity instanceof EntityMooshroom)
+            {
+                double xVel = 0;
+                double zVel = 0;
+
+                xVel = (CurrentEntity.posX - xCoord) / 5;
+                zVel = (CurrentEntity.posZ - zCoord) / 5;
+                
+                CurrentEntity.setVelocity(xVel, 0.05, zVel);
+            }
+            
         }
     }
 }
