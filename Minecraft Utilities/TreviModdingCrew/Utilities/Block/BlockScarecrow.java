@@ -1,11 +1,16 @@
 package TreviModdingCrew.Utilities.Block;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 import TreviModdingCrew.Utilities.Common.Main;
+import TreviModdingCrew.Utilities.Common.Reference;
 import TreviModdingCrew.Utilities.Tile.TileEntityScarecrow;
 
 public class BlockScarecrow extends BlockContainer
@@ -16,6 +21,24 @@ public class BlockScarecrow extends BlockContainer
     {
         super(Par1, Material);
         setCreativeTab(Main.UtilitiesBlock);
+    }
+    
+    
+    // Setting Textures
+    
+    private Icon[] IconBuffer = new Icon[1];
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IconRegister IconRegister)
+    {
+        IconBuffer[0] = IconRegister.registerIcon(Reference.ModID + ":" + "Cobblestone");
+    }
+    
+    @Override
+    public Icon getIcon(int Par1, int Par2)
+    {
+        return IconBuffer[0];
     }
     
     

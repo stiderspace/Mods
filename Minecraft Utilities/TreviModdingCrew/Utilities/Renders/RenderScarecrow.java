@@ -88,12 +88,15 @@ public class RenderScarecrow implements IItemRenderer
         
         if(ItemRenderType == ItemRenderType.EQUIPPED_FIRST_PERSON)
         {
-            GL11.glRotatef(-90F, 0F, 1F, 0F);
+            GL11.glRotatef(-100F, 0F, 1F, 0F);
+            GL11.glScalef(0.90F, 0.90F, 0.90F);
         }
         
         if(ItemRenderType == ItemRenderType.EQUIPPED)
         {
-            GL11.glRotatef(180F, 0F, 1F, 0F);
+            GL11.glRotatef(226F, 0F, 1F, 0F);
+            GL11.glRotatef(-19F, 1F, 0F, 0F);
+            GL11.glTranslatef(0F, -0.2F, -0.22F);
         }
         
         if(ItemRenderType == ItemRenderType.INVENTORY)
