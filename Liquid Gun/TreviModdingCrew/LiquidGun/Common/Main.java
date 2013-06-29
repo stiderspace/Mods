@@ -5,11 +5,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
+
 import TreviModdingCrew.LiquidGun.Handler.LogHandler;
 import TreviModdingCrew.LiquidGun.Items.ItemLiquidGun;
 import TreviModdingCrew.LiquidGun.Packet.PacketManager;
 import TreviModdingCrew.LiquidGun.Proxy.ClientProxy;
 import TreviModdingCrew.LiquidGun.Proxy.CommonProxy;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;

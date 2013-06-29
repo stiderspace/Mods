@@ -248,7 +248,7 @@ public class BlockEggHatcher extends BlockContainer
     public void breakBlock(World World, int Par2, int Par3, int Par4, int Par5, int Par6)
     {
     	TileEntityEggHatcher Tile = (TileEntityEggHatcher) World.getBlockTileEntity(Par2, Par3, Par4);
-        
+       
     	if(Tile.TickToHatch > 0)
         {
             EntityItem Var5 = new EntityItem(World, Par2 + 0, Par3 + 0.5, Par4 + 0, new ItemStack(Item.egg));
