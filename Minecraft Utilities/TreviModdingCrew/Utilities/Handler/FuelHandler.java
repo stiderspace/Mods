@@ -25,11 +25,6 @@ public class FuelHandler implements IFuelHandler
             return Var1.nextInt(350);
         } 
         
-        if(ItemStack.itemID == Main.Scarecrow.blockID)
-        {
-            return Var1.nextInt(225);
-        }
-        
         else return 0;
     }
 }

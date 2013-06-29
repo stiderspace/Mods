@@ -24,7 +24,6 @@ import TreviModdingCrew.Utilities.Block.BlockEggHatcher;
 import TreviModdingCrew.Utilities.Block.BlockLumberJacker;
 import TreviModdingCrew.Utilities.Block.BlockRockCutter;
 import TreviModdingCrew.Utilities.Block.BlockRockGrinder;
-import TreviModdingCrew.Utilities.Block.BlockScarecrow;
 import TreviModdingCrew.Utilities.Block.BlockWashingMachine;
 import TreviModdingCrew.Utilities.Entity.EntityBomb;
 import TreviModdingCrew.Utilities.Handler.FuelHandler;
@@ -40,7 +39,6 @@ import TreviModdingCrew.Utilities.Tab.TabUtilitiesItem;
 import TreviModdingCrew.Utilities.Tile.TileEntityEggHatcher;
 import TreviModdingCrew.Utilities.Tile.TileEntityLumberJacker;
 import TreviModdingCrew.Utilities.Tile.TileEntityRockGrinder;
-import TreviModdingCrew.Utilities.Tile.TileEntityScarecrow;
 import TreviModdingCrew.Utilities.Tile.TileEntityWashingMachine;
 
 import cpw.mods.fml.common.Mod;
@@ -85,8 +83,7 @@ public class Main
 	public static Block EggHatcher;
 	public static Block LumberJacker;
 	public static Block WashingMachine;
-	public static Block Scarecrow;
-	
+
 	public static CreativeTabs UtilitiesBlock = new TabUtilitiesBlock(CreativeTabs.getNextID(), "Utilities Blocks");
 	public static CreativeTabs UtilitiesItem = new TabUtilitiesItem(CreativeTabs.getNextID(), "Utilities Items");
 	
@@ -123,8 +120,7 @@ public class Main
 	public Property RecipeEggHatcher;
 	public Property RecipeLumberJacker;
 	public Property RecipeWashingMachine;
-	public Property RecipeScarecrow;
-    
+	
 	public static Property OverideRockCutter;
 	public static Property OverideRockGrinder;
 	
@@ -166,8 +162,7 @@ public class Main
         RecipeEggHatcher = Config.get("Recipes", "Egg Hatcher", true);
         RecipeLumberJacker = Config.get("Recipes", "Lumber Jacker", true);
         RecipeWashingMachine = Config.get("Recipes", "Washing Machine", true);
-        RecipeScarecrow = Config.get("Recipes", "Scarecrow", true);
-        
+       
         RecipeNetherBricks = Config.get("Smelting", "Nether Bricks", true);
         RecipeNetherBrick = Config.get("Smelting", "Nether Bricks", true);
         RecipeNetherStairs = Config.get("Smelting", "Nether Stairs", true);
@@ -204,7 +199,6 @@ public class Main
         EggHatcher = new BlockEggHatcher(EggHatcherID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Egg Hatcher");
         LumberJacker = new BlockLumberJacker(LumberJackerID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Lumber Jacker");
         WashingMachine = new BlockWashingMachine(WashingMachineID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Washing Machine");
-        Scarecrow = new BlockScarecrow(ScarecrowID, Material.wood).setHardness(2.5F).setResistance(4.0F).setUnlocalizedName("Scarecrow");
         
         
     	// Block Registry
@@ -214,12 +208,6 @@ public class Main
     	GameRegistry.registerBlock(EggHatcher, "Egg Hatcher");
     	GameRegistry.registerBlock(LumberJacker, "Lumber Jacker");
     	GameRegistry.registerBlock(WashingMachine, "Washing Machine");
-    	GameRegistry.registerBlock(Scarecrow, "Scarecrow");
-    	
-    	
-    	// Setting The Toolclass
-    	
-    	MinecraftForge.setBlockHarvestLevel(Scarecrow, "axe", 0);
     	
         
     	// Network Registry
@@ -367,14 +355,6 @@ public class Main
             });
         }
     	
-    	if (RecipeScarecrow.getBoolean(false) == true)
-        {
-    	    GameRegistry.addRecipe(new ItemStack(Scarecrow), new Object[]
-            {
-    	        " P ", "WAW", " S ", 'P', Block.pumpkin, 'W', Item.wheat, 'A', Item.plateLeather, 'S', Item.stick
-            });
-        }
-    	
     	
     	// Machine Recipes
     	
@@ -436,8 +416,7 @@ public class Main
 	    GameRegistry.registerTileEntity(TileEntityEggHatcher.class, "Egg Hatcher");
 	    GameRegistry.registerTileEntity(TileEntityLumberJacker.class, "Lumber Jacker");
 	    GameRegistry.registerTileEntity(TileEntityWashingMachine.class, "Washing Machine");
-	    GameRegistry.registerTileEntity(TileEntityScarecrow.class, "Scarecrow");
-
+	    
 	    
 	    // Language Registry
 	     
@@ -449,6 +428,5 @@ public class Main
 	    LanguageRegistry.addName(EggHatcher, "Egg Hatcher");
 	    LanguageRegistry.addName(LumberJacker, "Lumber Jacker");
 	    LanguageRegistry.addName(WashingMachine, "Washing Machine");
-	    LanguageRegistry.addName(Scarecrow, "Scarecrow");
     }
 }
