@@ -99,7 +99,7 @@ public class Main
         {
             GameRegistry.addRecipe(new ItemStack(LiquidGun, 1), new Object[]
             {
-                " G ", "III", " II", 'G', Block.glass, 'I', Item.ingotIron
+                " G ", "IIP", " II", 'G', Block.glass, 'I', Item.ingotIron, 'P', Item.gunpowder
             });
         }
         

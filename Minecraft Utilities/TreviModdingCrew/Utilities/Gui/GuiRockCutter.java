@@ -37,7 +37,9 @@ public class GuiRockCutter extends GuiContainer
     {
         if(GuiButton.id == 1)
         {
-            mc.thePlayer.closeScreen();
+            //mc.thePlayer.closeScreen();
+            int b = mc.renderEngine.getTexture("/TreviModdingCrew/Utilities/Textures/Gui/Rock Cutter.png");
+            mc.renderEngine.deleteTexture(b);
         }
     }
     
@@ -58,7 +60,7 @@ public class GuiRockCutter extends GuiContainer
     protected void drawGuiContainerBackgroundLayer(float Par1, int Par2, int Par3)
     {
         mc.renderEngine.bindTexture("/TreviModdingCrew/Utilities/Textures/Gui/Rock Cutter.png");
-        
+
         GL11.glColor4f(1F, 1F, 1F, 1F);
         
         int Var4 = (width - xSize) / 2;

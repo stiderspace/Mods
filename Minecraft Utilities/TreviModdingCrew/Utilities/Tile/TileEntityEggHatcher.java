@@ -1,6 +1,9 @@
 package TreviModdingCrew.Utilities.Tile;
 
+import buildcraft.api.power.IPowerProvider;
+import buildcraft.api.power.IPowerReceptor;
 import TreviModdingCrew.Utilities.Block.BlockEggHatcher;
+import TreviModdingCrew.Utilities.Util.PowerProviderAdvanced;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.INetworkManager;
@@ -8,8 +11,9 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeDirection;
 
-public class TileEntityEggHatcher extends TileEntity
+public class TileEntityEggHatcher extends TileEntity implements IPowerReceptor
 {
     // Declaration
     
@@ -19,6 +23,17 @@ public class TileEntityEggHatcher extends TileEntity
    
     public int TickToHatch = 0;
     public int Buffer = 0;
+    
+    public PowerProviderAdvanced MyProvider;
+    
+    
+    // Tile Entity Configuration
+    
+    public TileEntityEggHatcher()
+    {
+        MyProvider = new PowerProviderAdvanced();
+        MyProvider.configure(100, 8000);
+    }
     
     public void updateEntity() 
     {
@@ -35,7 +50,20 @@ public class TileEntityEggHatcher extends TileEntity
             
             else
             {
-                TickToHatch--;
+                if(MyProvider.getEnergyStored() >= 1)
+                {
+                    TickToHatch -= 2;
+                    
+                    MyProvider.subtractEnergy(2.0F);
+                    
+                    System.out.println("Hatcher 1:  " + " Energy: " + MyProvider.getEnergyStored() + "MJ   TickToHatch: " + TickToHatch);
+                }
+                
+                else
+                { 
+                    TickToHatch -= 1;
+                    System.out.println("Hatcher 2:  " + " Energy: " + MyProvider.getEnergyStored() + "MJ   TickToHatch: " + TickToHatch);
+                }
             }
         } 
     }
@@ -57,6 +85,9 @@ public class TileEntityEggHatcher extends TileEntity
         CanPutEggIn  = NBTTagCompound.getBoolean("CanPutEggIn");
         TickToHatch  = NBTTagCompound.getInteger("TickToHatch");
         Buffer = NBTTagCompound.getInteger("Buffer");
+        
+        MyProvider.setEnergyStored(NBTTagCompound.getFloat("EnergyStored"));
+        
        
         super.readFromNBT(NBTTagCompound);
         
@@ -76,7 +107,9 @@ public class TileEntityEggHatcher extends TileEntity
         NBTTagCompound.setBoolean("CanPutEggIn", CanPutEggIn); 
         NBTTagCompound.setInteger("TickToHatch", TickToHatch);
         NBTTagCompound.setInteger("Buffer", Buffer);
-       
+        
+        NBTTagCompound.setFloat("EnergyStored", MyProvider.getEnergyStored());
+        
         super.writeToNBT(NBTTagCompound);
     }
     
@@ -93,5 +126,42 @@ public class TileEntityEggHatcher extends TileEntity
 	public void onDataPacket(INetworkManager INetworkManager, Packet132TileEntityData Packet132TileEntityData)
     {
 		readFromNBT(Packet132TileEntityData.customParam1);
+    }
+
+    // Getting The Provider Data
+
+    @Override
+    public IPowerProvider getPowerProvider()
+    {
+        return MyProvider;
+    }
+
+
+    // Doing Something With Power
+    
+    @Override
+    public void doWork()
+    {
+        
+    }
+
+    
+    // Let A Machine Request Ror Power
+
+    @Override
+    public int powerRequest(ForgeDirection ForgeDirection)
+    {
+        if(MyProvider.getEnergyStored() >= MyProvider.getMaxEnergyStored())
+        {
+            return 0;
+        }
+        
+        return (int)(MyProvider.getMaxEnergyStored() - MyProvider.getEnergyStored());
+    }
+
+    @Override
+    public void setPowerProvider(IPowerProvider IPowerProvider)
+    {
+        
     }
 }

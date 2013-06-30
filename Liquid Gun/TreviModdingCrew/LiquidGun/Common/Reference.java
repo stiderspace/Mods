@@ -4,7 +4,7 @@ public class Reference
 {
     // Mod Information
     
-    public static final String ModID = "Liquid Gun";
+    public static final String ModID = "LiquidGun";
     public static final String ModName = "Liquid Gun";
     public static final String Version = "0.1.1.0";
     public static final String Dependencies = "";
@@ -13,5 +13,5 @@ public class Reference
     // Network Information
     
     public static final String ChannelName = "Liquid Gun";
-    public static final String Instance = "LiquidGun";
+    public static final String Instance = "Liquid Gun";
 }

@@ -19,7 +19,7 @@ import cpw.mods.fml.common.network.IGuiHandler;
 
 public class CommonProxy implements IGuiHandler 
 {
-    // Loading The Render For Throwable Items
+    // Loading The Render For Throwable Items & Custom Rendered Stuff
         
     public void LoadRenderers()
     {
@@ -79,7 +79,7 @@ public class CommonProxy implements IGuiHandler
     }
         
         
-    // Removing Recipes
+    // Removing Vanilla Recipes
         
     public void RemoveRecipe(ItemStack ItemStack)
     {
