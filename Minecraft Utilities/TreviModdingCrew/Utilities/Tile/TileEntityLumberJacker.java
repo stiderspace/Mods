@@ -10,7 +10,12 @@ import TreviModdingCrew.Utilities.Block.BlockLumberJacker;
 
 public class TileEntityLumberJacker extends TileEntity
 {
-    public static boolean HasCutted = false;
+    public boolean HasCutted = false;
+    
+    public TileEntityLumberJacker()
+    {
+        HasCutted = false; 
+    }
     
     public void updateEntity()
     {

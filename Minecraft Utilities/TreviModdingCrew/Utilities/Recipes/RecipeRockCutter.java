@@ -8,7 +8,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 
-public class RecipeRockCutter implements Comparator
+public class RecipeRockCutter implements Comparator <Object>
 {
     // Declaration
     

@@ -32,7 +32,7 @@ public class KeyBindHandler extends KeyHandler
     @Override
     public String getLabel() 
     {
-        return "More Information";
+        return "Item Information";
     }
 
     

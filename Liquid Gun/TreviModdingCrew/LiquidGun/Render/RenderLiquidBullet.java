@@ -16,8 +16,6 @@ public class RenderLiquidBullet extends Render
         {
             try
             {
-                int Par6 = ((EntityLiquidBullet)Entity).getLiquidItemID();
-               
                 EntitySmokeFX EntitySmokeFX = new EntitySmokeFX(Entity.worldObj, Par1, Par2, Par3, 0, 0, 0);
                 ModLoader.getMinecraftInstance().effectRenderer.addEffect(EntitySmokeFX);
             }

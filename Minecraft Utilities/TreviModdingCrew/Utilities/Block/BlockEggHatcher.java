@@ -8,6 +8,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -254,7 +255,14 @@ public class BlockEggHatcher extends BlockContainer
             EntityItem Var5 = new EntityItem(World, Par2 + 0, Par3 + 0.5, Par4 + 0, new ItemStack(Item.egg));
             World.spawnEntityInWorld(Var5);
         }
-        
+    	
+    	if(Tile.MyProvider.getEnergyStored() >= 1)
+        {
+            float Var1 = Tile.MyProvider.getEnergyStored() / 2500;
+            
+            World.createExplosion((Entity)null, Par2, Par3, Par4, Var1, true);
+        }
+
         super.breakBlock(World, Par2, Par3, Par4, Par5, Par6);
     }
 }

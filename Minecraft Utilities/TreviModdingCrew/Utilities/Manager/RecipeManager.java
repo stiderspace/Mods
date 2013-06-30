@@ -35,7 +35,7 @@ public class RecipeManager
             
             try
             {
-                RecipeRockGrinder.Grinding().addGrinding(GameRegistry.findItem("", "").itemID, GameRegistry.findItemStack("", "", 1), 0.5F);
+                
             }
             
             catch(Exception Exception)

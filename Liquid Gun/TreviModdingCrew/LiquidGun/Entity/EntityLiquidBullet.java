@@ -2,8 +2,6 @@ package TreviModdingCrew.LiquidGun.Entity;
 
 import java.util.List;
 
-import TreviModdingCrew.LiquidGun.Items.ItemLiquidGun;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFluid;
 import net.minecraft.entity.Entity;

@@ -1,5 +1,7 @@
 package TreviModdingCrew.Utilities.Gui;
 
+import javax.swing.JOptionPane;
+
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -37,9 +39,7 @@ public class GuiRockCutter extends GuiContainer
     {
         if(GuiButton.id == 1)
         {
-            //mc.thePlayer.closeScreen();
-            int b = mc.renderEngine.getTexture("/TreviModdingCrew/Utilities/Textures/Gui/Rock Cutter.png");
-            mc.renderEngine.deleteTexture(b);
+            mc.thePlayer.closeScreen();
         }
     }
     

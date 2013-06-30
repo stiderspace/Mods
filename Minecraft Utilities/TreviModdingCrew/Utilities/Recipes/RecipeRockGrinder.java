@@ -50,7 +50,7 @@ public class RecipeRockGrinder
     
     // Making The Recipe List
     
-    public Map getGrindingList()
+    public Map <Integer, ItemStack> getGrindingList()
     {
         return RockGrinderList;
     }

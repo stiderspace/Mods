@@ -17,7 +17,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
 
 import TreviModdingCrew.Utilities.Block.BlockEggHatcher;
@@ -343,7 +342,7 @@ public class Main
         {
             GameRegistry.addRecipe(new ItemStack(LumberJacker), new Object[]
             {
-                "CAC", "CRC", "CCC", 'C', Block.cobblestone, 'R', Item.redstone, 'A', Item.axeIron
+                "FFF", "CAC", "CRC", 'C', Block.cobblestone, 'R', Item.redstone, 'A', Item.axeIron, 'F', Item.flint
             });
         }
     	
@@ -398,8 +397,8 @@ public class Main
 	 
 	    ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH).addItem(new WeightedRandomChestContent(new ItemStack(Filter), 1, 1, 50));
 	    ChestGenHooks.getInfo(ChestGenHooks.MINESHAFT_CORRIDOR).addItem(new WeightedRandomChestContent(new ItemStack(Bomb), 1, 5, 25));
-	   
-	     
+	    
+	    
 	    // Fuel Registry
 	     
 	    GameRegistry.registerFuelHandler(new FuelHandler());
