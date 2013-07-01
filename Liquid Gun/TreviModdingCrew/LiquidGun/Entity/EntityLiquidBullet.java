@@ -550,8 +550,23 @@ public class EntityLiquidBullet extends Entity implements IProjectile
                 {
                     for(int Buffer = 0; Buffer < 4; ++Buffer)
                     {
+                        
                         Var7 = 0.25F;
-                        worldObj.spawnParticle("smoke", posX - motionX * (double) Var7, posY - motionY * (double) Var7, posZ - motionZ * (double) Var7, motionX, motionY,motionZ);         
+                        
+
+                        switch(dataWatcher.getWatchableObjectInt(16))
+                        {
+                            case 9: worldObj.spawnParticle("splash", posX - motionX * (double) Var7, posY - motionY * (double) Var7, posZ - motionZ * (double) Var7, motionX, motionY,motionZ);         
+                            case 8: worldObj.spawnParticle("splash", posX - motionX * (double) Var7, posY - motionY * (double) Var7, posZ - motionZ * (double) Var7, motionX, motionY,motionZ);         
+                                
+                            break;
+
+                            
+                            case 10: worldObj.spawnParticle("flame", posX - motionX * (double) Var7, posY - motionY * (double) Var7, posZ - motionZ * (double) Var7, motionX, motionY,motionZ);         
+                            case 11: worldObj.spawnParticle("flame", posX - motionX * (double) Var7, posY - motionY * (double) Var7, posZ - motionZ * (double) Var7, motionX, motionY,motionZ);         
+                               
+                            break;
+                        }
                     }
 
                     Var8 = 0.8F;
