@@ -95,9 +95,11 @@ public class BlockWashingMachine extends BlockContainer
     {
         TileEntityWashingMachine Tile = (TileEntityWashingMachine) World.getBlockTileEntity(Par2, Par3, Par4);
         
+        Random Number = new Random();
+        
         if(Tile.TickToWash > 0)
         {
-            EntityItem Var5 = new EntityItem(World, Par2 + 0, Par3 + 0.5, Par4 + 0, new ItemStack(Item.silk, 0 + World.rand.nextInt(2)));
+            EntityItem Var5 = new EntityItem(World, Par2 + 0, Par3 + 0.5, Par4 + 0, new ItemStack(Item.silk, 0 + Number.nextInt(2)));
             World.spawnEntityInWorld(Var5);
         }
         

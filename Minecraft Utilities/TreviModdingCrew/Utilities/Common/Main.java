@@ -94,8 +94,7 @@ public class Main
 	public int EggHatcherID;
 	public int LumberJackerID;
 	public int WashingMachineID;
-	public int ScarecrowID;
-	
+
 	public Property RecipeBone;
 	public Property RecipeCyanDye;
 	public Property RecipeIce;
@@ -140,14 +139,13 @@ public class Main
         EggHatcherID = Config.getBlock("Egg Hatcher", 2502).getInt();
         LumberJackerID = Config.getBlock("Lumber Jacker", 2503).getInt();
         WashingMachineID = Config.getBlock("Washing Machine", 2504).getInt();
-        ScarecrowID = Config.getBlock("Scarecrow", 2505).getInt();
-       
+        
         RecipeBone = Config.get("Recipes", "Bone", true);
         RecipeCyanDye = Config.get("Recipes", "Cyan Dye", true);
         RecipeIce = Config.get("Recipes", "Ice", true);
         RecipeGravel = Config.get("Recipes", "Gravel", true);
         RecipeObsidian = Config.get("Recipes", "Obsidian", true);
-        RecipeMossyCobblestone = Config.get("Recipes", "Mossy Cobblestone", true);   
+        RecipeMossyCobblestone = Config.get("Recipes", "Moss Stone", true);   
         RecipeFlint = Config.get("Recipes", "Flint", true);
         RecipeBomb = Config.get("Recipes", "Bomb", true);
         RecipeSaddle = Config.get("Recipes", "Saddle", true);

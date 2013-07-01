@@ -146,7 +146,7 @@ public class TileEntityEggHatcher extends TileEntity implements IPowerReceptor
     }
 
     
-    // Let A Machine Request Ror Power
+    // Let A Machine Request For Power
 
     @Override
     public int powerRequest(ForgeDirection ForgeDirection)
@@ -155,7 +155,7 @@ public class TileEntityEggHatcher extends TileEntity implements IPowerReceptor
         {
             return 0;
         }
-        
+       
         return (int)(MyProvider.getMaxEnergyStored() - MyProvider.getEnergyStored());
     }
 

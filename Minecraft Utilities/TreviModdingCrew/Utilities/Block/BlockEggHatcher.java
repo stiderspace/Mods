@@ -102,7 +102,7 @@ public class BlockEggHatcher extends BlockContainer
     {
         TileEntityEggHatcher Tile = (TileEntityEggHatcher) World.getBlockTileEntity(Var1, Var2, Var3);
         
-    	if(EntityPlayer.getHeldItem() == null)
+    	if((EntityPlayer.getHeldItem() == null) && (EntityPlayer.isSneaking() == false))
     	{
     	    String Location = null;
 

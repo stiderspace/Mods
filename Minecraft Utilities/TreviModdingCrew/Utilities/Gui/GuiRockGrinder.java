@@ -53,6 +53,14 @@ public class GuiRockGrinder extends GuiContainer
             Button.enabled = false;
         }
     }
+ 
+    
+    // Makes It So The Game Continues When You Open The Gui
+    
+    public boolean doesGuiPauseGame()
+    {
+        return false;
+    }
     
     
     // Does Something If You Press One Of The Buttons

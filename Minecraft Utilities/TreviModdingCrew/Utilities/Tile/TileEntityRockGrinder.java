@@ -582,7 +582,7 @@ public class TileEntityRockGrinder extends TileEntity implements ISidedInventory
     }
 
     
-    // Let A Machine Request Ror Power
+    // Let A Machine Request For Power
 
     @Override
     public int powerRequest(ForgeDirection ForgeDirection)

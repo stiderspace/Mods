@@ -1,4 +1,4 @@
-package TreviModdingCrew.Utilities.Slot;
+package TreviModdingCrew.Utilities.Handler;
 
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import TreviModdingCrew.Utilities.Recipes.RecipeRockGrinder;
 
-public class SlotRockMachine extends Slot
+public class SlotHandler extends Slot
 {
     // Declarations
     
@@ -16,7 +16,7 @@ public class SlotRockMachine extends Slot
     
     private int Slot;
 
-    public SlotRockMachine(EntityPlayer EntityPlayer, IInventory IInventory, int Par3, int Par4, int Par5)
+    public SlotHandler(EntityPlayer EntityPlayer, IInventory IInventory, int Par3, int Par4, int Par5)
     {
         super(IInventory, Par3, Par4, Par5);
         Player = EntityPlayer;

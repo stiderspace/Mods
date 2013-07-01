@@ -1,7 +1,5 @@
 package TreviModdingCrew.Utilities.Gui;
 
-import javax.swing.JOptionPane;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -30,6 +28,14 @@ public class GuiRockCutter extends GuiContainer
         super.initGui();
         
         buttonList.add(new GuiButton(1, guiLeft + 179, guiTop + 12, 71, 20, ("Close")));
+    }
+     
+    
+    // Makes It So The Game Continues When You Open The Gui
+    
+    public boolean doesGuiPauseGame()
+    {
+        return false;
     }
     
     

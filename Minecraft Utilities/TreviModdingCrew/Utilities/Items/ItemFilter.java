@@ -98,6 +98,7 @@ public class ItemFilter extends Item
 		}
  
 		World.setBlock(Par4, Par5, Par6, 12);
+		
 		return true;
 	}
   

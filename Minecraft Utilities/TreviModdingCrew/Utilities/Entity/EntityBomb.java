@@ -1,5 +1,8 @@
 package TreviModdingCrew.Utilities.Entity;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -88,7 +91,18 @@ public class EntityBomb extends EntityThrowable
 	  
 	    else
 	    {
-	        worldObj.spawnParticle("smoke", this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D);
+	        Calendar Timer = Calendar.getInstance();
+	        Timer.setTime(new Date());
+	        
+	        if (Timer.get(2) + 1 == 2 && Timer.get(5) == 14)
+	        {
+	            worldObj.spawnParticle("heart", posX, posY + 0.5D, posZ, 0.0D, 0.0D, 0.0D);
+	        }
+	        
+	        else
+	        {
+	            worldObj.spawnParticle("smoke", posX, posY + 0.5D, posZ, 0.0D, 0.0D, 0.0D);
+	        }
 	    }
 	}
 
@@ -99,7 +113,7 @@ public class EntityBomb extends EntityThrowable
   	{
 	  	float Var1 = 2.5F;
 	
-	  	worldObj.createExplosion((Entity)null, this.posX, this.posY, this.posZ, Var1, true);
+	  	worldObj.createExplosion((Entity)null, posX, posY, posZ, Var1, true);
   	}
 
   	
@@ -108,7 +122,7 @@ public class EntityBomb extends EntityThrowable
   	public void writeEntityToNBT(NBTTagCompound NBTTagCompound)
   	{
   		super.writeEntityToNBT(NBTTagCompound);
-  		NBTTagCompound.setByte("Fuse", (byte)this.Fuse);
+  		NBTTagCompound.setByte("Fuse", (byte)Fuse);
   	}
 
   	
