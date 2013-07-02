@@ -43,13 +43,13 @@ public class ModelLiquidGun extends ModelBase
         Pice0.addBox("Part7", -2F, -9F, -2F, 4, 6, 4);
     }
 
-    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5, ItemStack is)
+    public void render(Entity Entity, float F, float F1, float F2, float F3, float F4, float F5, ItemStack ItemStack)
     {
         LiquidStack LiquidStacks;
         
         try
         {
-            LiquidStacks = LiquidStack.loadLiquidStackFromNBT(is.getTagCompound().getCompoundTag("LiquidData"));
+            LiquidStacks = LiquidStack.loadLiquidStackFromNBT(ItemStack.getTagCompound().getCompoundTag("LiquidData"));
         }
         
         catch(Exception Exception)
@@ -57,13 +57,14 @@ public class ModelLiquidGun extends ModelBase
             LiquidStacks = null;
         }
         
-        super.render(entity, f, f1, f2, f3, f4, f5);
-        setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-        Pice0.render(f5);
+        super.render(Entity, F, F1, F2, F3, F4, F5);
+        setRotationAngles(F, F1, F2, F3, F4, F5, Entity);
+        Pice0.render(F5);
         
         if(LiquidStacks != null && LiquidStacks.itemID != 0 && LiquidStacks.amount > 0)
         {
             String Texture = "";
+            
             if(Block.blocksList[LiquidStacks.itemID] instanceof IBlockLiquid)
             {
                 Texture = ((IBlockLiquid)Block.blocksList[LiquidStacks.itemID]).getLiquidBlockTextureFile();

@@ -57,7 +57,7 @@ public class ItemLiquidGun extends Item
         }
         
         List.add("Current Liquid: " + Liquid);
-        List.add("Current Amount: " + Amount);
+        List.add("Current Amount: " + Amount + " MB");
            
         if(Keyboard.isKeyDown(Keyboard.KEY_M))
         {

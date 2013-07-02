@@ -197,7 +197,7 @@ public class GuiRockGrinder extends GuiContainer
         {
             if(xMouse <= 21 && yMouse <= 69)
             {
-                drawCreativeTabHoveringText("Energy: " + MathHelper.round(Tile.MyProvider.getEnergyStored()) + "/" + Tile.MyProvider.getMaxEnergyStored(), xMouse, yMouse);
+                drawCreativeTabHoveringText("Energy: " + MathHelper.round(Tile.MyProvider.getEnergyStored()) + "/" + Tile.MyProvider.getMaxEnergyStored()  + " MJ", xMouse, yMouse);
             }
             
             return;
