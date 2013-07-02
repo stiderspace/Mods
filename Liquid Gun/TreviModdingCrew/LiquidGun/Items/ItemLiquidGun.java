@@ -38,13 +38,17 @@ public class ItemLiquidGun extends Item
     public void addInformation(ItemStack ItemStack, EntityPlayer EntityPlayer, List List, boolean Par4)
     {
         LiquidStack LiquidStacks;
-        
+
         String Liquid = "None";
+        
+        int Amount = 0;
         
         try
         {
             LiquidStacks = LiquidStack.loadLiquidStackFromNBT((NBTTagCompound) ItemStack.getTagCompound().getTag("LiquidData"));
             Liquid = Block.blocksList[LiquidStacks.itemID].getLocalizedName();
+
+            Amount = LiquidStacks.amount;
         }
         
         catch(Exception Exception)
@@ -53,6 +57,7 @@ public class ItemLiquidGun extends Item
         }
         
         List.add("Current Liquid: " + Liquid);
+        List.add("Current Amount: " + Amount);
            
         if(Keyboard.isKeyDown(Keyboard.KEY_M))
         {
@@ -217,7 +222,7 @@ public class ItemLiquidGun extends Item
             {
                 Par8 = LiquidStack.loadLiquidStackFromNBT(ItemStack.getTagCompound().getCompoundTag("LiquidData"));
             }
-            catch(Exception e)
+            catch(Exception Exception)
             {
                 Par8 = null;
             }

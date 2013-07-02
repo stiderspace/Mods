@@ -43,6 +43,7 @@ public class EntityLiquidBullet extends Entity implements IProjectile
     public EntityLiquidBullet(World World)
     {
         super(World);
+        
         renderDistanceWeight = 10.0D;
         setSize(0.5F, 0.5F);
         Block Block = null;
