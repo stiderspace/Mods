@@ -19,6 +19,7 @@ import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
 
+import TreviModdingCrew.Utilities.Block.BlockMobDetector;
 import TreviModdingCrew.Utilities.Block.BlockEggHatcher;
 import TreviModdingCrew.Utilities.Block.BlockLumberJacker;
 import TreviModdingCrew.Utilities.Block.BlockRockCutter;
@@ -35,6 +36,7 @@ import TreviModdingCrew.Utilities.Proxy.ClientProxy;
 import TreviModdingCrew.Utilities.Proxy.CommonProxy;
 import TreviModdingCrew.Utilities.Tab.TabUtilitiesBlock;
 import TreviModdingCrew.Utilities.Tab.TabUtilitiesItem;
+import TreviModdingCrew.Utilities.Tile.TileEntityMobDetector;
 import TreviModdingCrew.Utilities.Tile.TileEntityEggHatcher;
 import TreviModdingCrew.Utilities.Tile.TileEntityLumberJacker;
 import TreviModdingCrew.Utilities.Tile.TileEntityRockGrinder;
@@ -82,6 +84,7 @@ public class Main
 	public static Block EggHatcher;
 	public static Block LumberJacker;
 	public static Block WashingMachine;
+	public static Block MobDetector;
 
 	public static CreativeTabs UtilitiesBlock = new TabUtilitiesBlock(CreativeTabs.getNextID(), "Utilities Blocks");
 	public static CreativeTabs UtilitiesItem = new TabUtilitiesItem(CreativeTabs.getNextID(), "Utilities Items");
@@ -94,6 +97,7 @@ public class Main
 	public int EggHatcherID;
 	public int LumberJackerID;
 	public int WashingMachineID;
+	public int MobDetectorID;
 
 	public Property RecipeBone;
 	public Property RecipeCyanDye;
@@ -139,6 +143,7 @@ public class Main
         EggHatcherID = Config.getBlock("Egg Hatcher", 2502).getInt();
         LumberJackerID = Config.getBlock("Lumber Jacker", 2503).getInt();
         WashingMachineID = Config.getBlock("Washing Machine", 2504).getInt();
+        MobDetectorID = Config.getBlock("Animal Radar", 2505).getInt();
         
         RecipeBone = Config.get("Recipes", "Bone", true);
         RecipeCyanDye = Config.get("Recipes", "Cyan Dye", true);
@@ -196,6 +201,7 @@ public class Main
         EggHatcher = new BlockEggHatcher(EggHatcherID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Egg Hatcher");
         LumberJacker = new BlockLumberJacker(LumberJackerID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Lumber Jacker");
         WashingMachine = new BlockWashingMachine(WashingMachineID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Washing Machine");
+        MobDetector = new BlockMobDetector(MobDetectorID, Material.rock).setHardness(5F).setResistance(2.5F).setUnlocalizedName("Animal Radar");
         
         
     	// Block Registry
@@ -205,6 +211,7 @@ public class Main
     	GameRegistry.registerBlock(EggHatcher, "Egg Hatcher");
     	GameRegistry.registerBlock(LumberJacker, "Lumber Jacker");
     	GameRegistry.registerBlock(WashingMachine, "Washing Machine");
+    	GameRegistry.registerBlock(MobDetector, "Animal Radar");
     	
         
     	// Network Registry
@@ -413,6 +420,7 @@ public class Main
 	    GameRegistry.registerTileEntity(TileEntityEggHatcher.class, "Egg Hatcher");
 	    GameRegistry.registerTileEntity(TileEntityLumberJacker.class, "Lumber Jacker");
 	    GameRegistry.registerTileEntity(TileEntityWashingMachine.class, "Washing Machine");
+	    GameRegistry.registerTileEntity(TileEntityMobDetector.class, "Animal Radar");
 	    
 	    
 	    // Language Registry
@@ -425,5 +433,6 @@ public class Main
 	    LanguageRegistry.addName(EggHatcher, "Egg Hatcher");
 	    LanguageRegistry.addName(LumberJacker, "Lumber Jacker");
 	    LanguageRegistry.addName(WashingMachine, "Washing Machine");
+	    LanguageRegistry.addName(MobDetector, "Mob Detector");
     }
 }

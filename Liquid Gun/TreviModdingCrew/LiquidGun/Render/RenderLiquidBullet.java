@@ -1,4 +1,4 @@
-package TreviModdingCrew.Utilities.Renders;
+package TreviModdingCrew.LiquidGun.Render;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
@@ -12,14 +12,14 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ThrowableBomb extends Render
+public class RenderLiquidBullet extends Render
 {
     // Declarations
     
     private int ItemIconIndex;
     private String TextureFile;
 
-    public ThrowableBomb(int Par1, String Par2)
+    public RenderLiquidBullet(int Par1, String Par2)
     {
         this.ItemIconIndex = Par1;
         this.TextureFile = Par2;

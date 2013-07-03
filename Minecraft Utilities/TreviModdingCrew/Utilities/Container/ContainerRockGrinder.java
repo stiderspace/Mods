@@ -59,6 +59,7 @@ public class ContainerRockGrinder extends Container
     public void addCraftingToCrafters(ICrafting ICrafting)
     {
         super.addCraftingToCrafters(ICrafting);
+        
         ICrafting.sendProgressBarUpdate(this, 0, RockGrinder.CookTime);
         ICrafting.sendProgressBarUpdate(this, 1, RockGrinder.BurnTime);
         ICrafting.sendProgressBarUpdate(this, 2, RockGrinder.ItemBurnTime);

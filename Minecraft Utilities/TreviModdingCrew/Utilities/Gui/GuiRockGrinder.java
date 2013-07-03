@@ -135,7 +135,7 @@ public class GuiRockGrinder extends GuiContainer
     }
     
     
-    // Getting The Mouse Cordinates Depending On The Screensize 
+    // Getting The Mouse Coordinates Depending On The Screensize 
     
     @Override
     public void handleMouseInput()

@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 
 import TreviModdingCrew.Utilities.Container.ContainerRockCutter;
 import TreviModdingCrew.Utilities.Container.ContainerRockGrinder;
+import TreviModdingCrew.Utilities.Gui.GuiMobDetector;
 import TreviModdingCrew.Utilities.Gui.GuiRockCutter;
 import TreviModdingCrew.Utilities.Gui.GuiRockGrinder;
 import TreviModdingCrew.Utilities.Tile.TileEntityRockGrinder;
@@ -39,17 +40,17 @@ public class CommonProxy implements IGuiHandler
             switch(ID)
             {
                 case 0: return new ContainerRockGrinder(EntityPlayer.inventory, (TileEntityRockGrinder)TileEntity);
-                    
+                
                 default: return null;
             }
         }
-            
+        
         if(ID == 1)
         {
             return new ContainerRockCutter(EntityPlayer.inventory, World, Var1, Var2, Var3);
         }
-           
-        return TileEntity;  
+        
+		return null;  
     }
       
     
@@ -58,24 +59,7 @@ public class CommonProxy implements IGuiHandler
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer EntityPlayer, World World, int Var1, int Var2, int Var3)
     {
-        TileEntity TileEntity = World.getBlockTileEntity(Var1, Var2, Var3);
-
-        if(TileEntity != null)
-        {
-            switch(ID)
-            {
-                case 0: return new GuiRockGrinder(EntityPlayer.inventory, (TileEntityRockGrinder)TileEntity);
-                
-                default: return null; 
-            }
-        }
-            
-        if(ID == 1)
-        {
-            return new GuiRockCutter(EntityPlayer.inventory, World, Var1, Var2, Var3);
-        }
-        
-        return TileEntity;  
+        return null;  
     }
         
         
