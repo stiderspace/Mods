@@ -174,7 +174,8 @@ public class GuiMobDetector extends GuiScreen
         TextField.drawTextBox();
         
         fontRenderer.drawString("Mob Detector", posX + 55, posY + 6, 4210752);
-      
+        fontRenderer.drawString("Radius: ", posX + 90, posY + 62, 4210752);
+        
         super.drawScreen(Var1, Var2, Var3);
     } 
 }
